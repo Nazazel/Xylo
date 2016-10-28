@@ -11,7 +11,11 @@ public class PlayerController : MonoBehaviour {
 	public bool canMove;
     private float scalD;
     private float currD;
-    private bool isAlive { get; set; }
+    private bool isAlive;
+    private float xSpawn;
+    private float ySpawn;
+
+    private float tTime;
 
 	private Rigidbody2D rb;
 
@@ -25,6 +29,10 @@ public class PlayerController : MonoBehaviour {
         initSpeed = 0.6f;
         scalD = -0.012f;
         currD = 0f;
+        xSpawn = gameObject.transform.position.x;
+        ySpawn = gameObject.transform.position.y;
+
+        tTime = 0;
 	}
 
 	void FixedUpdate ()
@@ -74,9 +82,12 @@ public class PlayerController : MonoBehaviour {
             currD += scalD;
             rb.velocity += new Vector2(0, currD);
         }
+
+        if (!isAlive)
+            tdTimer();
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+        void OnCollisionEnter2D(Collision2D coll)
 	{
 		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
@@ -95,6 +106,7 @@ public class PlayerController : MonoBehaviour {
 		}
         if (coll.gameObject.CompareTag("Hazard")) die();
 	}
+    
     private bool checkV()
     {
         if (System.Math.Abs(rb.velocity.x) < 0.4f) return true;
@@ -105,5 +117,30 @@ public class PlayerController : MonoBehaviour {
         isAlive = false;
         canMove = false;
         gameObject.GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    private void respawn()
+    {
+        gameObject.transform.position = new Vector2(xSpawn,ySpawn);
+        isAlive = true;
+        canMove = true;
+        gameObject.GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    private void tdTimer()
+    {
+        if (tTime < 3)
+            tTime += Time.fixedDeltaTime;
+        else
+        {
+            tTime = 0;
+            respawn();
+        }
+    }
+
+    public void updateCheck(Vector3 cp)
+    {
+        xSpawn = cp.x;
+        ySpawn = cp.y;
     }
 }
