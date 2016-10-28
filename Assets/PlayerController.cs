@@ -11,23 +11,25 @@ public class PlayerController : MonoBehaviour {
 	public bool canMove;
     private float scalD;
     private float currD;
+    private bool isAlive { get; set; }
 
 	private Rigidbody2D rb;
 
 	void Start ()
 	{
+        isAlive = true;
 		canMove = true;
 		finishedJump = true;
 		rb = GetComponent<Rigidbody2D>();
         lockPos = 0f;
         initSpeed = 0.6f;
-        scalD = -0.01f;
+        scalD = -0.012f;
         currD = 0f;
 	}
 
 	void FixedUpdate ()
 	{
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
+        if(isAlive) transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
         if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
 			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && canMove) {
                 if (finishedJump) rb.AddForce(new Vector2(1.8f*force, 0));
@@ -76,13 +78,13 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if(coll.gameObject.CompareTag("Floor") && finishedJump == false)
+		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
 			finishedJump = true;
 			canMove = true;
             currD = 0;
 		}
-		if(coll.gameObject.CompareTag("Wall"))
+		if(coll.gameObject.CompareTag("Wall") && isAlive)
 		{
 			if (!finishedJump) {
 				canMove = false;
@@ -91,10 +93,17 @@ public class PlayerController : MonoBehaviour {
 //				;
 //			}
 		}
+        if (coll.gameObject.CompareTag("Hazard")) die();
 	}
     private bool checkV()
     {
         if (System.Math.Abs(rb.velocity.x) < 0.4f) return true;
         else return false;
+    }
+    private void die()
+    {
+        isAlive = false;
+        canMove = false;
+        gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 }
