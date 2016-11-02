@@ -12,7 +12,7 @@ public class TriggerInit : MonoBehaviour {
 	    
 	}
 
-    void OnTriggerStay2D(Collider2D o)
+    void OnTriggerEnter2D(Collider2D o)
     {
         if (o.gameObject.CompareTag("Player"))
         {

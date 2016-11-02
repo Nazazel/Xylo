@@ -14,30 +14,41 @@ public class PlayerController : MonoBehaviour {
     private bool isAlive;
     private float xSpawn;
     private float ySpawn;
+    private bool groundItem;
+    private int gItemID;
+    private GameObject currItem;
+    private GameObject inv;
 
     private float tTime;
 
 	private Rigidbody2D rb;
 
-	void Start ()
-	{
+    void Start()
+    {
         isAlive = true;
-		canMove = true;
-		finishedJump = true;
-		rb = GetComponent<Rigidbody2D>();
+        canMove = true;
+        finishedJump = true;
+        rb = GetComponent<Rigidbody2D>();
         lockPos = 0f;
         initSpeed = 0.6f;
         scalD = -0.012f;
         currD = 0f;
         xSpawn = gameObject.transform.position.x;
         ySpawn = gameObject.transform.position.y;
+        groundItem = false;
+        gItemID = 0;
+        currItem = null;
+        inv = GameObject.Find("Inventory Slots");
 
         tTime = 0;
 	}
 
 	void FixedUpdate ()
 	{
+        //Rotation
         if(isAlive) transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
+
+        //Movement
         if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
 			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && canMove) {
                 if (finishedJump) rb.AddForce(new Vector2(1.8f*force, 0));
@@ -77,14 +88,22 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+        //Increases falling rate
         if (!finishedJump)
         {
             currD += scalD;
             rb.velocity += new Vector2(0, currD);
         }
 
+        //If player is dead, countdown to respawn
         if (!isAlive)
             tdTimer();
+
+        //Picks up item if there is one [yay for items and inventory systems :'( ]
+        if(Input.GetKey(KeyCode.E) && groundItem)
+        {
+            pickUpItem();
+        }
 	}
 
         void OnCollisionEnter2D(Collision2D coll)
@@ -142,5 +161,30 @@ public class PlayerController : MonoBehaviour {
     {
         xSpawn = cp.x;
         ySpawn = cp.y;
+    }
+
+    public void canPickUp(bool a)
+    {
+        groundItem = a;
+    }
+
+    public void setItemID(int num)
+    {
+        gItemID = num;
+        Debug.Log(gItemID);
+    }
+
+    public void setRef(GameObject o)
+    {
+        currItem = o;
+    }
+
+    private void pickUpItem()
+    {
+        currItem.SendMessage("claim");
+        inv.SendMessage("claim", gItemID);
+        groundItem = false;
+        gItemID = 0;
+        currItem = null;
     }
 }
