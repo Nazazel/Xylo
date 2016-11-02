@@ -171,7 +171,6 @@ public class PlayerController : MonoBehaviour {
     public void setItemID(int num)
     {
         gItemID = num;
-        Debug.Log(gItemID);
     }
 
     public void setRef(GameObject o)
