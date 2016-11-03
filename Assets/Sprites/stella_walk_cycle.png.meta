@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 guid: bb1e2f3dd1d387a43ac9bf3381856777
-timeCreated: 1478053167
+timeCreated: 1478213056
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: stella_walk_cycle_0
+    21300002: stella_walk_cycle_1
+    21300004: stella_walk_cycle_2
+    21300006: stella_walk_cycle_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,28 +34,80 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: -1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: stella_walk_cycle_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 20
+        width: 120
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_walk_cycle_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 20
+        width: 120
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_walk_cycle_2
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 20
+        width: 125
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_walk_cycle_3
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 20
+        width: 120
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

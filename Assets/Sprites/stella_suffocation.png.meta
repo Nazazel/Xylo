@@ -1,15 +1,18 @@
 fileFormatVersion: 2
-guid: 0c41d0a93cdae244382c4a3d71748fbc
-timeCreated: 1478213031
+guid: b5edabaee6b3af64b9ab8d6a098c2a96
+timeCreated: 1478213007
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: stella_wakeup_0
-    21300002: stella_wakeup_1
-    21300004: stella_wakeup_2
-    21300006: stella_wakeup_3
-    21300008: stella_wakeup_4
-    21300010: stella_wakeup_5
+    21300000: stella_suffocation_0
+    21300002: stella_suffocation_1
+    21300004: stella_suffocation_2
+    21300006: stella_suffocation_3
+    21300008: stella_suffocation_4
+    21300010: stella_suffocation_5
+    21300012: stella_suffocation_6
+    21300014: stella_suffocation_7
+    21300016: stella_suffocation_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,78 +62,117 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stella_wakeup_0
+      name: stella_suffocation_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 20
-        width: 215
-        height: 75
+        x: 83
+        y: 19
+        width: 128
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: stella_wakeup_1
+      name: stella_suffocation_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 20
-        width: 205
-        height: 100
+        x: 329
+        y: 19
+        width: 128
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: stella_wakeup_2
+      name: stella_suffocation_2
       rect:
         serializedVersion: 2
-        x: 610
-        y: 20
-        width: 165
-        height: 140
+        x: 583
+        y: 19
+        width: 128
+        height: 322
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: stella_wakeup_3
+      name: stella_suffocation_3
       rect:
         serializedVersion: 2
-        x: 915
-        y: 20
-        width: 125
-        height: 225
+        x: 839
+        y: 19
+        width: 128
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: stella_wakeup_4
+      name: stella_suffocation_4
       rect:
         serializedVersion: 2
-        x: 1195
-        y: 20
-        width: 125
-        height: 235
+        x: 1093
+        y: 19
+        width: 128
+        height: 322
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: stella_wakeup_5
+      name: stella_suffocation_5
       rect:
         serializedVersion: 2
-        x: 1485
-        y: 20
-        width: 120
-        height: 340
+        x: 1328
+        y: 19
+        width: 134
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_6
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 19
+        width: 132
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_7
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 19
+        width: 134
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_8
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 19
+        width: 222
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
