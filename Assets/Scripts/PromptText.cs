@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Text : MonoBehaviour {
+public class PromptText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
