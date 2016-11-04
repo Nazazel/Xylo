@@ -1,0 +1,538 @@
+fileFormatVersion: 2
+guid: f5e974cd6218d9745a97081f9c757437
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RedRobot_Idle1
+    21300002: RedRobot_Idle2
+    21300004: RedRobot_Idle3
+    21300006: RedRobot_Idle4
+    21300008: RedRobot_Idle5
+    21300010: RedRobot_StandShoot1
+    21300012: RedRobot_StandShoot2
+    21300014: RedRobot_StandShoot3
+    21300016: RedRobot_StandShoot4
+    21300018: RedRobot_Run1
+    21300020: RedRobot_Run2
+    21300022: RedRobot_Run3
+    21300024: RedRobot_Run4
+    21300026: RedRobot_Run5
+    21300028: RedRobot_Run6
+    21300030: RedRobot_Run7
+    21300032: RedRobot_Run8
+    21300034: RedRobot_Run9
+    21300036: RedRobot_Run10
+    21300038: RedRobot_Jump1
+    21300040: RedRobot_Jump2
+    21300042: RedRobot_Jump3
+    21300044: RedRobot_Jump4
+    21300046: RedRobot_Jump5q
+    21300048: RedRobot_RunShoot1
+    21300050: RedRobot_RunShoot2
+    21300052: RedRobot_RunShoot3
+    21300054: RedRobot_RunShoot4
+    21300056: RedRobot_RunShoot5
+    21300058: RedRobot_RunShoot6
+    21300060: RedRobot_RunShoot7
+    21300062: RedRobot_RunShoot8
+    21300064: RedRobot_RunShoot9
+    21300066: RedRobot_RunShoot10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RedRobot_Idle1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2835
+        width: 456
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Idle2
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 2838
+        width: 455
+        height: 397
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Idle3
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 2838
+        width: 456
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Idle4
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 2838
+        width: 459
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Idle5
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 2846
+        width: 456
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_StandShoot1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 2341
+        width: 456
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_StandShoot2
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 2333
+        width: 455
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_StandShoot3
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 2355
+        width: 451
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_StandShoot4
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 2339
+        width: 451
+        height: 397
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1875
+        width: 456
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run2
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1876
+        width: 455
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run3
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1851
+        width: 455
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run4
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 1859
+        width: 459
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run5
+      rect:
+        serializedVersion: 2
+        x: 2237
+        y: 1843
+        width: 464
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run6
+      rect:
+        serializedVersion: 2
+        x: 2804
+        y: 1822
+        width: 459
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run7
+      rect:
+        serializedVersion: 2
+        x: 3341
+        y: 1814
+        width: 459
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run8
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1433
+        width: 459
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run9
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 1416
+        width: 459
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Run10
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 1416
+        width: 480
+        height: 349
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Jump1
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 933
+        width: 459
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Jump2
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 941
+        width: 458
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Jump3
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 949
+        width: 455
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Jump4
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 949
+        width: 430
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_Jump5q
+      rect:
+        serializedVersion: 2
+        x: 2234
+        y: 929
+        width: 422
+        height: 508
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 441
+        width: 459
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot2
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 453
+        width: 450
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot3
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 441
+        width: 459
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot4
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 453
+        width: 438
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot5
+      rect:
+        serializedVersion: 2
+        x: 2237
+        y: 437
+        width: 464
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot6
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 437
+        width: 451
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot7
+      rect:
+        serializedVersion: 2
+        x: 3259
+        y: 453
+        width: 455
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot8
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 459
+        height: 387
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot9
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 19
+        width: 455
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: RedRobot_RunShoot10
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 27
+        width: 459
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+1.1 Change Log
+
+-Fixes
+	-Cleaned up all of the edges from bush1-6
+	-Cleaned up artifacts on Forest_platformPipe
+	-Cleaned up artifacts on Wall2
+	-Updated all gizmos textures to make it more colorful (based on feedback)
+
+-Added 10 new Platforms
+	-Gray_Walkway
+	-Gray_Pillar
+	-Gray_Platform5
+	-Gray_Platform6
+	-Gray_Platform7
+	-Pillar3
+	-Platform5
+	-Platform6
+	-Platform7
+	-Float_Platform3
+
+
+	
