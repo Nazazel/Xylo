@@ -11,18 +11,8 @@ public class Inventory : MonoBehaviour {
         numItems = 4;
         haveItems = new bool[numItems];
         items = new GameObject[numItems];
-
-        //Temporarily hard-coded items, may change later
-        items[0] = GameObject.Find("InvBall");
-        items[2] = GameObject.Find("InvScribble");
-
-        for (int i = 0; i < numItems; i++)
-        {
-            haveItems[i] = false;
-            if(items[i] != null)
-                items[i].GetComponent<SpriteRenderer>().enabled = false;
-
-        }
+        Item.Inv = this;
+        Item.Ready = true;
 
     }
 	
@@ -46,6 +36,23 @@ public class Inventory : MonoBehaviour {
             {
                 items[i].GetComponent<SpriteRenderer>().enabled = true;
             }
+        }
+    }
+
+    public void passItem(GameObject go, int id)
+    {
+        id--;
+        items[id] = new GameObject();
+        items[id].name = "Inv" + go.name;
+        items[id].transform.position = new Vector2(-1.1155f+0.74775f*id,10.8f);
+        if (items[id].GetComponent<SpriteRenderer>() == null)
+        {
+            items[id].AddComponent<SpriteRenderer>();
+            var sprite = items[id].GetComponent<SpriteRenderer>();
+            sprite.sprite = go.GetComponent<SpriteRenderer>().sprite;
+            sprite.sortingOrder = 1;
+            sprite.sortingLayerName = "InvItems";
+            sprite.enabled = false;
         }
     }
 }
