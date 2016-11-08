@@ -1,0 +1,1688 @@
+fileFormatVersion: 2
+guid: d1d0fb2058b26af4ca57525af23f0ed8
+timeCreated: 1471879623
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: no black outline sprite_0
+    21300002: no black outline sprite_1
+    21300004: no black outline sprite_2
+    21300006: no black outline sprite_3
+    21300008: no black outline sprite_4
+    21300010: no black outline sprite_5
+    21300012: no black outline sprite_6
+    21300014: no black outline sprite_7
+    21300016: no black outline sprite_8
+    21300018: no black outline sprite_9
+    21300020: no black outline sprite_10
+    21300022: no black outline sprite_11
+    21300024: no black outline sprite_12
+    21300026: no black outline sprite_13
+    21300028: no black outline sprite_14
+    21300030: no black outline sprite_15
+    21300032: no black outline sprite_16
+    21300034: no black outline sprite_17
+    21300036: no black outline sprite_18
+    21300038: no black outline sprite_19
+    21300040: no black outline sprite_20
+    21300042: no black outline sprite_21
+    21300044: no black outline sprite_22
+    21300046: no black outline sprite_23
+    21300048: no black outline sprite_24
+    21300050: no black outline sprite_25
+    21300052: no black outline sprite_26
+    21300054: no black outline sprite_27
+    21300056: no black outline sprite_28
+    21300058: no black outline sprite_29
+    21300060: no black outline sprite_30
+    21300062: no black outline sprite_31
+    21300064: no black outline sprite_32
+    21300066: no black outline sprite_33
+    21300068: no black outline sprite_34
+    21300070: no black outline sprite_35
+    21300072: no black outline sprite_36
+    21300074: no black outline sprite_37
+    21300076: no black outline sprite_38
+    21300078: no black outline sprite_39
+    21300080: no black outline sprite_40
+    21300082: no black outline sprite_41
+    21300084: no black outline sprite_42
+    21300086: no black outline sprite_43
+    21300088: no black outline sprite_44
+    21300090: no black outline sprite_45
+    21300092: no black outline sprite_46
+    21300094: no black outline sprite_47
+    21300096: no black outline sprite_48
+    21300098: no black outline sprite_49
+    21300100: no black outline sprite_50
+    21300102: no black outline sprite_51
+    21300104: no black outline sprite_52
+    21300106: no black outline sprite_53
+    21300108: no black outline sprite_54
+    21300110: no black outline sprite_55
+    21300112: no black outline sprite_56
+    21300114: no black outline sprite_57
+    21300116: no black outline sprite_58
+    21300118: no black outline sprite_59
+    21300120: no black outline sprite_60
+    21300122: no black outline sprite_61
+    21300124: no black outline sprite_62
+    21300126: no black outline sprite_63
+    21300128: no black outline sprite_64
+    21300130: no black outline sprite_65
+    21300132: no black outline sprite_66
+    21300134: no black outline sprite_67
+    21300136: no black outline sprite_68
+    21300138: no black outline sprite_69
+    21300140: no black outline sprite_70
+    21300142: no black outline sprite_71
+    21300144: no black outline sprite_72
+    21300146: no black outline sprite_73
+    21300148: no black outline sprite_74
+    21300150: no black outline sprite_75
+    21300152: no black outline sprite_76
+    21300154: no black outline sprite_77
+    21300156: no black outline sprite_78
+    21300158: no black outline sprite_79
+    21300160: no black outline sprite_80
+    21300162: no black outline sprite_81
+    21300164: no black outline sprite_82
+    21300166: no black outline sprite_83
+    21300168: no black outline sprite_84
+    21300170: no black outline sprite_85
+    21300172: no black outline sprite_86
+    21300174: no black outline sprite_87
+    21300176: no black outline sprite_88
+    21300178: no black outline sprite_89
+    21300180: no black outline sprite_90
+    21300182: no black outline sprite_91
+    21300184: no black outline sprite_92
+    21300186: no black outline sprite_93
+    21300188: no black outline sprite_94
+    21300190: no black outline sprite_95
+    21300192: no black outline sprite_96
+    21300194: no black outline sprite_97
+    21300196: no black outline sprite_98
+    21300198: no black outline sprite_99
+    21300200: no black outline sprite_100
+    21300202: no black outline sprite_101
+    21300204: no black outline sprite_102
+    21300206: no black outline sprite_103
+    21300208: no black outline sprite_104
+    21300210: no black outline sprite_105
+    21300212: no black outline sprite_106
+    21300214: no black outline sprite_107
+    21300216: no black outline sprite_108
+    21300218: no black outline sprite_109
+    21300220: no black outline sprite_110
+    21300222: no black outline sprite_111
+    21300224: no black outline sprite_112
+    21300226: no black outline sprite_113
+    21300228: no black outline sprite_114
+    21300230: no black outline sprite_115
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: no black outline sprite_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 268
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 266
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 266
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 265
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_4
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 266
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_5
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 278
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_6
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 265
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 267
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 242
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_9
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 242
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 242
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 243
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 243
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_13
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 242
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_14
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 242
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_15
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 241
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_16
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 242
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_17
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 241
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_18
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 241
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_19
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 242
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 220
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_21
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 217
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_22
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 221
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_23
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 219
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_24
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 221
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_25
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 217
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_26
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 217
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_27
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 217
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_28
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 217
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_29
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 217
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_30
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 217
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_31
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 220
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 199
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_33
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 195
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_34
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 193
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_35
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 193
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_36
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 196
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_37
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 193
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_38
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 193
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_39
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 193
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_40
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 193
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_41
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 194
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_42
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 196
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_43
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 194
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_44
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 169
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_45
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 169
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_46
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 170
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_47
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 169
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_48
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 169
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_49
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 169
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_50
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 169
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_51
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 169
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_52
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 169
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_53
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 169
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_54
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 169
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_55
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 169
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_56
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 147
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_57
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 146
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_58
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 145
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_59
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 145
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_60
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 145
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_61
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 145
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_62
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 145
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_63
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 145
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_64
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 145
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_65
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 148
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_66
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 145
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_67
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 146
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_68
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 122
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_69
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 122
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_70
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 122
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_71
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 122
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_72
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 124
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_73
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 124
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_74
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 121
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_75
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 124
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_76
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 122
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_77
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 124
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_78
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 121
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_79
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 122
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_80
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 99
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_81
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 99
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_82
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 97
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_83
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 97
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_84
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 97
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_85
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 101
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_86
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 97
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_87
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 98
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_88
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 98
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_89
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 97
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_90
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 99
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_91
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 98
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_92
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 73
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_93
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 74
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_94
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 73
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_95
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 74
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_96
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 73
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_97
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 74
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_98
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 74
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_99
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 74
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_100
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 74
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_101
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 73
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_102
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 75
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_103
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 74
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_104
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 54
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_105
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 49
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_106
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 49
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_107
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 50
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_108
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 49
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_109
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 50
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_110
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 49
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_111
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 50
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_112
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 50
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_113
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 49
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_114
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 50
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: no black outline sprite_115
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 50
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
