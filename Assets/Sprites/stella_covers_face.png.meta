@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bbe515c915c54d043807a65716009bf5
-timeCreated: 1478212922
+timeCreated: 1478679469
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,12 +60,12 @@ TextureImporter:
       name: stella_covers_face_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 20
-        width: 120
-        height: 340
+        x: 0
+        y: 0
+        width: 210
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -73,12 +73,12 @@ TextureImporter:
       name: stella_covers_face_1
       rect:
         serializedVersion: 2
-        x: 240
-        y: 20
-        width: 120
-        height: 340
+        x: 210
+        y: 0
+        width: 210
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -86,12 +86,12 @@ TextureImporter:
       name: stella_covers_face_2
       rect:
         serializedVersion: 2
-        x: 440
-        y: 20
-        width: 120
-        height: 335
+        x: 420
+        y: 0
+        width: 210
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -99,12 +99,12 @@ TextureImporter:
       name: stella_covers_face_3
       rect:
         serializedVersion: 2
-        x: 640
-        y: 20
-        width: 120
-        height: 340
+        x: 630
+        y: 0
+        width: 210
+        height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
