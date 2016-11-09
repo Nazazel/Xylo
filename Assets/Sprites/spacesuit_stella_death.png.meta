@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 2a965d8369746ad419731e35f562cb5a
-timeCreated: 1478477855
+timeCreated: 1478661073
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: spacesuit_stella_death_0
+    21300002: spacesuit_stella_death_1
+    21300004: spacesuit_stella_death_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spacesuit_stella_death_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 20
+        width: 90
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spacesuit_stella_death_1
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 20
+        width: 105
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spacesuit_stella_death_2
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 20
+        width: 215
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

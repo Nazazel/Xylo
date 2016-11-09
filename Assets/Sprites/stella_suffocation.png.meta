@@ -1,7 +1,18 @@
 fileFormatVersion: 2
 guid: b5edabaee6b3af64b9ab8d6a098c2a96
+timeCreated: 1478658142
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: stella_suffocation_0
+    21300002: stella_suffocation_1
+    21300004: stella_suffocation_2
+    21300006: stella_suffocation_3
+    21300008: stella_suffocation_4
+    21300010: stella_suffocation_5
+    21300012: stella_suffocation_6
+    21300014: stella_suffocation_7
+    21300016: stella_suffocation_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -36,7 +47,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +60,124 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: stella_suffocation_0
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 19
+        width: 128
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_1
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 19
+        width: 128
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_2
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 19
+        width: 128
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_3
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 19
+        width: 128
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_4
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 19
+        width: 128
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_5
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 19
+        width: 134
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_6
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 19
+        width: 132
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_7
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 19
+        width: 134
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stella_suffocation_8
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 19
+        width: 222
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
