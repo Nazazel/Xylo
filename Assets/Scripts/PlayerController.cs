@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         lockPos = 0f;
         initSpeed = 0.6f;
-        scalD = -0.012f;
+        scalD = -0.013f;
         currD = 0f;
         xSpawn = gameObject.transform.position.x;
         ySpawn = gameObject.transform.position.y;
@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour {
         if (!finishedJump)
         {
             currD += scalD;
+            if (currD < -2) currD = -5;
             rb.velocity += new Vector2(0, currD);
         }
 
