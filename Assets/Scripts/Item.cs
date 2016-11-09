@@ -22,7 +22,7 @@ public class Item : MonoBehaviour {
         {
             if (attempts < 3 && !added && !abortAdd)
             {
-                try { Inv.passItem(gameObject, id); added = true; Debug.Log("Success"); }
+                try { Inv.passItem(gameObject, id); added = true;}
                 catch (System.Exception ex2)
                 {
                     Debug.Log("Item with ID " + id + " not added. Trying again...");

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerInit : MonoBehaviour {
+public class Checkpoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
