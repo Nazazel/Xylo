@@ -25,12 +25,11 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        updateItemPos();
     }
 
     void LateUpdate()
     {
-        if(cam) gameObject.transform.position = cam.transform.position + offset;
+        updateItemPos();
     }
 
     private void updateItemPos()

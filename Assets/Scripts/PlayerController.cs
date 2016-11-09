@@ -188,4 +188,9 @@ public class PlayerController : MonoBehaviour {
         gItemID = 0;
         currItem = null;
     }
+
+    public void tp(Vector3 a)
+    {
+        gameObject.transform.position = new Vector3(a.x, a.y, 0);
+    }
 }
