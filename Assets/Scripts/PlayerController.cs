@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         lockPos = 0f;
         initSpeed = 0.6f;
-        scalD = -0.013f;
+        scalD = -0.011f;
         currD = 0f;
         xSpawn = gameObject.transform.position.x;
         ySpawn = gameObject.transform.position.y;
@@ -187,5 +187,10 @@ public class PlayerController : MonoBehaviour {
         groundItem = false;
         gItemID = 0;
         currItem = null;
+    }
+
+    public void tp(Vector3 a)
+    {
+        gameObject.transform.position = new Vector3(a.x, a.y, 0);
     }
 }

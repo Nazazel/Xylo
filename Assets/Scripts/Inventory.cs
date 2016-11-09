@@ -4,14 +4,20 @@ using System.Collections;
 public class Inventory : MonoBehaviour {
 
     private bool[] haveItems;
+    private Vector3[] iOffset;
     public GameObject[] items;
+    private GameObject cam;
     int numItems;
+    private Vector3 offset;
 
 	void Start () {
         DontDestroyOnLoad(gameObject);
+        cam = GameObject.Find("Main Camera");
+        offset = gameObject.transform.position - cam.transform.position;
         numItems = 4;
         haveItems = new bool[numItems];
         items = new GameObject[numItems];
+        iOffset = new Vector3[numItems];
         Item.Inv = this;
         Item.Ready = true;
 
@@ -19,13 +25,27 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
-	}
+    }
+
+    void LateUpdate()
+    {
+        updateItemPos();
+    }
+
+    private void updateItemPos()
+    {
+        for(int i=0;i<numItems;i++)
+        {
+            if(haveItems[i])  items[i].transform.position = gameObject.transform.position + iOffset[i];
+        }
+    }
 
     public void claim(int id)
     {
-        Debug.Log(items[id-1]);
-        haveItems[id - 1] = true;
+        id--;
+        items[id].transform.position = new Vector3(-1.1155f + 0.74775f * id + gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        iOffset[id] = items[id].transform.position - gameObject.transform.position;
+        haveItems[id] = true;
         updateView();
     }
 
@@ -45,7 +65,6 @@ public class Inventory : MonoBehaviour {
         id--;
         items[id] = new GameObject();
         items[id].name = "Inv" + go.name;
-        items[id].transform.position = new Vector2(-1.1155f+0.74775f*id,10.8f);
         if (items[id].GetComponent<SpriteRenderer>() == null)
         {
             items[id].AddComponent<SpriteRenderer>();
@@ -56,5 +75,10 @@ public class Inventory : MonoBehaviour {
             sprite.enabled = false;
             DontDestroyOnLoad(items[id]);
         }
+    }
+
+    public void bindToCam()
+    {
+        cam = GameObject.Find("Main Camera");
     }
 }
