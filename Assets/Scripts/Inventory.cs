@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
     int numItems;
 
 	void Start () {
+        DontDestroyOnLoad(gameObject);
         numItems = 4;
         haveItems = new bool[numItems];
         items = new GameObject[numItems];
@@ -53,6 +54,7 @@ public class Inventory : MonoBehaviour {
             sprite.sortingOrder = 1;
             sprite.sortingLayerName = "InvItems";
             sprite.enabled = false;
+            DontDestroyOnLoad(items[id]);
         }
     }
 }

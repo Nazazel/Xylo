@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         isAlive = true;
         canMove = true;
         finishedJump = true;
