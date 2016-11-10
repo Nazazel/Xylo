@@ -20,14 +20,16 @@ public class Timer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if (time > 0)
-        {
-            time -= Time.deltaTime;
-            fillImg.fillAmount = time / timeAmt;
-        }
-        else
-        {
-            player.SendMessage("die");
-        }
+		if ((time > 0) && player.GetComponent<PlayerController> ().hasSuit == false) {
+			time -= Time.deltaTime;
+			fillImg.fillAmount = time / timeAmt;
+		} else if (time <= 0 && player.GetComponent<PlayerController> ().hasSuit == false && player.GetComponent<PlayerController> ().isAlive == true) {
+			player.GetComponent<PlayerController> ().suffocated = true;
+			player.SendMessage ("die");
+			time = timeAmt;
+		}
+		else if (time <= 0 && player.GetComponent<PlayerController> ().hasSuit == false && player.GetComponent<PlayerController> ().isAlive == false) {
+			time = timeAmt;
+		}
 	}
 }

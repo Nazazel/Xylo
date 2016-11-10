@@ -13,9 +13,10 @@ public class PlayerController : MonoBehaviour {
 	public bool finishedJump;
 	public bool canMove;
 	public bool hasSuit;
+	public bool suffocated;
     private float scalD;
     private float currD;
-    private bool isAlive;
+    public bool isAlive;
     private float xSpawn;
     private float ySpawn;
     private bool groundItem;
@@ -256,7 +257,12 @@ public class PlayerController : MonoBehaviour {
         isAlive = false;
         canMove = false;
 		if (!hasSuit) {
-			playerAnimator.Play ("StellaDeath");
+			if (suffocated) {
+				playerAnimator.Play ("StellaSuffocation");
+			} 
+			else {
+				playerAnimator.Play ("StellaDeath");
+			}
 		} 
 		else {
 			playerAnimator.Play ("SpaceDie");
@@ -267,6 +273,7 @@ public class PlayerController : MonoBehaviour {
     {
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.transform.position = new Vector2(xSpawn,ySpawn);
+		suffocated = false;
         isAlive = true;
         canMove = true;
     }
