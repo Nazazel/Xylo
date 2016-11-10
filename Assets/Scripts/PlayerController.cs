@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private float initSpeed;
 	public bool finishedJump;
 	public bool canMove;
+	public bool hasSuit;
     private float scalD;
     private float currD;
     private bool isAlive;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Player"));
         isAlive = true;
 		moving = false;
+		hasSuit = false;
         canMove = true;
         finishedJump = true;
         rb = GetComponent<Rigidbody2D>();
@@ -58,7 +60,12 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
 			if (isAlive) {
 				canMove = false;
-				playerAnimator.Play ("StellaCrouching");
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaCrouching");
+				} 
+				else {
+					playerAnimator.Play ("SpaceCrouch");
+				}
 			}
 		} 
 		else {
@@ -82,7 +89,12 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaRunning");
+						if (!hasSuit) {
+							playerAnimator.Play ("StellaRunning");
+						} 
+						else {
+							playerAnimator.Play ("SpaceRun");
+						}
 					}
 				}
 
@@ -96,7 +108,12 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaRunning");
+						if (!hasSuit) {
+							playerAnimator.Play ("StellaRunning");
+						} 
+						else {
+							playerAnimator.Play ("SpaceRun");
+						}
 					}
 				}
 			} 
@@ -106,7 +123,12 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
-				playerAnimator.Play ("StellaJumping");
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaJumping");
+				} 
+				else {
+					playerAnimator.Play ("SpaceJump");
+				}
 				finishedJump = false;
 			}
 		}
@@ -122,7 +144,12 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaWalking");
+						if (!hasSuit) {
+							playerAnimator.Play ("StellaWalking");
+						} 
+						else {
+							playerAnimator.Play ("SpaceWalk");
+						}
 					}
 				}
 
@@ -136,7 +163,12 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaWalking");
+						if (!hasSuit) {
+							playerAnimator.Play ("StellaWalking");
+						} 
+						else {
+							playerAnimator.Play ("SpaceWalk");
+						}
 					}
 				}
 			} 
@@ -146,7 +178,12 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
-				playerAnimator.Play ("StellaJumping");
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaJumping");
+				} 
+				else {
+					playerAnimator.Play ("SpaceJump");
+				}
 				finishedJump = false;
 			}
 		}
@@ -160,8 +197,12 @@ public class PlayerController : MonoBehaviour {
         }
 
 		if (finishedJump && !moving && canMove) {
-		
-			playerAnimator.Play ("StellaStand");
+			if (!hasSuit) {
+				playerAnimator.Play ("StellaStand");
+			} 
+			else {
+				playerAnimator.Play ("SpaceStand");
+			}
 		}
 
 
@@ -182,7 +223,12 @@ public class PlayerController : MonoBehaviour {
 		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
 			finishedJump = true;
-			playerAnimator.Play ("StellaStand");
+			if (!hasSuit) {
+				playerAnimator.Play ("StellaStand");
+			} 
+			else {
+				playerAnimator.Play ("SpaceStand");
+			}
 			canMove = true;
             currD = 0;
 		}
@@ -205,19 +251,24 @@ public class PlayerController : MonoBehaviour {
     }
     private void die()
     {
-		
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         isAlive = false;
         canMove = false;
-		playerAnimator.Play ("StellaDeath");
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
+		if (!hasSuit) {
+			playerAnimator.Play ("StellaDeath");
+		} 
+		else {
+			playerAnimator.Play ("SpaceDie");
+		}
     }
 
     private void respawn()
     {
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.transform.position = new Vector2(xSpawn,ySpawn);
         isAlive = true;
         canMove = true;
-        gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 
     private void tdTimer()
