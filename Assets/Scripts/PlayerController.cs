@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Player"));
         isAlive = true;
 		moving = false;
         canMove = true;
@@ -55,6 +55,18 @@ public class PlayerController : MonoBehaviour {
         //Rotation
         if(isAlive) transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
 
+		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+			if (isAlive) {
+				canMove = false;
+				playerAnimator.Play ("StellaCrouching");
+			}
+		} 
+		else {
+			if (isAlive) {
+				canMove = true;
+			}
+		}
+
         //Movement
         if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
 			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
@@ -70,7 +82,7 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaWalking");
+						playerAnimator.Play ("StellaRunning");
 					}
 				}
 
@@ -84,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 					if (checkV ())
 						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
 					if (finishedJump) {
-						playerAnimator.Play ("StellaWalking");
+						playerAnimator.Play ("StellaRunning");
 					}
 				}
 			} 
@@ -92,7 +104,7 @@ public class PlayerController : MonoBehaviour {
 				moving = false;
 			}
 
-			if (Input.GetKey (KeyCode.Space) && finishedJump) {
+			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
 				playerAnimator.Play ("StellaJumping");
 				finishedJump = false;
@@ -132,7 +144,7 @@ public class PlayerController : MonoBehaviour {
 				moving = false;
 			}
 
-			if (Input.GetKey (KeyCode.Space) && finishedJump) {
+			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
 				playerAnimator.Play ("StellaJumping");
 				finishedJump = false;
@@ -147,7 +159,7 @@ public class PlayerController : MonoBehaviour {
             rb.velocity += new Vector2(0, currD);
         }
 
-		if (finishedJump && !moving) {
+		if (finishedJump && !moving && canMove) {
 		
 			playerAnimator.Play ("StellaStand");
 		}
@@ -193,8 +205,10 @@ public class PlayerController : MonoBehaviour {
     }
     private void die()
     {
+		
         isAlive = false;
         canMove = false;
+		playerAnimator.Play ("StellaDeath");
         gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 
