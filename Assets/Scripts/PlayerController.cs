@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
 	public float force;
 	public float jumpHeight;
+	public Animator playerAnimator;
+	public SpriteRenderer playerRenderer;
     private float lockPos;
     private float initSpeed;
 	public bool finishedJump;
@@ -15,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     private float xSpawn;
     private float ySpawn;
     private bool groundItem;
+	public bool moving;
     private int gItemID;
     private GameObject currItem;
     private GameObject inv;
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour {
     {
         DontDestroyOnLoad(gameObject);
         isAlive = true;
+		moving = false;
         canMove = true;
         finishedJump = true;
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour {
         gItemID = 0;
         currItem = null;
         inv = GameObject.Find("Inventory Slots");
+		playerAnimator.Play ("StellaStand");
 
         tTime = 0;
 	}
@@ -51,40 +57,84 @@ public class PlayerController : MonoBehaviour {
 
         //Movement
         if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
-			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && canMove) {
-                if (finishedJump) rb.AddForce(new Vector2(1.8f*force, 0));
-                else rb.AddForce(new Vector2(force, 0));
-                //This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
-                //This helps to make movement a bit more responsive but still smooth.
-                if (checkV()) rb.velocity = new Vector2(initSpeed, rb.velocity.y);
-            }
+			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
+				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+					playerRenderer.flipX = true;
+					moving = true;
+					if (finishedJump)
+						rb.AddForce (new Vector2 (1.8f * force, 0));
+					else
+						rb.AddForce (new Vector2 (force, 0));
+					//This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
+					//This helps to make movement a bit more responsive but still smooth.
+					if (checkV ())
+						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
+					if (finishedJump) {
+						playerAnimator.Play ("StellaWalking");
+					}
+				}
 
-			if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && canMove) {
-                if (finishedJump) rb.AddForce(new Vector2 (1.8f * -force, 0));
-                else rb.AddForce(new Vector2(-force, 0));
-                if (checkV()) rb.velocity = new Vector2(-initSpeed, rb.velocity.y);
-            }
+				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+					playerRenderer.flipX = false;
+					moving = true;
+					if (finishedJump)
+						rb.AddForce (new Vector2 (1.8f * -force, 0));
+					else
+						rb.AddForce (new Vector2 (-force, 0));
+					if (checkV ())
+						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
+					if (finishedJump) {
+						playerAnimator.Play ("StellaWalking");
+					}
+				}
+			} 
+			else {
+				moving = false;
+			}
 
 			if (Input.GetKey (KeyCode.Space) && finishedJump) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+				playerAnimator.Play ("StellaJumping");
 				finishedJump = false;
 			}
 		}
 		else {
-			if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && canMove) {
-                if (finishedJump) rb.AddForce(new Vector2 (force, 0));
-                else rb.AddForce(new Vector2(0.6f * force, 0));
-                if (checkV()) rb.velocity = new Vector2(initSpeed, rb.velocity.y);
-            }
+			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
+				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+					playerRenderer.flipX = true;
+					moving = true;
+					if (finishedJump)
+						rb.AddForce (new Vector2 (force, 0));
+					else
+						rb.AddForce (new Vector2 (0.6f * force, 0));
+					if (checkV ())
+						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
+					if (finishedJump) {
+						playerAnimator.Play ("StellaWalking");
+					}
+				}
 
-			if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && canMove) {
-                if (finishedJump) rb.AddForce(new Vector2 (-force, 0));
-                else rb.AddForce(new Vector2(0.6f * -force, 0));
-                if (checkV()) rb.velocity = new Vector2(-initSpeed, rb.velocity.y);
-            }
+				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+					playerRenderer.flipX = false;
+					moving = true;
+					if (finishedJump)
+						rb.AddForce (new Vector2 (-force, 0));
+					else
+						rb.AddForce (new Vector2 (0.6f * -force, 0));
+					if (checkV ())
+						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
+					if (finishedJump) {
+						playerAnimator.Play ("StellaWalking");
+					}
+				}
+			} 
+			else {
+				moving = false;
+			}
 
 			if (Input.GetKey (KeyCode.Space) && finishedJump) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+				playerAnimator.Play ("StellaJumping");
 				finishedJump = false;
 			}
 		}
@@ -97,6 +147,12 @@ public class PlayerController : MonoBehaviour {
             rb.velocity += new Vector2(0, currD);
         }
 
+		if (finishedJump && !moving) {
+		
+			playerAnimator.Play ("StellaStand");
+		}
+
+
         //If player is dead, countdown to respawn
         if (!isAlive)
             tdTimer();
@@ -106,6 +162,7 @@ public class PlayerController : MonoBehaviour {
         {
             pickUpItem();
         }
+
 	}
 
         void OnCollisionEnter2D(Collision2D coll)
@@ -113,6 +170,7 @@ public class PlayerController : MonoBehaviour {
 		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
 			finishedJump = true;
+			playerAnimator.Play ("StellaStand");
 			canMove = true;
             currD = 0;
 		}
