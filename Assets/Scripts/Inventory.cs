@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour {
     int numItems;
 
 	void Start () {
-        DontDestroyOnLoad(gameObject);
         cam = GameObject.Find("2DCamera");
         gameObject.transform.parent = cam.transform;
         numItems = 8;
