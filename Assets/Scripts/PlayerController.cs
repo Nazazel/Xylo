@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 						if (rb.velocity.x < 9) {
 							rb.AddForce (new Vector2 (1.8f * force, 0));
 						} else {
-							rb.velocity = new Vector2 (9, 0);
+							rb.velocity = new Vector2 (9, rb.velocity.y);
 						}
 					} else {
 						if (rb.velocity.x < 9) {
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 						if (rb.velocity.x > -9) {
 							rb.AddForce (new Vector2 (1.8f * -force, 0));
 						} else {
-							rb.velocity = new Vector2 (-9, 0);
+							rb.velocity = new Vector2 (-9, rb.velocity.y);
 						}
 					} else {
 						if (rb.velocity.x > -9) {
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour {
 						if (rb.velocity.x < 3) {
 							rb.AddForce (new Vector2 (force, 0));
 						} else {
-							rb.velocity = new Vector2 (3, 0);
+							rb.velocity = new Vector2 (3, rb.velocity.y);
 						}
 					} 
 					else {
@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour {
 						if (rb.velocity.x > -3) {
 							rb.AddForce (new Vector2 (-force, 0));
 						} else {
-							rb.velocity = new Vector2 (-3, 0);
+							rb.velocity = new Vector2 (-3, rb.velocity.y);
 						}
 					} else {
 						if (rb.velocity.x > -3) {
