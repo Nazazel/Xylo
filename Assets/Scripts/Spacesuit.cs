@@ -24,6 +24,15 @@ public class Spacesuit : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit2D(Collider2D o)
+    {
+        if (o.gameObject.CompareTag("Player") && !claimed)
+        {
+            o.gameObject.SendMessage("canPickUp", false);
+        }
+    }
+
+
     public void claim()
     {
         claimed = true;
