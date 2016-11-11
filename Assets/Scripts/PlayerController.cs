@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     private GameObject currItem;
     private GameObject inv;
 
+    public static bool isTouchingSuit=false;
+
     private float tTime;
 
 	private Rigidbody2D rb;
@@ -55,8 +57,6 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-        //Rotation
-        if(isAlive) transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
 
 		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
 			if (isAlive) {
