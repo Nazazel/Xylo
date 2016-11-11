@@ -4,20 +4,17 @@ using System.Collections;
 public class Inventory : MonoBehaviour {
 
     private bool[] haveItems;
-    private Vector3[] iOffset;
     public GameObject[] items;
     private GameObject cam;
     int numItems;
-    private Vector3 offset;
 
 	void Start () {
         DontDestroyOnLoad(gameObject);
         cam = GameObject.Find("2DCamera");
         gameObject.transform.parent = cam.transform;
-        numItems = 4;
+        numItems = 8;
         haveItems = new bool[numItems];
         items = new GameObject[numItems];
-        iOffset = new Vector3[numItems];
         Item.Inv = this;
         Item.Ready = true;
 
@@ -32,8 +29,7 @@ public class Inventory : MonoBehaviour {
     public void claim(int id)
     {
         id--;
-        items[id].transform.position = new Vector3(-1.1155f + 0.74775f * id + gameObject.transform.position.x, gameObject.transform.position.y, 0);
-        iOffset[id] = items[id].transform.position - gameObject.transform.position;
+        items[id].transform.position = new Vector3(-1.1155f + 0.74775f * (id-2) + gameObject.transform.position.x, gameObject.transform.position.y, 0);
         haveItems[id] = true;
         items[id].transform.parent = gameObject.transform;
         updateView();
