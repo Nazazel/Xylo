@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
-		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Player"));
+		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
         isAlive = true;
 		moving = false;
 		hasSuit = false;
@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		} 
-		else {
+		else 
+		{
 			if (isAlive) {
 				canMove = true;
 			}
@@ -79,12 +80,24 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
 			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
 				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+					if (rb.velocity.x < 0) {
+						rb.velocity = new Vector2 (0, rb.velocity.y);
+					}
 					playerRenderer.flipX = true;
 					moving = true;
-					if (finishedJump)
-						rb.AddForce (new Vector2 (1.8f * force, 0));
-					else
-						rb.AddForce (new Vector2 (force, 0));
+					if (finishedJump) {
+						if (rb.velocity.x < 9) {
+							rb.AddForce (new Vector2 (1.8f * force, 0));
+						} else {
+							rb.velocity = new Vector2 (9, 0);
+						}
+					} else {
+						if (rb.velocity.x < 9) {
+							rb.AddForce (new Vector2 (force, 0));
+						} else {
+							rb.velocity = new Vector2 (9, rb.velocity.y);
+						}
+					}
 					//This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
 					//This helps to make movement a bit more responsive but still smooth.
 					if (checkV ())
@@ -100,12 +113,24 @@ public class PlayerController : MonoBehaviour {
 				}
 
 				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+					if (rb.velocity.x > 0) {
+						rb.velocity = new Vector2 (0, rb.velocity.y);
+					}
 					playerRenderer.flipX = false;
 					moving = true;
-					if (finishedJump)
-						rb.AddForce (new Vector2 (1.8f * -force, 0));
-					else
-						rb.AddForce (new Vector2 (-force, 0));
+					if (finishedJump) {
+						if (rb.velocity.x > -9) {
+							rb.AddForce (new Vector2 (1.8f * -force, 0));
+						} else {
+							rb.velocity = new Vector2 (-9, 0);
+						}
+					} else {
+						if (rb.velocity.x > -9) {
+							rb.AddForce (new Vector2 (-force, 0));
+						} else {
+							rb.velocity = new Vector2 (-9, rb.velocity.y);
+						}
+					}
 					if (checkV ())
 						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
 					if (finishedJump) {
@@ -136,12 +161,26 @@ public class PlayerController : MonoBehaviour {
 		else {
 			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
 				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+					if (rb.velocity.x < 0) {
+						rb.velocity = new Vector2 (0, rb.velocity.y);
+					}
 					playerRenderer.flipX = true;
 					moving = true;
-					if (finishedJump)
-						rb.AddForce (new Vector2 (force, 0));
-					else
-						rb.AddForce (new Vector2 (0.6f * force, 0));
+					if (finishedJump) {
+						if (rb.velocity.x < 3) {
+							rb.AddForce (new Vector2 (force, 0));
+						} else {
+							rb.velocity = new Vector2 (3, 0);
+						}
+					} 
+					else {
+						if (rb.velocity.x < 3) {
+							rb.AddForce (new Vector2 (0.6f * force, 0));
+						} else {
+							rb.velocity = new Vector2 (3, rb.velocity.y);
+						}
+
+					}
 					if (checkV ())
 						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
 					if (finishedJump) {
@@ -155,12 +194,24 @@ public class PlayerController : MonoBehaviour {
 				}
 
 				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+					if (rb.velocity.x > 0) {
+						rb.velocity = new Vector2 (0, rb.velocity.y);
+					}
 					playerRenderer.flipX = false;
 					moving = true;
-					if (finishedJump)
-						rb.AddForce (new Vector2 (-force, 0));
-					else
-						rb.AddForce (new Vector2 (0.6f * -force, 0));
+					if (finishedJump) {
+						if (rb.velocity.x > -3) {
+							rb.AddForce (new Vector2 (-force, 0));
+						} else {
+							rb.velocity = new Vector2 (-3, 0);
+						}
+					} else {
+						if (rb.velocity.x > -3) {
+							rb.AddForce (new Vector2 (0.6f * -force, 0));
+						} else {
+							rb.velocity = new Vector2 (-3, rb.velocity.y);
+						}
+					}
 					if (checkV ())
 						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
 					if (finishedJump) {
@@ -200,9 +251,11 @@ public class PlayerController : MonoBehaviour {
 		if (finishedJump && !moving && canMove) {
 			if (!hasSuit) {
 				playerAnimator.Play ("StellaStand");
+				rb.velocity = new Vector2 (0, rb.velocity.y);
 			} 
 			else {
 				playerAnimator.Play ("SpaceStand");
+				rb.velocity = new Vector2 (0, rb.velocity.y);
 			}
 		}
 
