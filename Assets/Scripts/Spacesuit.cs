@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Spacesuit : MonoBehaviour {
 
+    private bool claimed = false;
+
 	// Use this for initialization
 	void Start () {
 	    
@@ -13,9 +15,18 @@ public class Spacesuit : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D o)
     {
-        if (col.gameObject.CompareTag("Player"))
-            ;
+        if (o.gameObject.CompareTag("Player") && !claimed)
+        {
+            o.gameObject.SendMessage("canPickUp", true);
+            o.gameObject.SendMessage("setRef", gameObject);
+        }
+    }
+
+    public void claim()
+    {
+        claimed = true;
+        gameObject.SetActive(false);
     }
 }

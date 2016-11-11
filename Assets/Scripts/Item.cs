@@ -5,7 +5,7 @@ public class Item : MonoBehaviour {
 
     private bool claimed;
     public int id;
-    private GameObject textO;
+    //private GameObject textO;
     public static Inventory Inv;
     public static bool Ready = false;
     private bool added = false;
@@ -14,7 +14,7 @@ public class Item : MonoBehaviour {
 
 	void Start () {
         claimed = false;
-        textO = GameObject.Find("Pick Up Text");
+        //textO = GameObject.Find("Pick Up Text");
 	}
 	
 	void Update () {
@@ -40,7 +40,7 @@ public class Item : MonoBehaviour {
             o.gameObject.SendMessage("canPickUp", true);
             o.gameObject.SendMessage("setItemID", id);
             o.gameObject.SendMessage("setRef", gameObject);
-            textO.SendMessage("toggleVis", true);
+            //textO.SendMessage("toggleVis", true);
             
         }
     }
@@ -49,7 +49,7 @@ public class Item : MonoBehaviour {
         if (o.gameObject.CompareTag("Player") && !claimed)
         {
             o.gameObject.SendMessage("canPickUp", false);
-            textO.SendMessage("toggleVis", false);
+            //textO.SendMessage("toggleVis", false);
         }
     }
 
@@ -57,6 +57,6 @@ public class Item : MonoBehaviour {
     {
         claimed = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        textO.SendMessage("toggleVis", false);
+        //textO.SendMessage("toggleVis", false);
     }
 }

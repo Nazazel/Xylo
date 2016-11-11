@@ -267,7 +267,10 @@ public class PlayerController : MonoBehaviour {
         //Picks up item if there is one [yay for items and inventory systems :'( ]
         if(Input.GetKey(KeyCode.E) && groundItem)
         {
-            pickUpItem();
+            if (currItem.CompareTag("Spacesuit"))
+                pickUpSuit();
+            else
+                pickUpItem();
         }
 
 	}
@@ -370,6 +373,12 @@ public class PlayerController : MonoBehaviour {
         groundItem = false;
         gItemID = 0;
         currItem = null;
+    }
+
+    private void pickUpSuit()
+    {
+        hasSuit = true;
+        currItem.SendMessage("claim");
     }
 
     public void tp(Vector3 a)
