@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
 	public float jumpHeight;
 	public Animator playerAnimator;
 	public SpriteRenderer playerRenderer;
-    private float lockPos;
     private float initSpeed;
 	public bool finishedJump;
 	public bool canMove;
@@ -40,7 +39,6 @@ public class PlayerController : MonoBehaviour {
         canMove = true;
         finishedJump = true;
         rb = GetComponent<Rigidbody2D>();
-        lockPos = 0f;
         initSpeed = 0.6f;
         scalD = -0.011f;
         currD = 0f;
