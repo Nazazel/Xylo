@@ -12,8 +12,8 @@ public class Inventory : MonoBehaviour {
 
 	void Start () {
         DontDestroyOnLoad(gameObject);
-        cam = GameObject.Find("Main Camera");
-        offset = gameObject.transform.position - cam.transform.position;
+        cam = GameObject.Find("2DCamera");
+        gameObject.transform.parent = cam.transform;
         numItems = 4;
         haveItems = new bool[numItems];
         items = new GameObject[numItems];
@@ -22,22 +22,11 @@ public class Inventory : MonoBehaviour {
         Item.Ready = true;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-    }
 
-    void LateUpdate()
+    // Update is called once per frame
+    void Update()
     {
-        updateItemPos();
-    }
 
-    private void updateItemPos()
-    {
-        for(int i=0;i<numItems;i++)
-        {
-            if(haveItems[i])  items[i].transform.position = gameObject.transform.position + iOffset[i];
-        }
     }
 
     public void claim(int id)
@@ -46,6 +35,7 @@ public class Inventory : MonoBehaviour {
         items[id].transform.position = new Vector3(-1.1155f + 0.74775f * id + gameObject.transform.position.x, gameObject.transform.position.y, 0);
         iOffset[id] = items[id].transform.position - gameObject.transform.position;
         haveItems[id] = true;
+        items[id].transform.parent = gameObject.transform;
         updateView();
     }
 
@@ -75,10 +65,5 @@ public class Inventory : MonoBehaviour {
             sprite.enabled = false;
             DontDestroyOnLoad(items[id]);
         }
-    }
-
-    public void bindToCam()
-    {
-        cam = GameObject.Find("Main Camera");
     }
 }
