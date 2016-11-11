@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour {
     public void claim(int id)
     {
         id--;
-        items[id].transform.position = new Vector3(-1.1155f + 0.74775f * (id-2) + gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        items[id].transform.position = new Vector3(-1.1155f + 0.747f * (id-2) + gameObject.transform.position.x, gameObject.transform.position.y, 0);
         haveItems[id] = true;
         items[id].transform.parent = gameObject.transform;
         updateView();

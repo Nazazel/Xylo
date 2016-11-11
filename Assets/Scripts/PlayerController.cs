@@ -379,6 +379,8 @@ public class PlayerController : MonoBehaviour {
     {
         hasSuit = true;
         currItem.SendMessage("claim");
+        groundItem = false;
+        currItem = null;
     }
 
     public void tp(Vector3 a)
