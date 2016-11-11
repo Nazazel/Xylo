@@ -167,17 +167,17 @@ public class PlayerController : MonoBehaviour {
 					playerRenderer.flipX = true;
 					moving = true;
 					if (finishedJump) {
-						if (rb.velocity.x < 3) {
+						if (rb.velocity.x < 4.5f) {
 							rb.AddForce (new Vector2 (force, 0));
 						} else {
-							rb.velocity = new Vector2 (3, rb.velocity.y);
+							rb.velocity = new Vector2 (4.5f, rb.velocity.y);
 						}
 					} 
 					else {
-						if (rb.velocity.x < 3) {
+						if (rb.velocity.x < 4.5f) {
 							rb.AddForce (new Vector2 (0.6f * force, 0));
 						} else {
-							rb.velocity = new Vector2 (3, rb.velocity.y);
+							rb.velocity = new Vector2 (4.5f, rb.velocity.y);
 						}
 
 					}
@@ -200,16 +200,16 @@ public class PlayerController : MonoBehaviour {
 					playerRenderer.flipX = false;
 					moving = true;
 					if (finishedJump) {
-						if (rb.velocity.x > -3) {
+						if (rb.velocity.x > -4.5f) {
 							rb.AddForce (new Vector2 (-force, 0));
 						} else {
-							rb.velocity = new Vector2 (-3, rb.velocity.y);
+							rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
 						}
 					} else {
-						if (rb.velocity.x > -3) {
+						if (rb.velocity.x > -4.5f) {
 							rb.AddForce (new Vector2 (0.6f * -force, 0));
 						} else {
-							rb.velocity = new Vector2 (-3, rb.velocity.y);
+							rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
 						}
 					}
 					if (checkV ())
