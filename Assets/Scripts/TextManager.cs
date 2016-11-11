@@ -20,13 +20,16 @@ public class TextManager : MonoBehaviour
     //to stop player when in dialogue
     public PlayerController player;
 
+    public bool isActive;
+
+    public bool stopPlayerMovement;
+
 
     // Use this for initialization
     void Start()
     {
         //stop the player
-        // player = findOBjectOfType << PlayerController > ();
-
+        //player = findOBjectOfType << PlayerController > ();
 
         if (textFile != null)
         {
@@ -39,25 +42,25 @@ public class TextManager : MonoBehaviour
             endAtLine = textLines.Length - 1;
         }
 
-        //if(isActive)
-        //{
-        //    EnableTextBox();
-        //}
+        if(isActive)
+        {
+            EnableTextBox();
+        }
 
-        //else
-        //{
-        //    DisableTextBox();
-        //}
+        else
+        {
+            DisableTextBox();
+        }
     }
 
 
     void Update()
     {
 
-        //if(!isActive)
-        //{
-        //    return;
-        //}
+        if(!isActive)
+        {
+            return;
+        }
 
         theText.text = textLines[currentLine];
 
@@ -70,7 +73,28 @@ public class TextManager : MonoBehaviour
 
         if (currentLine > endAtLine)
         {
-            textBox.SetActive(false);
+            DisableTextBox();
+        }
+    }
+
+    public void EnableTextBox()
+    {
+        textBox.SetActive(true);
+        isActive = true;
+    }
+
+    public void DisableTextBox()
+    {
+        textBox.SetActive(false);
+        isActive = false;
+    }
+
+    public void ReloadScript(TextAsset theText)
+    {
+        if(theText != null)
+        {
+            textLines = new string[1];
+            textLines = (theText.text.Split('\n'));
         }
     }
 
