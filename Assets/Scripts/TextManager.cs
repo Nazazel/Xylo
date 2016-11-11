@@ -38,11 +38,27 @@ public class TextManager : MonoBehaviour
         {
             endAtLine = textLines.Length - 1;
         }
+
+        //if(isActive)
+        //{
+        //    EnableTextBox();
+        //}
+
+        //else
+        //{
+        //    DisableTextBox();
+        //}
     }
 
 
     void Update()
     {
+
+        //if(!isActive)
+        //{
+        //    return;
+        //}
+
         theText.text = textLines[currentLine];
 
 
