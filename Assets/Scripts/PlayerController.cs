@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -23,6 +24,10 @@ public class PlayerController : MonoBehaviour {
     private int gItemID;
     private GameObject currItem;
     private GameObject inv;
+	private bool activeHint;
+	public GameObject hintBox;
+	public Text hintText;
+	public int currentObjective;
 
     public static bool isTouchingSuit=false;
 
@@ -49,14 +54,30 @@ public class PlayerController : MonoBehaviour {
         currItem = null;
         inv = GameObject.Find("Inventory Slots");
 		playerAnimator.Play ("StellaStand");
+		currentObjective = 0;
+		hintBox = GameObject.FindWithTag ("HintBox");
+		hintText = hintBox.GetComponentInChildren<Text> ();
+		hintBox.SetActive (false);
+		activeHint = false;
 
         tTime = 0;
 	}
 
 	void FixedUpdate ()
 	{
+		if (Input.GetKeyDown (KeyCode.H)) {
+			rb.velocity = new Vector2 (0, rb.velocity.y);
+			if (!hasSuit) {
+				playerAnimator.Play ("StellaStand");
+			} 
+			else {
+				playerAnimator.Play ("SpaceStand");
+			}
+			StartCoroutine ("displayHint");
+			activeHint = true;
+		}
 
-		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+		if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && canMove) {
 			if (isAlive) {
 				canMove = false;
 				if (!hasSuit) {
@@ -69,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 		} 
 		else 
 		{
-			if (isAlive) {
+			if (isAlive && activeHint == false) {
 				canMove = true;
 			}
 		}
@@ -284,7 +305,9 @@ public class PlayerController : MonoBehaviour {
 			else {
 				playerAnimator.Play ("SpaceStand");
 			}
-			canMove = true;
+			if (activeHint == false) {
+				canMove = true;
+			}
             currD = 0;
 		}
 		if(coll.gameObject.CompareTag("Wall") && isAlive)
@@ -385,4 +408,20 @@ public class PlayerController : MonoBehaviour {
     {
         gameObject.transform.position = new Vector3(a.x, a.y, 0);
     }
+
+	public IEnumerator displayHint()
+	{
+		if (isAlive) {
+			canMove = false;
+			hintBox.SetActive (true);
+			if (currentObjective == 0) {
+				hintText.text = "Stella: (...I've got to find my crew members...)";
+			}
+
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			hintBox.SetActive (false);
+			canMove = true;
+			activeHint = false;
+		}
+	}
 }
