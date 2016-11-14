@@ -1,11 +1,12 @@
-Note 1: (seems to be torn from some sort of log book) ...received a strange transmission today not too far from our location. The built-in interpreter was having a hard time translating the foreign language to English.
-	Some parts of the audio log didn't get translated properly...at least I think it didn't. The message was something about humans and another species called ProtoXylons...dunno who those guys are. 
+Note 1: (seems to be torn from some sort of log book) ...received a strange transmission today not too far from our location. The built-in interpreter was having a hard time translating the foreign language into English, which has never really happened before.
+	Some parts of the audio log didn't get translated properly...at least I think they didn't. The message was something about humans and another species called ProtoXylons...dunno who those guys are. 
 	I should tell the captain about this.
-	-Will
+	-Will (12/10)
 
 Note 2: (seems to be torn from some sort of log book) Reported to NASA outpost Delta3490 in the early afternoon. Just a regular check-in, nothing special. 
 	I complained about the ship again but they keep reassuring me that the Ancora is one of the safest ships they have...why do I have a hard time believing that?
-	-Isaac
+	-Isaac (11/14)
 
-Stella: No, no, no! The communication terminal is busted...maybe...maybe I can use the GPS tracker in the command center to at least send out my location.
-	I need to go into the command center and find that GPS tracker.
+Stella: No, no, no! The communication terminal is busted...
+	Maybe...maybe I can use the GPS tracker in the command center to at least send out my location.
+	I need to go into the command center and find that GPS tracker. I pray it didn't get damaged in the crash.
