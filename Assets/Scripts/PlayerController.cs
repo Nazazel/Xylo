@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
 			activeHint = true;
 		}
 
-		if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && canMove) {
+		if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && activeHint == false) {
 			if (isAlive) {
 				canMove = false;
 				if (!hasSuit) {
