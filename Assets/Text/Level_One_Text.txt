@@ -58,7 +58,7 @@ Stella: ...she's dead.
 Stella: H-he's dead.
 
 Stella: Damn it! It's locked!
-	The door won't open under emegency lockdown unless I have two omnicards...I need to search the rooms.
+	The door won't open under emergency lockdown unless I have two omnicards...I need to search the rooms.
 
 Stella: Found a keycard!
 
@@ -67,6 +67,6 @@ Stella: Found a keycard!
 Stella: No way I'm getting in there.
 
 Stella: Damn it! It's locked!
-	The door won't open under emegency lockdown unless I have two omnicards...I need to search the rooms.
+	The door won't open under emergency lockdown unless I have two omnicards...I need to search the rooms.
 
 Stella: I should go into the communications room and send out a SOS signal before I do anything else.
