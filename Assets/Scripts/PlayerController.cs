@@ -2,6 +2,7 @@
 using UnityEngine.Experimental;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,22 +13,38 @@ public class PlayerController : MonoBehaviour {
     private float initSpeed;
 	public bool finishedJump;
 	public bool canMove;
-	public bool hasSuit;
 	public bool suffocated;
     private float scalD;
     private float currD;
     public bool isAlive;
+	public bool isAwake;
+	public bool awakeSequenceStarted;
     private float xSpawn;
     private float ySpawn;
+	private string inventoryString;
     private bool groundItem;
 	public bool moving;
     private int gItemID;
     private GameObject currItem;
     private GameObject inv;
 	private bool activeHint;
+	private string[] obtainedObj;
 	public GameObject hintBox;
 	public Text hintText;
+
 	public int currentObjective;
+	public bool deadCrew;
+	public bool commsCenterInit;
+	public bool keyCards;
+	public bool accessCommsCenter;
+	public bool commandCenter;
+	public bool manual;
+	public bool hasSuit;
+	public bool engineeringItems;
+	public bool medicItems;
+	public bool engineItems;
+	public bool commsCenterFinal;
+	public bool repairComms;
 
     public static bool isTouchingSuit=false;
 
@@ -39,6 +56,9 @@ public class PlayerController : MonoBehaviour {
     {
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
         isAlive = true;
+		isAwake = false;
+		deadCrew = false;
+		awakeSequenceStarted = false;
 		moving = false;
 		hasSuit = false;
         canMove = true;
@@ -59,238 +79,247 @@ public class PlayerController : MonoBehaviour {
 		hintText = hintBox.GetComponentInChildren<Text> ();
 		hintBox.SetActive (false);
 		activeHint = false;
+		obtainedObj = new string[8];
+		obtainedObj [0] = "Power Drill";
+		obtainedObj [1] = "Wrench";
+		obtainedObj [2] = "Switchblade";
+		obtainedObj [3] = "Hammer";
+		obtainedObj [4] = "Saw";
+		obtainedObj [5] = "Blow Torch";
+		obtainedObj [6] = "Screw Driver";
+		obtainedObj [7] = "Wire Cutters";
+
 
         tTime = 0;
 	}
 
 	void FixedUpdate ()
 	{
-		if (Input.GetKeyDown (KeyCode.H)) {
-			rb.velocity = new Vector2 (0, rb.velocity.y);
-			if (!hasSuit) {
-				playerAnimator.Play ("StellaStand");
-			} 
-			else {
-				playerAnimator.Play ("SpaceStand");
-			}
-			StartCoroutine ("displayHint");
-			activeHint = true;
+		if (hintBox == null) {
+			hintBox = GameObject.FindWithTag ("HintBox");
+			hintText = hintBox.GetComponentInChildren<Text> ();
+			hintBox.SetActive (false);
+			activeHint = false;
 		}
 
-		if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && activeHint == false) {
-			if (isAlive) {
-				canMove = false;
+		if (isAwake) {
+			if (Input.GetKeyDown (KeyCode.H)) {
+				rb.velocity = new Vector2 (0, rb.velocity.y);
 				if (!hasSuit) {
-					playerAnimator.Play ("StellaCrouching");
-				} 
-				else {
-					playerAnimator.Play ("SpaceCrouch");
+					playerAnimator.Play ("StellaStand");
+				} else {
+					playerAnimator.Play ("SpaceStand");
 				}
+				StartCoroutine ("displayHint");
+				activeHint = true;
+			}
+
+			if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && activeHint == false) {
+				if (isAlive) {
+					canMove = false;
+					if (!hasSuit) {
+						playerAnimator.Play ("StellaCrouching");
+					} else {
+						playerAnimator.Play ("SpaceCrouch");
+					}
+				}
+			} else {
+				if (isAlive && activeHint == false) {
+					canMove = true;
+				}
+			}
+
+			//Movement
+			if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
+				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
+					if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+						if (rb.velocity.x < 0) {
+							rb.velocity = new Vector2 (0, rb.velocity.y);
+						}
+						playerRenderer.flipX = true;
+						moving = true;
+						if (finishedJump) {
+							if (rb.velocity.x < 9) {
+								rb.AddForce (new Vector2 (1.8f * force, 0));
+							} else {
+								rb.velocity = new Vector2 (9, rb.velocity.y);
+							}
+						} else {
+							if (rb.velocity.x < 9) {
+								rb.AddForce (new Vector2 (force, 0));
+							} else {
+								rb.velocity = new Vector2 (9, rb.velocity.y);
+							}
+						}
+						//This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
+						//This helps to make movement a bit more responsive but still smooth.
+						if (checkV ())
+							rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
+						if (finishedJump) {
+							if (!hasSuit) {
+								playerAnimator.Play ("StellaRunning");
+							} else {
+								playerAnimator.Play ("SpaceRun");
+							}
+						}
+					}
+
+					if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+						if (rb.velocity.x > 0) {
+							rb.velocity = new Vector2 (0, rb.velocity.y);
+						}
+						playerRenderer.flipX = false;
+						moving = true;
+						if (finishedJump) {
+							if (rb.velocity.x > -9) {
+								rb.AddForce (new Vector2 (1.8f * -force, 0));
+							} else {
+								rb.velocity = new Vector2 (-9, rb.velocity.y);
+							}
+						} else {
+							if (rb.velocity.x > -9) {
+								rb.AddForce (new Vector2 (-force, 0));
+							} else {
+								rb.velocity = new Vector2 (-9, rb.velocity.y);
+							}
+						}
+						if (checkV ())
+							rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
+						if (finishedJump) {
+							if (!hasSuit) {
+								playerAnimator.Play ("StellaRunning");
+							} else {
+								playerAnimator.Play ("SpaceRun");
+							}
+						}
+					}
+				} else {
+					moving = false;
+				}
+
+				if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
+					rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+					if (!hasSuit) {
+						playerAnimator.Play ("StellaJumping");
+					} else {
+						playerAnimator.Play ("SpaceJump");
+					}
+					finishedJump = false;
+				}
+			} else {
+				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
+					if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
+						if (rb.velocity.x < 0) {
+							rb.velocity = new Vector2 (0, rb.velocity.y);
+						}
+						playerRenderer.flipX = true;
+						moving = true;
+						if (finishedJump) {
+							if (rb.velocity.x < 4.5f) {
+								rb.AddForce (new Vector2 (force, 0));
+							} else {
+								rb.velocity = new Vector2 (4.5f, rb.velocity.y);
+							}
+						} else {
+							if (rb.velocity.x < 4.5f) {
+								rb.AddForce (new Vector2 (0.6f * force, 0));
+							} else {
+								rb.velocity = new Vector2 (4.5f, rb.velocity.y);
+							}
+
+						}
+						if (checkV ())
+							rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
+						if (finishedJump) {
+							if (!hasSuit) {
+								playerAnimator.Play ("StellaWalking");
+							} else {
+								playerAnimator.Play ("SpaceWalk");
+							}
+						}
+					}
+
+					if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
+						if (rb.velocity.x > 0) {
+							rb.velocity = new Vector2 (0, rb.velocity.y);
+						}
+						playerRenderer.flipX = false;
+						moving = true;
+						if (finishedJump) {
+							if (rb.velocity.x > -4.5f) {
+								rb.AddForce (new Vector2 (-force, 0));
+							} else {
+								rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
+							}
+						} else {
+							if (rb.velocity.x > -4.5f) {
+								rb.AddForce (new Vector2 (0.6f * -force, 0));
+							} else {
+								rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
+							}
+						}
+						if (checkV ())
+							rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
+						if (finishedJump) {
+							if (!hasSuit) {
+								playerAnimator.Play ("StellaWalking");
+							} else {
+								playerAnimator.Play ("SpaceWalk");
+							}
+						}
+					}
+				} else {
+					moving = false;
+				}
+
+				if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
+					rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+					if (!hasSuit) {
+						playerAnimator.Play ("StellaJumping");
+					} else {
+						playerAnimator.Play ("SpaceJump");
+					}
+					finishedJump = false;
+				}
+			}
+
+			//Increases falling rate
+			if (!finishedJump) {
+				currD += scalD;
+				if (currD < -2)
+					currD = -5;
+				rb.velocity += new Vector2 (0, currD);
+			}
+
+			if (finishedJump && !moving && canMove) {
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaStand");
+					rb.velocity = new Vector2 (0, rb.velocity.y);
+				} else {
+					playerAnimator.Play ("SpaceStand");
+					rb.velocity = new Vector2 (0, rb.velocity.y);
+				}
+			}
+
+
+			//If player is dead, countdown to respawn
+			if (!isAlive)
+				tdTimer ();
+
+			//Picks up item if there is one [yay for items and inventory systems :'( ]
+			if (Input.GetKey (KeyCode.E) && groundItem) {
+				if (currItem.CompareTag ("Spacesuit"))
+					pickUpSuit ();
+				else
+					pickUpItem ();
 			}
 		} 
-		else 
-		{
-			if (isAlive && activeHint == false) {
-				canMove = true;
-			}
-		}
-
-        //Movement
-        if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
-			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
-				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
-					if (rb.velocity.x < 0) {
-						rb.velocity = new Vector2 (0, rb.velocity.y);
-					}
-					playerRenderer.flipX = true;
-					moving = true;
-					if (finishedJump) {
-						if (rb.velocity.x < 9) {
-							rb.AddForce (new Vector2 (1.8f * force, 0));
-						} else {
-							rb.velocity = new Vector2 (9, rb.velocity.y);
-						}
-					} else {
-						if (rb.velocity.x < 9) {
-							rb.AddForce (new Vector2 (force, 0));
-						} else {
-							rb.velocity = new Vector2 (9, rb.velocity.y);
-						}
-					}
-					//This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
-					//This helps to make movement a bit more responsive but still smooth.
-					if (checkV ())
-						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
-					if (finishedJump) {
-						if (!hasSuit) {
-							playerAnimator.Play ("StellaRunning");
-						} 
-						else {
-							playerAnimator.Play ("SpaceRun");
-						}
-					}
-				}
-
-				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
-					if (rb.velocity.x > 0) {
-						rb.velocity = new Vector2 (0, rb.velocity.y);
-					}
-					playerRenderer.flipX = false;
-					moving = true;
-					if (finishedJump) {
-						if (rb.velocity.x > -9) {
-							rb.AddForce (new Vector2 (1.8f * -force, 0));
-						} else {
-							rb.velocity = new Vector2 (-9, rb.velocity.y);
-						}
-					} else {
-						if (rb.velocity.x > -9) {
-							rb.AddForce (new Vector2 (-force, 0));
-						} else {
-							rb.velocity = new Vector2 (-9, rb.velocity.y);
-						}
-					}
-					if (checkV ())
-						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
-					if (finishedJump) {
-						if (!hasSuit) {
-							playerAnimator.Play ("StellaRunning");
-						} 
-						else {
-							playerAnimator.Play ("SpaceRun");
-						}
-					}
-				}
-			} 
-			else {
-				moving = false;
-			}
-
-			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
-				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
-				if (!hasSuit) {
-					playerAnimator.Play ("StellaJumping");
-				} 
-				else {
-					playerAnimator.Play ("SpaceJump");
-				}
-				finishedJump = false;
-			}
-		}
 		else {
-			if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) || (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A))) {
-				if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && canMove) {
-					if (rb.velocity.x < 0) {
-						rb.velocity = new Vector2 (0, rb.velocity.y);
-					}
-					playerRenderer.flipX = true;
-					moving = true;
-					if (finishedJump) {
-						if (rb.velocity.x < 4.5f) {
-							rb.AddForce (new Vector2 (force, 0));
-						} else {
-							rb.velocity = new Vector2 (4.5f, rb.velocity.y);
-						}
-					} 
-					else {
-						if (rb.velocity.x < 4.5f) {
-							rb.AddForce (new Vector2 (0.6f * force, 0));
-						} else {
-							rb.velocity = new Vector2 (4.5f, rb.velocity.y);
-						}
-
-					}
-					if (checkV ())
-						rb.velocity = new Vector2 (initSpeed, rb.velocity.y);
-					if (finishedJump) {
-						if (!hasSuit) {
-							playerAnimator.Play ("StellaWalking");
-						} 
-						else {
-							playerAnimator.Play ("SpaceWalk");
-						}
-					}
-				}
-
-				if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && canMove) {
-					if (rb.velocity.x > 0) {
-						rb.velocity = new Vector2 (0, rb.velocity.y);
-					}
-					playerRenderer.flipX = false;
-					moving = true;
-					if (finishedJump) {
-						if (rb.velocity.x > -4.5f) {
-							rb.AddForce (new Vector2 (-force, 0));
-						} else {
-							rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
-						}
-					} else {
-						if (rb.velocity.x > -4.5f) {
-							rb.AddForce (new Vector2 (0.6f * -force, 0));
-						} else {
-							rb.velocity = new Vector2 (-4.5f, rb.velocity.y);
-						}
-					}
-					if (checkV ())
-						rb.velocity = new Vector2 (-initSpeed, rb.velocity.y);
-					if (finishedJump) {
-						if (!hasSuit) {
-							playerAnimator.Play ("StellaWalking");
-						} 
-						else {
-							playerAnimator.Play ("SpaceWalk");
-						}
-					}
-				}
-			} 
-			else {
-				moving = false;
-			}
-
-			if (Input.GetKey (KeyCode.Space) && finishedJump && canMove) {
-				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
-				if (!hasSuit) {
-					playerAnimator.Play ("StellaJumping");
-				} 
-				else {
-					playerAnimator.Play ("SpaceJump");
-				}
-				finishedJump = false;
+			if (awakeSequenceStarted == false) {
+				awakeSequenceStarted = true;
+				StartCoroutine ("WakePlayer");
 			}
 		}
-
-        //Increases falling rate
-        if (!finishedJump)
-        {
-            currD += scalD;
-            if (currD < -2) currD = -5;
-            rb.velocity += new Vector2(0, currD);
-        }
-
-		if (finishedJump && !moving && canMove) {
-			if (!hasSuit) {
-				playerAnimator.Play ("StellaStand");
-				rb.velocity = new Vector2 (0, rb.velocity.y);
-			} 
-			else {
-				playerAnimator.Play ("SpaceStand");
-				rb.velocity = new Vector2 (0, rb.velocity.y);
-			}
-		}
-
-
-        //If player is dead, countdown to respawn
-        if (!isAlive)
-            tdTimer();
-
-        //Picks up item if there is one [yay for items and inventory systems :'( ]
-        if(Input.GetKey(KeyCode.E) && groundItem)
-        {
-            if (currItem.CompareTag("Spacesuit"))
-                pickUpSuit();
-            else
-                pickUpItem();
-        }
 
 	}
 
@@ -320,6 +349,7 @@ public class PlayerController : MonoBehaviour {
 //			}
 		}
         if (coll.gameObject.CompareTag("Hazard")) die();
+
 	}
     
     private bool checkV()
@@ -415,7 +445,88 @@ public class PlayerController : MonoBehaviour {
 			canMove = false;
 			hintBox.SetActive (true);
 			if (currentObjective == 0) {
-				hintText.text = "Stella: (...I've got to find my crew members...)";
+				hintText.text = "Stella: (...I've got to find my crew members and see if they're alright...)";
+			}
+			else if (currentObjective == 1) {
+				hintText.text = "Stella: (...I need to get into the communications room to send out an SOS signal...)";
+			}
+			else if (currentObjective == 2) {
+				hintText.text = "Stella: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
+			}
+			else if (currentObjective == 3) {
+				hintText.text = "Stella: (...I should go into the communications room and send out an SOS signal before I do anything else...)";
+			}
+			else if (currentObjective == 4) {
+				hintText.text = "Stella: (...I should try to send my location out using the GPS Tracker in the command center...)";
+			}
+			else if (currentObjective == 5) {
+				hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
+			}
+			else if (currentObjective == 6) {
+				hintText.text = "Stella: (...The ship's oxygen system is failing! I need to find a spacesuit before oxygen levels drop to zero...)";
+			}
+			else if (currentObjective == 7) {
+				inventoryString = "Stella: (...I need to find the following item(s) in the Engineering Wing...) \n";
+				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
+					if (inv.GetComponent<Inventory> ().items [i].name == "Power Drill") {
+						obtainedObj [0] = "";
+					} 
+					else if (inv.GetComponent<Inventory> ().items [i].name == "Wrench") {
+						obtainedObj [1] = "";
+					}
+				}
+				for (int i = 0; i < 2; i++) {
+					if (obtainedObj [i] != "") {
+						inventoryString += "\t(" + obtainedObj[i] + ")\n";
+					}
+				}
+				hintText.text = inventoryString;
+			}
+			else if (currentObjective == 8) {
+				inventoryString = "Stella: (...I need to find the following item(s) in the Medical Ward...) \n";
+				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
+					if (inv.GetComponent<Inventory> ().items [i].name == "Switchblade") {
+						obtainedObj [2] = "";
+					} 
+					else if (inv.GetComponent<Inventory> ().items [i].name == "Hammer") {
+						obtainedObj [3] = "";
+					} 
+					else if (inv.GetComponent<Inventory> ().items [i].name == "Saw") {
+						obtainedObj [4] = "";
+					}
+				}
+				for (int i = 2; i < 5; i++) {
+					if (obtainedObj [i] != "") {
+						inventoryString += "\t(" + obtainedObj[i] + ")\n";
+					}
+				}
+				hintText.text = inventoryString;
+			}
+			else if (currentObjective == 9) {
+				inventoryString = "Stella: (...I need to find the following item(s) in the Engine Room...) \n";
+				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
+					if (inv.GetComponent<Inventory> ().items [i].name == "Blow Torch") {
+						obtainedObj [5] = "";
+					} 
+					else if (inv.GetComponent<Inventory> ().items [i].name == "Screwdriver") {
+						obtainedObj [6] = "";
+					} 
+					else if (inv.GetComponent<Inventory> ().items [i].name == "Wire Cutters") {
+						obtainedObj [7] = "";
+					}
+				}
+				for (int i = 5; i < 8; i++) {
+					if (obtainedObj [i] != "") {
+						inventoryString += "\t(" + obtainedObj[i] + ")\n";
+					}
+				}
+				hintText.text = inventoryString;
+			}
+			else if (currentObjective == 10) {
+				hintText.text = "Stella: (...Now that I have all the repair tools, I can head back to the communications room back on the first floor...)";
+			}
+			else if (currentObjective == 11) {
+				hintText.text = "Stella: (...I can finally repair the communications terminal and send out an SOS signal...)";
 			}
 
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
@@ -423,5 +534,87 @@ public class PlayerController : MonoBehaviour {
 			canMove = true;
 			activeHint = false;
 		}
+		StopCoroutine ("displayHint");
+	}
+
+	public void updateObjective ()
+	{
+		if (deadCrew && currentObjective == 0) {
+			currentObjective = 1;
+		}
+		else if (commsCenterInit && currentObjective == 1) {
+			currentObjective = 2;
+		}
+		else if (keyCards && currentObjective == 2) {
+			currentObjective = 3;
+		}
+		else if (accessCommsCenter && currentObjective == 3) {
+			currentObjective = 4;
+		}
+		else if (commandCenter && currentObjective == 4) {
+			currentObjective = 5;
+		}
+		else if (manual && currentObjective == 5) {
+			currentObjective = 6;
+		}
+		else if (hasSuit && currentObjective == 6) {
+			currentObjective = 7;
+		}
+		else if (engineeringItems && currentObjective == 7) {
+			currentObjective = 8;
+		}
+		else if (medicItems && currentObjective == 8) {
+			currentObjective = 9;
+		}
+		else if (engineItems && currentObjective == 9) {
+			currentObjective = 10;
+		}
+		else if (commsCenterFinal && currentObjective == 10) {
+			currentObjective = 11;
+		}
+		else if (repairComms && currentObjective == 11) {
+
+		}
+
+	}
+
+	public void inventoryCheck()
+	{
+		if (currentObjective == 7) {
+			if (obtainedObj [0] == "" && obtainedObj [1] == "") {
+				engineeringItems = true;
+			}
+		}
+		else if (currentObjective == 8) {
+			if (obtainedObj [2] == "" && obtainedObj [3] == "" && obtainedObj[4] == "") {
+				medicItems = true;
+			}
+		}
+		else if (currentObjective == 9) {
+			if (obtainedObj [5] == "" && obtainedObj [6] == "" && obtainedObj[7] == "") {
+				engineItems = true;
+			}
+		}
+
+	}
+
+	public IEnumerator WakePlayer()
+	{
+		playerAnimator.Play ("StellaWakingUp");
+		yield return new WaitForSeconds (3.5f);
+		hintBox.SetActive (true);
+		setHintText ("Stella: Ugh... What's going on?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText("Stella: The ship! My crew members! I need to find them!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		hintBox.SetActive (false);
+		isAwake = true;
+		StopCoroutine ("WakePlayer");
+	}
+
+	public void setHintText(string hint)
+	{
+		hintText.text = hint;
 	}
 }

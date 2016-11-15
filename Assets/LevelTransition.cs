@@ -23,7 +23,7 @@ public class LevelTransition : MonoBehaviour {
 	IEnumerator LoadElevator()
 	{
 		yield return new WaitForSeconds (5.0f);
-		//SceneManager.LoadSceneAsync ("Elevator");
+		SceneManager.LoadSceneAsync ("Small Elevator Scene");
 	}
 
 	void FadeToBlack()

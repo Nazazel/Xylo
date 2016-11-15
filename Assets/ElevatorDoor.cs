@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ElevatorDoor : MonoBehaviour {
 
-	GameObject door;
+	public GameObject door;
 
 	void Start ()
 	{
@@ -12,11 +13,16 @@ public class ElevatorDoor : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		door.transform.position = new Vector2(door.transform.position.x, 1.84f);
+		if (SceneManager.GetActiveScene ().name == "Level One") {
+			door.GetComponent<SpriteRenderer> ().enabled = false;
+			door.GetComponent<BoxCollider2D> ().enabled = false;
+		}
+
 	}
 
 	void OnTriggerExit2D (Collider2D col)
 	{
-		door.transform.position = new Vector2(door.transform.position.x, 4.84f);
+		door.GetComponent<SpriteRenderer> ().enabled = true;
+		door.GetComponent<BoxCollider2D> ().enabled = true;
 	}
 }
