@@ -79,16 +79,15 @@ public class TextManager : MonoBehaviour
 
     public void EnableTextBox()
     {
-		player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
 		player.GetComponent<PlayerController> ().activeHint = true;
+		player.GetComponent<PlayerController> ().canMove = false;
         textBox.SetActive(true);
         isActive = true;
     }
 
     public void DisableTextBox()
     {
-		player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
-		player.GetComponent<PlayerController> ().finishedJump = true;
+		player.GetComponent<PlayerController> ().canMove = true;
 		player.GetComponent<PlayerController> ().activeHint = false;
         textBox.SetActive(false);
         isActive = false;
