@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     private GameObject inv;
 
     //Hints
-    public bool activeHint;
+    private bool activeHint;
     public GameObject hintBox;
     public Text hintText;
     public int currentObjective;
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 		obtainedObj [2] = "Switchblade";
 		obtainedObj [3] = "Hammer";
 		obtainedObj [4] = "Saw";
-		//obtainedObj [5] = "Blow Torch";
+		obtainedObj [5] = "Blow Torch";
 		obtainedObj [6] = "Screw Driver";
 		obtainedObj [7] = "Wire Cutters";
 		bounce = false;
