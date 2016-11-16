@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     private GameObject inv;
 
     //Hints
-    private bool activeHint;
+    public bool activeHint;
     public GameObject hintBox;
     public Text hintText;
     public int currentObjective;
