@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     public bool finishedJump;
     public bool canMove;
     public bool moving;
+    private bool crouch;
     private float scalD;
     private float currD;
     private bool sprint;
@@ -25,6 +26,16 @@ public class PlayerController : MonoBehaviour {
     private readonly float WALK_SPEEDCAP = 4.5f;
     private readonly float RUN_SPEEDCAP = 9.0f;
     private readonly float SPR_MULT = 1.8f;
+
+    //Ladder movement
+    private bool hasLadder = false;
+    private bool onLadder = false;
+    private bool hasUpL = false;
+    private bool hasDownL = false;
+    private float[] ladderBounds;
+    private float climbSpeed;
+    private bool lCoolReady = true;
+    private readonly float COOL_TIME = 0.4f;
 
     //Appearance, death, respawning, other miscellaneous player variables
     public bool hasSuit;
@@ -47,15 +58,16 @@ public class PlayerController : MonoBehaviour {
     public GameObject hintBox;
     public Text hintText;
     public int currentObjective;
-
+    
     //Death timer
     private float tTime;
 
+    //
 	private string inventoryString;
     private string[] obtainedObj;
-	public float fadeSpeed = .05f;
+	public float fadeSpeed = 1.5f;
 
-    //IDK what this is
+    //Objectives
 	public bool deadCrew;
 	public bool commsCenterInit;
 	public bool keyCards;
@@ -68,6 +80,7 @@ public class PlayerController : MonoBehaviour {
 	public bool commsCenterFinal;
 	public bool repairComms;
 
+    //Fading
 	public Image FadeImg;
 	public Image AlarmUI;
 	public bool bounce;
@@ -83,6 +96,7 @@ public class PlayerController : MonoBehaviour {
 		moving = false;
 		hasSuit = false;
         canMove = true;
+        crouch = false;
         finishedJump = true;
         rb = GetComponent<Rigidbody2D>();
         scalD = -0.011f;
@@ -110,6 +124,8 @@ public class PlayerController : MonoBehaviour {
 		obtainedObj [7] = "Wire Cutters";
 		bounce = false;
 
+        climbSpeed = 0.06f;
+
 		FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 		InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 
@@ -118,8 +134,8 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
+        
 		if (hintBox == null) {
-			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 			hintBox = GameObject.FindWithTag ("HintBox");
 			hintText = hintBox.GetComponentInChildren<Text> ();
@@ -127,34 +143,63 @@ public class PlayerController : MonoBehaviour {
 			activeHint = false;
 		}
 
-		if (isAwake) {
-			if (Input.GetKeyDown (KeyCode.H) && !activeHint) {
-				rb.velocity = new Vector2 (0, rb.velocity.y);
-				if (!hasSuit) {
-					playerAnimator.Play ("StellaStand");
-				} else {
-					playerAnimator.Play ("SpaceStand");
-				}
-				StartCoroutine ("displayHint");
-				activeHint = true;
-			}
+        if (isAwake)
+        {
+            if (Input.GetKeyDown(KeyCode.H) && !activeHint)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                if (!hasSuit)
+                {
+                    playerAnimator.Play("StellaStand");
+                }
+                else
+                {
+                    playerAnimator.Play("SpaceStand");
+                }
+                StartCoroutine("displayHint");
+                activeHint = true;
+            }
+        }
 
-			if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && activeHint == false) {
-				if (isAlive) {
-					canMove = false;
-					if (!hasSuit) {
-						playerAnimator.Play ("StellaCrouching");
-					} else {
-						playerAnimator.Play ("SpaceCrouch");
-					}
-				}
-			} else {
-				if (isAlive && activeHint == false) {
-					canMove = true;
-				}
-			}
+        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && activeHint == false && !onLadder)
+        {
+            if (isAlive)
+            {
+                canMove = false;
+                crouch = true;
+                if (!hasSuit)
+                {
+                    playerAnimator.Play("StellaCrouching");
+                }
+                else
+                {
+                    playerAnimator.Play("SpaceCrouch");
+                }
+            }
+        }
+        else
+        {
+            if (isAlive && activeHint == false)
+            {
+                canMove = true;
+                crouch = false;
+            }
+        }
 
-            //Movement
+        //Ladder management code
+        if (onLadder)
+        {
+            if (gameObject.transform.position.y > ladderBounds[0])
+                hasDownL = true;
+            else hasDownL = false;
+            if (gameObject.transform.position.y < ladderBounds[1])
+                hasUpL = true;
+            else hasUpL = false;
+        }
+
+        //Movement
+        if (!onLadder)
+        {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 sprint = true;
@@ -197,13 +242,16 @@ public class PlayerController : MonoBehaviour {
                         }
 
                         //Animation
-                        if (!hasSuit)
+                        if (finishedJump)
                         {
-                            playerAnimator.Play("StellaRunning");
-                        }
-                        else
-                        {
-                            playerAnimator.Play("SpaceRun");
+                            if (!hasSuit)
+                            {
+                                playerAnimator.Play("StellaRunning");
+                            }
+                            else
+                            {
+                                playerAnimator.Play("SpaceRun");
+                            }
                         }
                     }
                     else
@@ -218,13 +266,16 @@ public class PlayerController : MonoBehaviour {
                         }
 
                         //Animation
-                        if (!hasSuit)
+                        if (finishedJump)
                         {
-                            playerAnimator.Play("StellaWalking");
-                        }
-                        else
-                        {
-                            playerAnimator.Play("SpaceWalk");
+                            if (!hasSuit)
+                            {
+                                playerAnimator.Play("StellaWalking");
+                            }
+                            else
+                            {
+                                playerAnimator.Play("SpaceWalk");
+                            }
                         }
                     }
 
@@ -232,7 +283,6 @@ public class PlayerController : MonoBehaviour {
                     //This helps to make movement a bit more responsive but still smooth.
                     if (checkV())
                         rb.velocity = new Vector2(WALK_STARTSPEED, rb.velocity.y);
-
                 }
 
                 //Move left
@@ -257,13 +307,16 @@ public class PlayerController : MonoBehaviour {
                         }
 
                         //Animation
-                        if (!hasSuit)
+                        if (finishedJump)
                         {
-                            playerAnimator.Play("StellaRunning");
-                        }
-                        else
-                        {
-                            playerAnimator.Play("SpaceRun");
+                            if (!hasSuit)
+                            {
+                                playerAnimator.Play("StellaRunning");
+                            }
+                            else
+                            {
+                                playerAnimator.Play("SpaceRun");
+                            }
                         }
                     }
                     else
@@ -278,13 +331,16 @@ public class PlayerController : MonoBehaviour {
                         }
 
                         //Animation
-                        if (!hasSuit)
+                        if (finishedJump)
                         {
-                            playerAnimator.Play("StellaWalking");
-                        }
-                        else
-                        {
-                            playerAnimator.Play("SpaceWalk");
+                            if (!hasSuit)
+                            {
+                                playerAnimator.Play("StellaWalking");
+                            }
+                            else
+                            {
+                                playerAnimator.Play("SpaceWalk");
+                            }
                         }
                     }
 
@@ -312,59 +368,112 @@ public class PlayerController : MonoBehaviour {
                     finishedJump = false;
                 }
             }
+        }
 
-            //Increases falling rate
-            if (!finishedJump) {
-				currD += scalD;
-				if (currD < -2)
-					currD = -5;
-				rb.velocity += new Vector2 (0, currD);
-			}
+        //Ladder key input
+        else
+        {
+            if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && hasUpL)
+            {
+                rb.position += new Vector2(0, climbSpeed);
 
-			if (finishedJump && !moving && canMove) {
-				if (!hasSuit) {
-					playerAnimator.Play ("StellaStand");
-					rb.velocity = new Vector2 (0, rb.velocity.y);
-				} else {
-					playerAnimator.Play ("SpaceStand");
-					rb.velocity = new Vector2 (0, rb.velocity.y);
-				}
-			}
+            }
+            else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && hasDownL)
+            {
+                rb.position += new Vector2(0, -climbSpeed);
+            }
+
+        }
+
+        //Increases falling rate
+        if (!finishedJump && !onLadder)
+        {
+            currD += scalD;
+            if (currD < -2)
+                currD = -5;
+            rb.velocity += new Vector2(0, currD);
+        }
+        if (onLadder) currD = 0f;
+
+        if (finishedJump && !moving && canMove)
+        {
+            if (!hasSuit)
+            {
+                playerAnimator.Play("StellaStand");
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+            else
+            {
+                playerAnimator.Play("SpaceStand");
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+        }
+
+        //If player is dead, countdown to respawn
+        if (!isAlive)
+            tdTimer();
+        else
+        {
+            if (awakeSequenceStarted == false)
+            {
+                awakeSequenceStarted = true;
+                StartCoroutine("WakePlayer");
+            }
+        }
+        //Picks up item if there is one [yay for items and inventory systems :'( ]
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (groundItem)
+            {
+                if (currItem.CompareTag("Spacesuit"))
+                    pickUpSuit();
+                else
+                    pickUpItem();
+            }
+
+            //Ladder code for getting on ladder
+            else if (hasLadder && !onLadder && lCoolReady)
+            {
+                onLadder = true;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                rb.velocity = new Vector2(0,0);
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                lCoolReady = false;
+                Invoke("lCoolDone", COOL_TIME);
+            }
+            else if(onLadder && lCoolReady)
+            {
+                onLadder = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                rb.velocity = new Vector2(0, 0);
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                lCoolReady = false;
+                Invoke("lCoolDone", COOL_TIME);
+            }
+
+        }
+
+        updateObjective();
 
 
-			//If player is dead, countdown to respawn
-			if (!isAlive)
-				tdTimer ();
-
-			//Picks up item if there is one [yay for items and inventory systems :'( ]
-			if (Input.GetKey (KeyCode.E) && groundItem) {
-				if (currItem.CompareTag ("Spacesuit"))
-					pickUpSuit ();
-				else
-					pickUpItem ();
-			}
-		} 
-		else {
-			if (awakeSequenceStarted == false) {
-				awakeSequenceStarted = true;
-				StartCoroutine ("WakePlayer");
-			}
-		}
-
-		updateObjective ();
-	}
+    }
 
     void OnCollisionEnter2D(Collision2D coll)
 	{
 		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
 			finishedJump = true;
-			if (!hasSuit) {
-				playerAnimator.Play ("StellaStand");
-			} 
-			else {
-				playerAnimator.Play ("SpaceStand");
-			}
+            if (!crouch)
+            {
+                if (!hasSuit)
+                {
+                    playerAnimator.Play("StellaStand");
+                }
+                else
+                {
+                    playerAnimator.Play("SpaceStand");
+                }
+            }
 			if (activeHint == false) {
 				canMove = true;
 			}
@@ -470,7 +579,23 @@ public class PlayerController : MonoBehaviour {
         gameObject.transform.position = new Vector3(a.x, a.y, 0);
     }
 
-	public IEnumerator displayHint()
+
+    public void canClimb(bool c)
+    {
+        hasLadder = c;
+    }
+
+    public void passLadderBounds(float[] a)
+    {
+        ladderBounds = a;
+    }
+
+    private void lCoolDone()
+    {
+        lCoolReady = true;
+    }
+
+    public IEnumerator displayHint()
 	{
 		if (isAlive) {
 			canMove = false;

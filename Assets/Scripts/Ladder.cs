@@ -1,0 +1,58 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Ladder : MonoBehaviour {
+
+    private bool pClimb = false;
+    private int ladderType;
+    private float[] lBounds;
+    private GameObject player;
+
+	void Start () {
+        player = GameObject.FindWithTag("Full Player");
+        if (gameObject.CompareTag("LadderBot")) ladderType = 0;
+        else if (gameObject.CompareTag("LadderTop")) ladderType = 1;
+        else ladderType = -1;
+        gameObject.name = ladderType+"";
+        lBounds = new float[2];
+        Invoke("getLBounds",0.5f);
+
+    }
+    private void getLBounds()
+    {
+        if (ladderType == 0)
+        {
+            lBounds[0] = gameObject.transform.position.y;
+            lBounds[1] = transform.parent.FindChild("1").position.y;
+        }
+        if (ladderType == 1)
+        {
+            lBounds[1] = gameObject.transform.position.y;
+            lBounds[0] = transform.parent.FindChild("0").position.y;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+	    
+	}
+
+    void OnTriggerEnter2D(Collider2D o)
+    {
+
+        if (!pClimb)
+        {
+            o.SendMessage("canClimb", true);
+            o.SendMessage("passLadderBounds", lBounds);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D o)
+    {
+
+        if (!pClimb)
+        {
+            o.SendMessage("canClimb", false);
+        }
+    }
+}
