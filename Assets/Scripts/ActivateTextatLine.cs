@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ActivateTextatLine : MonoBehaviour
@@ -14,16 +15,23 @@ public class ActivateTextatLine : MonoBehaviour
 
     public bool destroyWhenActivated;
 
-	// Use this for initialization
-	void Start ()
+    public Text pickupText;
+    public GameObject player;
+
+    // Use this for initialization
+    void Start ()
     {
         textManager = FindObjectOfType<TextManager>();
-	}
+
+        pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
+        player = GameObject.FindWithTag("Player");
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if(waitForPress && Input.GetKeyDown(KeyCode.J))
+	    if(waitForPress && Input.GetKeyDown(KeyCode.E))
         {
             textManager.ReloadScript(theText);
             textManager.currentLine = startLine;
@@ -41,7 +49,7 @@ public class ActivateTextatLine : MonoBehaviour
     {
         if (other.name == "Stella")
         {
-            if(requireButtonPress)
+            if (requireButtonPress)
             {
                 waitForPress = true;
                 return;
@@ -52,10 +60,17 @@ public class ActivateTextatLine : MonoBehaviour
             textManager.endAtLine = endLine;
             textManager.EnableTextBox();
 
-            if(destroyWhenActivated)
+            if (destroyWhenActivated)
             {
                 Destroy(gameObject);
             }
+        }
+
+        pickupText.text = "Press 'E' to pick up";
+
+        if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<PlayerController>().activeHint == false)
+        {
+            player.GetComponent<PlayerController>().manual = true;
         }
     }
 

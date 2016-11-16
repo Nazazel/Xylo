@@ -28,8 +28,6 @@ public class TextManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //stop the player
-        //player = findOBjectOfType << PlayerController > ();
 
         if (textFile != null)
         {
@@ -81,12 +79,14 @@ public class TextManager : MonoBehaviour
     {
         textBox.SetActive(true);
         isActive = true;
+       player.GetComponent<PlayerController>().canMove = false;
     }
 
     public void DisableTextBox()
     {
         textBox.SetActive(false);
         isActive = false;
+       player.GetComponent<PlayerController>().canMove = true;
     }
 
     public void ReloadScript(TextAsset theText)
