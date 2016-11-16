@@ -18,7 +18,7 @@ public class TextManager : MonoBehaviour
 
 
     //to stop player when in dialogue
-    public PlayerController player;
+	public GameObject player;
 
     public bool isActive;
 
@@ -28,6 +28,7 @@ public class TextManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		player = GameObject.FindWithTag("Player");
 
         if (textFile != null)
         {
@@ -72,21 +73,25 @@ public class TextManager : MonoBehaviour
         if (currentLine > endAtLine)
         {
             DisableTextBox();
+
         }
     }
 
     public void EnableTextBox()
     {
+		player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
+		player.GetComponent<PlayerController> ().activeHint = true;
         textBox.SetActive(true);
         isActive = true;
-       player.GetComponent<PlayerController>().canMove = false;
     }
 
     public void DisableTextBox()
     {
+		player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+		player.GetComponent<PlayerController> ().finishedJump = true;
+		player.GetComponent<PlayerController> ().activeHint = false;
         textBox.SetActive(false);
         isActive = false;
-       player.GetComponent<PlayerController>().canMove = true;
     }
 
     public void ReloadScript(TextAsset theText)

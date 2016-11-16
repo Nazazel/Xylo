@@ -24,7 +24,8 @@ public class ActivateTextatLine : MonoBehaviour
         textManager = FindObjectOfType<TextManager>();
 
         pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
-        player = GameObject.FindWithTag("Player");
+		pickupText.text = "";
+		player = GameObject.FindWithTag("Player");
 
     }
 	
@@ -47,6 +48,9 @@ public class ActivateTextatLine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
+		pickupText.text = "Press 'E' to pick up";
+
         if (other.name == "Stella")
         {
             if (requireButtonPress)
@@ -66,16 +70,14 @@ public class ActivateTextatLine : MonoBehaviour
             }
         }
 
-        pickupText.text = "Press 'E' to pick up";
+        
 
-        if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<PlayerController>().activeHint == false)
-        {
-            player.GetComponent<PlayerController>().manual = true;
-        }
+        
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+		pickupText.text = "";
         if(other.name == "Stella")
         {
             waitForPress = false;
