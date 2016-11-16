@@ -23,11 +23,11 @@ public class Ladder : MonoBehaviour {
         if (ladderType == 0)
         {
             lBounds[0] = gameObject.transform.position.y;
-            lBounds[1] = transform.parent.FindChild("1").position.y;
+            lBounds[1] = transform.parent.FindChild("1").position.y+transform.parent.FindChild("1").localScale.y*transform.parent.FindChild("1").gameObject.GetComponent<BoxCollider2D>().size.y;
         }
         if (ladderType == 1)
         {
-            lBounds[1] = gameObject.transform.position.y;
+            lBounds[1] = gameObject.transform.position.y+gameObject.transform.localScale.y*gameObject.GetComponent<BoxCollider2D>().size.y;
             lBounds[0] = transform.parent.FindChild("0").position.y;
         }
     }

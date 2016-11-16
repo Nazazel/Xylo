@@ -159,259 +159,294 @@ public class PlayerController : MonoBehaviour {
                 StartCoroutine("displayHint");
                 activeHint = true;
             }
-        }
 
-        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && activeHint == false && !onLadder)
-        {
-            if (isAlive)
+            if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && activeHint == false && !onLadder)
             {
-                canMove = false;
-                crouch = true;
-                if (!hasSuit)
+                if (isAlive)
                 {
-                    playerAnimator.Play("StellaCrouching");
-                }
-                else
-                {
-                    playerAnimator.Play("SpaceCrouch");
-                }
-            }
-        }
-        else
-        {
-            if (isAlive && activeHint == false)
-            {
-                canMove = true;
-                crouch = false;
-            }
-        }
-
-        //Ladder management code
-        if (onLadder)
-        {
-            if (gameObject.transform.position.y > ladderBounds[0])
-                hasDownL = true;
-            else hasDownL = false;
-            if (gameObject.transform.position.y < ladderBounds[1])
-                hasUpL = true;
-            else hasUpL = false;
-        }
-
-        //Movement
-        if (!onLadder)
-        {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                sprint = true;
-            }
-            else
-            {
-                sprint = false;
-            }
-
-            if (finishedJump)
-            {
-                airMult = 1.0f;
-            }
-            else
-            {
-                airMult = 0.5f;
-            }
-
-            if (canMove)
-            {
-                //Move right
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-                {
-                    //Causes instant stop if character is moving left
-                    if (rb.velocity.x < 0)
-                    {
-                        rb.velocity = new Vector2(0, rb.velocity.y);
-                    }
-                    playerRenderer.flipX = true;
-                    moving = true;
-                    if (sprint)
-                    {
-                        if (rb.velocity.x < RUN_SPEEDCAP)
-                        {
-                            rb.AddForce(new Vector2(SPR_MULT * airMult * force, 0));
-                        }
-                        else
-                        {
-                            rb.velocity = new Vector2(RUN_SPEEDCAP, rb.velocity.y);
-                        }
-
-                        //Animation
-                        if (finishedJump)
-                        {
-                            if (!hasSuit)
-                            {
-                                playerAnimator.Play("StellaRunning");
-                            }
-                            else
-                            {
-                                playerAnimator.Play("SpaceRun");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (rb.velocity.x < WALK_SPEEDCAP)
-                        {
-                            rb.AddForce(new Vector2(airMult * force, 0));
-                        }
-                        else
-                        {
-                            rb.velocity = new Vector2(WALK_SPEEDCAP, rb.velocity.y);
-                        }
-
-                        //Animation
-                        if (finishedJump)
-                        {
-                            if (!hasSuit)
-                            {
-                                playerAnimator.Play("StellaWalking");
-                            }
-                            else
-                            {
-                                playerAnimator.Play("SpaceWalk");
-                            }
-                        }
-                    }
-
-                    //This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
-                    //This helps to make movement a bit more responsive but still smooth.
-                    if (checkV())
-                        rb.velocity = new Vector2(WALK_STARTSPEED, rb.velocity.y);
-                }
-
-                //Move left
-                else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-                {
-                    //Causes instant stop if character is moving right
-                    if (rb.velocity.x > 0)
-                    {
-                        rb.velocity = new Vector2(0, rb.velocity.y);
-                    }
-                    playerRenderer.flipX = false;
-                    moving = true;
-                    if (sprint)
-                    {
-                        if (rb.velocity.x > -RUN_SPEEDCAP)
-                        {
-                            rb.AddForce(new Vector2(-SPR_MULT * airMult * force, 0));
-                        }
-                        else
-                        {
-                            rb.velocity = new Vector2(-RUN_SPEEDCAP, rb.velocity.y);
-                        }
-
-                        //Animation
-                        if (finishedJump)
-                        {
-                            if (!hasSuit)
-                            {
-                                playerAnimator.Play("StellaRunning");
-                            }
-                            else
-                            {
-                                playerAnimator.Play("SpaceRun");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (rb.velocity.x > -WALK_SPEEDCAP)
-                        {
-                            rb.AddForce(new Vector2(-airMult * force, 0));
-                        }
-                        else
-                        {
-                            rb.velocity = new Vector2(-WALK_SPEEDCAP, rb.velocity.y);
-                        }
-
-                        //Animation
-                        if (finishedJump)
-                        {
-                            if (!hasSuit)
-                            {
-                                playerAnimator.Play("StellaWalking");
-                            }
-                            else
-                            {
-                                playerAnimator.Play("SpaceWalk");
-                            }
-                        }
-                    }
-
-                    if (checkV())
-                        rb.velocity = new Vector2(-WALK_STARTSPEED, rb.velocity.y);
-
-                }
-                else
-                {
-                    moving = false;
-                }
-
-                //Jump code
-                if (Input.GetKey(KeyCode.Space) && finishedJump)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    canMove = false;
+                    crouch = true;
                     if (!hasSuit)
                     {
-                        playerAnimator.Play("StellaJumping");
+                        playerAnimator.Play("StellaCrouching");
                     }
                     else
                     {
-                        playerAnimator.Play("SpaceJump");
+                        playerAnimator.Play("SpaceCrouch");
                     }
-                    finishedJump = false;
                 }
-            }
-        }
-
-        //Ladder key input
-        else
-        {
-            if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && hasUpL)
-            {
-                rb.position += new Vector2(0, climbSpeed);
-
-            }
-            else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && hasDownL)
-            {
-                rb.position += new Vector2(0, -climbSpeed);
-            }
-
-        }
-
-        //Increases falling rate
-        if (!finishedJump && !onLadder)
-        {
-            currD += scalD;
-            if (currD < -2)
-                currD = -5;
-            rb.velocity += new Vector2(0, currD);
-        }
-        if (onLadder) currD = 0f;
-
-        if (finishedJump && !moving && canMove)
-        {
-            if (!hasSuit)
-            {
-                playerAnimator.Play("StellaStand");
-                rb.velocity = new Vector2(0, rb.velocity.y);
             }
             else
             {
-                playerAnimator.Play("SpaceStand");
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                if (isAlive && activeHint == false)
+                {
+                    canMove = true;
+                    crouch = false;
+                }
             }
-        }
 
-        //If player is dead, countdown to respawn
-        if (!isAlive)
-            tdTimer();
+            //Ladder management code
+            if (onLadder)
+            {
+                if (gameObject.transform.position.y > ladderBounds[0])
+                    hasDownL = true;
+                else hasDownL = false;
+                if (gameObject.transform.position.y < ladderBounds[1])
+                    hasUpL = true;
+                else hasUpL = false;
+            }
+
+            //Movement
+            if (!onLadder)
+            {
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    sprint = true;
+                }
+                else
+                {
+                    sprint = false;
+                }
+
+                if (finishedJump)
+                {
+                    airMult = 1.0f;
+                }
+                else
+                {
+                    airMult = 0.5f;
+                }
+
+                if (canMove)
+                {
+                    //Move right
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                    {
+                        //Causes instant stop if character is moving left
+                        if (rb.velocity.x < 0)
+                        {
+                            rb.velocity = new Vector2(0, rb.velocity.y);
+                        }
+                        playerRenderer.flipX = true;
+                        moving = true;
+                        if (sprint)
+                        {
+                            if (rb.velocity.x < RUN_SPEEDCAP)
+                            {
+                                rb.AddForce(new Vector2(SPR_MULT * airMult * force, 0));
+                            }
+                            else
+                            {
+                                rb.velocity = new Vector2(RUN_SPEEDCAP, rb.velocity.y);
+                            }
+
+                            //Animation
+                            if (finishedJump)
+                            {
+                                if (!hasSuit)
+                                {
+                                    playerAnimator.Play("StellaRunning");
+                                }
+                                else
+                                {
+                                    playerAnimator.Play("SpaceRun");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (rb.velocity.x < WALK_SPEEDCAP)
+                            {
+                                rb.AddForce(new Vector2(airMult * force, 0));
+                            }
+                            else
+                            {
+                                rb.velocity = new Vector2(WALK_SPEEDCAP, rb.velocity.y);
+                            }
+
+                            //Animation
+                            if (finishedJump)
+                            {
+                                if (!hasSuit)
+                                {
+                                    playerAnimator.Play("StellaWalking");
+                                }
+                                else
+                                {
+                                    playerAnimator.Play("SpaceWalk");
+                                }
+                            }
+                        }
+
+                        //This line checks to see if the speed in the x direction is below a certain value. If it is, it sets the velocity.
+                        //This helps to make movement a bit more responsive but still smooth.
+                        if (checkV())
+                            rb.velocity = new Vector2(WALK_STARTSPEED, rb.velocity.y);
+                    }
+
+                    //Move left
+                    else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                    {
+                        //Causes instant stop if character is moving right
+                        if (rb.velocity.x > 0)
+                        {
+                            rb.velocity = new Vector2(0, rb.velocity.y);
+                        }
+                        playerRenderer.flipX = false;
+                        moving = true;
+                        if (sprint)
+                        {
+                            if (rb.velocity.x > -RUN_SPEEDCAP)
+                            {
+                                rb.AddForce(new Vector2(-SPR_MULT * airMult * force, 0));
+                            }
+                            else
+                            {
+                                rb.velocity = new Vector2(-RUN_SPEEDCAP, rb.velocity.y);
+                            }
+
+                            //Animation
+                            if (finishedJump)
+                            {
+                                if (!hasSuit)
+                                {
+                                    playerAnimator.Play("StellaRunning");
+                                }
+                                else
+                                {
+                                    playerAnimator.Play("SpaceRun");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (rb.velocity.x > -WALK_SPEEDCAP)
+                            {
+                                rb.AddForce(new Vector2(-airMult * force, 0));
+                            }
+                            else
+                            {
+                                rb.velocity = new Vector2(-WALK_SPEEDCAP, rb.velocity.y);
+                            }
+
+                            //Animation
+                            if (finishedJump)
+                            {
+                                if (!hasSuit)
+                                {
+                                    playerAnimator.Play("StellaWalking");
+                                }
+                                else
+                                {
+                                    playerAnimator.Play("SpaceWalk");
+                                }
+                            }
+                        }
+
+                        if (checkV())
+                            rb.velocity = new Vector2(-WALK_STARTSPEED, rb.velocity.y);
+
+                    }
+                    else
+                    {
+                        moving = false;
+                    }
+
+                    //Jump code
+                    if (Input.GetKey(KeyCode.Space) && finishedJump)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                        if (!hasSuit)
+                        {
+                            playerAnimator.Play("StellaJumping");
+                        }
+                        else
+                        {
+                            playerAnimator.Play("SpaceJump");
+                        }
+                        finishedJump = false;
+                    }
+                }
+            }
+
+            //Ladder key input
+            else
+            {
+                if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && hasUpL)
+                {
+                    rb.position += new Vector2(0, climbSpeed);
+
+                }
+                else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && hasDownL)
+                {
+                    rb.position += new Vector2(0, -climbSpeed);
+                }
+
+            }
+
+            //Increases falling rate
+            if (!finishedJump && !onLadder)
+            {
+                currD += scalD;
+                if (currD < -2)
+                    currD = -5;
+                rb.velocity += new Vector2(0, currD);
+            }
+            if (onLadder) currD = 0f;
+
+            if (finishedJump && !moving && canMove)
+            {
+                if (!hasSuit)
+                {
+                    playerAnimator.Play("StellaStand");
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
+                else
+                {
+                    playerAnimator.Play("SpaceStand");
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
+            }
+
+            //If player is dead, countdown to respawn
+            if (!isAlive)
+                tdTimer();
+            
+            //Picks up item if there is one [yay for items and inventory systems :'( ]
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (groundItem)
+                {
+                    if (currItem.CompareTag("Spacesuit"))
+                        pickUpSuit();
+                    else
+                        pickUpItem();
+                }
+
+                //Ladder code for getting on ladder
+                else if (hasLadder && !onLadder && lCoolReady)
+                {
+                    onLadder = true;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    rb.velocity = new Vector2(0, 0);
+                    gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+                    lCoolReady = false;
+                    Invoke("lCoolDone", COOL_TIME);
+                }
+                else if (onLadder && lCoolReady)
+                {
+                    onLadder = false;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    rb.velocity = new Vector2(0, 0);
+                    gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                    lCoolReady = false;
+                    Invoke("lCoolDone", COOL_TIME);
+                }
+
+            }
+
+            updateObjective();
+        }
         else
         {
             if (awakeSequenceStarted == false)
@@ -420,41 +455,6 @@ public class PlayerController : MonoBehaviour {
                 StartCoroutine("WakePlayer");
             }
         }
-        //Picks up item if there is one [yay for items and inventory systems :'( ]
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (groundItem)
-            {
-                if (currItem.CompareTag("Spacesuit"))
-                    pickUpSuit();
-                else
-                    pickUpItem();
-            }
-
-            //Ladder code for getting on ladder
-            else if (hasLadder && !onLadder && lCoolReady)
-            {
-                onLadder = true;
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                rb.velocity = new Vector2(0,0);
-                gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                lCoolReady = false;
-                Invoke("lCoolDone", COOL_TIME);
-            }
-            else if(onLadder && lCoolReady)
-            {
-                onLadder = false;
-                gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                rb.velocity = new Vector2(0, 0);
-                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-                lCoolReady = false;
-                Invoke("lCoolDone", COOL_TIME);
-            }
-
-        }
-
-        updateObjective();
-
 
     }
 
@@ -757,7 +757,7 @@ public class PlayerController : MonoBehaviour {
 
 	public IEnumerator WakePlayer()
 	{
-		playerAnimator.Play ("StellaWakingUp");
+        playerAnimator.Play ("StellaWakingUp");
 		yield return new WaitForSeconds (3.5f);
 		hintBox.SetActive (true);
 		setHintText ("Stella: Ugh... What's going on?");
