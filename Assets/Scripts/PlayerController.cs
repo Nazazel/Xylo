@@ -27,10 +27,11 @@ public class PlayerController : MonoBehaviour {
     private int gItemID;
     private GameObject currItem;
     private GameObject inv;
-	private bool activeHint;
+	public bool activeHint;
 	private string[] obtainedObj;
 	public GameObject hintBox;
 	public Text hintText;
+	public float fadeSpeed = .05f;
 
 	public int currentObjective;
 	public bool deadCrew;
@@ -45,6 +46,11 @@ public class PlayerController : MonoBehaviour {
 	public bool engineItems;
 	public bool commsCenterFinal;
 	public bool repairComms;
+
+	public Image FadeImg;
+	public Image AlarmUI;
+	public bool bounce;
+	public bool alarmIsStarted = false;
 
     public static bool isTouchingSuit=false;
 
@@ -88,7 +94,10 @@ public class PlayerController : MonoBehaviour {
 		obtainedObj [5] = "Blow Torch";
 		obtainedObj [6] = "Screw Driver";
 		obtainedObj [7] = "Wire Cutters";
+		bounce = false;
 
+		FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
+		InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 
         tTime = 0;
 	}
@@ -96,6 +105,8 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		if (hintBox == null) {
+			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
+			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 			hintBox = GameObject.FindWithTag ("HintBox");
 			hintText = hintBox.GetComponentInChildren<Text> ();
 			hintBox.SetActive (false);
@@ -103,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (isAwake) {
-			if (Input.GetKeyDown (KeyCode.H)) {
+			if (Input.GetKeyDown (KeyCode.H) && !activeHint) {
 				rb.velocity = new Vector2 (0, rb.velocity.y);
 				if (!hasSuit) {
 					playerAnimator.Play ("StellaStand");
@@ -321,9 +332,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		updateObjective ();
 	}
 
-        void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
 	{
 		if(coll.gameObject.CompareTag("Floor") && finishedJump == false && isAlive)
 		{
@@ -554,8 +566,9 @@ public class PlayerController : MonoBehaviour {
 		else if (commandCenter && currentObjective == 4) {
 			currentObjective = 5;
 		}
-		else if (manual && currentObjective == 5) {
+		else if (manual && currentObjective == 5 && alarmIsStarted) {
 			currentObjective = 6;
+			InvokeRepeating("alarmOn", 0.0f, 0.05f);
 		}
 		else if (hasSuit && currentObjective == 6) {
 			currentObjective = 7;
@@ -617,4 +630,31 @@ public class PlayerController : MonoBehaviour {
 	{
 		hintText.text = hint;
 	}
+
+	public void alarmOn()
+	{
+		AlarmUI = GameObject.Find ("Alarm").GetComponent<Image>();
+		if (!bounce && AlarmUI.color.a < 0.5f) {
+			AlarmUI.color = Color.Lerp (AlarmUI.color, Color.red, fadeSpeed * Time.deltaTime);
+		} 
+		else if (!bounce && AlarmUI.color.a >= 0.5f) {
+			bounce = true;
+		}
+		else if (bounce && AlarmUI.color.a > 0.15f) {
+			AlarmUI.color = Color.Lerp (AlarmUI.color, Color.clear, fadeSpeed * Time.deltaTime);
+		}
+		else if (bounce && AlarmUI.color.a <= 0.15f) {
+			bounce = false;
+		}
+	}
+
+	public void FadeToClear()
+	{
+		FadeImg.color = Color.Lerp (FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
+		if (FadeImg.color.a < 0.05f) {
+			CancelInvoke ("FadeToClear");
+			FadeImg.color = Color.clear;
+		}
+	}
+		
 }

@@ -10,22 +10,34 @@ public class Timer : MonoBehaviour
     float timeAmt = 45;
     float time;
 	public bool started;
+	public bool initializeMeter;
 	public bool deathStarted = false;
     private GameObject player;
 
 	// Use this for initialization
 	void Start ()
     {
-		started = true;
+		started = false;
+		initializeMeter = false;
         fillImg = this.GetComponent<Image>();
         time = timeAmt;
         player = GameObject.FindWithTag("Player");
+		fillImg.enabled = false;
+		oxygenText.enabled = false;
+		oxygenTextBG.enabled = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
 		if (started) {
+			if (!initializeMeter) {
+				fillImg.enabled = true;
+				oxygenText.enabled = true;
+				oxygenTextBG.enabled = true;
+			}
+
 			if ((time > 0) && player.GetComponent<PlayerController> ().hasSuit == false) {
 				time -= Time.deltaTime;
 				fillImg.fillAmount = time / timeAmt;
