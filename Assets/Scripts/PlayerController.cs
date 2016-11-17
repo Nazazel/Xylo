@@ -69,8 +69,10 @@ public class PlayerController : MonoBehaviour {
 
     //Objectives
 	public bool deadCrew;
+	public int numDead;
 	public bool commsCenterInit;
 	public bool keyCards;
+	public int numKeys;
 	public bool accessCommsCenter;
 	public bool commandCenter;
 	public bool manual;
@@ -92,6 +94,9 @@ public class PlayerController : MonoBehaviour {
         isAlive = true;
 		isAwake = false;
 		deadCrew = false;
+		numDead = 0;
+		keyCards = false;
+		numKeys = 0;
 		awakeSequenceStarted = false;
 		moving = false;
 		hasSuit = false;
@@ -199,6 +204,10 @@ public class PlayerController : MonoBehaviour {
             //Movement
             if (!onLadder)
             {
+				if (playerAnimator.speed == 0) {
+					playerAnimator.speed = 1;
+				}
+
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                 {
                     sprint = true;
@@ -372,15 +381,40 @@ public class PlayerController : MonoBehaviour {
             //Ladder key input
             else
             {
-                if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && hasUpL)
-                {
-                    rb.position += new Vector2(0, climbSpeed);
+				rb.velocity = new Vector2 (0, 0);
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaClimbing");
+				} else {
 
-                }
-                else if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && hasDownL)
-                {
-                    rb.position += new Vector2(0, -climbSpeed);
-                }
+					playerAnimator.Play ("SpaceClimb");
+				}
+
+				if ((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) && hasUpL) {
+					rb.position += new Vector2 (0, climbSpeed);
+					if (!hasSuit) {
+						playerAnimator.speed = 2;
+						playerAnimator.Play ("StellaClimbing");
+					} else {
+						playerAnimator.speed = 2;
+						playerAnimator.Play ("SpaceClimb");
+					}
+
+				} else if ((Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) && hasDownL) {
+					rb.position += new Vector2 (0, -climbSpeed);
+					if (!hasSuit) {
+						playerAnimator.speed = 2;
+						playerAnimator.Play ("StellaClimbing");
+					} else {
+						playerAnimator.speed = 2;
+						playerAnimator.Play ("SpaceClimb");
+					}
+				} else {
+					if (!hasSuit) {
+						playerAnimator.speed = 0;
+					} else {
+						playerAnimator.speed = 0;
+					}
+				}
 
             }
 
@@ -394,8 +428,12 @@ public class PlayerController : MonoBehaviour {
             }
             if (onLadder) currD = 0f;
 
-            if (finishedJump && !moving && canMove)
+			if (finishedJump && !moving && canMove && !onLadder)
             {
+				if (playerAnimator.speed == 0) {
+					playerAnimator.speed = 1;
+				}
+
                 if (!hasSuit)
                 {
                     playerAnimator.Play("StellaStand");
