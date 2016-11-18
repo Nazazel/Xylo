@@ -44,11 +44,13 @@ public class CommsCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");
+			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 2) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
@@ -59,28 +61,15 @@ public class CommsCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");
+			StopCoroutine("commsDoorOpen");
 
 		}
 
-
-
-
-		player.GetComponent<PlayerController> ().hintText.text = "I need to find a Power Drill, Wrench, Hammer, Switchblade, Saw, Blow Torch, and Wire Cutters to repair the Communications Center!";
-		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
-		player.GetComponent<PlayerController> ().alarmIsStarted = true;
-		player.GetComponent<PlayerController> ().hintText.text = "Oh no! Oxygen levels are dropping, I need to find a spacesuit!";
-		yield return new WaitForSeconds (7.0f);
-		player.GetComponent<PlayerController> ().hintBox.SetActive (false);
-		GameObject.Find ("Timer").GetComponent<Timer> ().started = true;
-		player.GetComponent<PlayerController> ().activeHint = false;
-		player.GetComponent<PlayerController> ().canMove = true;
-		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-		//manual.SetActive (false);
-		StopCoroutine ("alarmStartup");
 	}
 }
