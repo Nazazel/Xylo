@@ -18,6 +18,8 @@ public class ActivateTextatLine : MonoBehaviour
     public Text pickupText;
     public GameObject player;
 
+    public bool isWall;
+
     // Use this for initialization
     void Start ()
     {
@@ -48,8 +50,16 @@ public class ActivateTextatLine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (isWall)
+        {
+            pickupText.text = "";
+        }
 
-		pickupText.text = "Press 'E' to pick up";
+        else
+        {
+            pickupText.text = "Press 'E' to pick up";
+        }
+	
 
         if (other.name == "Stella")
         {
