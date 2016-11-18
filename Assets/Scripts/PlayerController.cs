@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour {
 	public bool alarmIsStarted = false;
 
     //Spawning
+    private Vector3 lvCoords;
 
     void Start()
     {
@@ -109,8 +110,10 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         scalD = -0.011f;
         currD = 0f;
-        xSpawn = gameObject.transform.position.x;
-        ySpawn = gameObject.transform.position.y;
+        lvCoords = GameObject.FindWithTag("FirstSpawnInScene").transform.position;
+        tp(lvCoords);
+        xSpawn = lvCoords.x;
+        ySpawn = lvCoords.y;
         groundItem = false;
         gItemID = 0;
         currItem = null;
@@ -617,7 +620,7 @@ public class PlayerController : MonoBehaviour {
 
     public void tp(Vector3 a)
     {
-        gameObject.transform.position = new Vector3(a.x, a.y, 0);
+        gameObject.transform.parent.position = new Vector3(a.x, a.y, 0);
     }
 
 
