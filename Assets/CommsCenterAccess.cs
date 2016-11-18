@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CommsCenterAccess : MonoBehaviour {
 
@@ -18,7 +19,9 @@ public class CommsCenterAccess : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D col)
 	{
 		pickupText.text = "Press 'E' to Open with Door";
-		
+		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true) {
+			StartCoroutine ("commsDoorOpen");
+		}
 	}
 
 	void OnTriggerExit2D (Collider2D col)
@@ -28,25 +31,45 @@ public class CommsCenterAccess : MonoBehaviour {
 
 	public IEnumerator commsDoorOpen ()
 	{
-		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().currentObjective == 0) {
-
-		}
-		else if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().currentObjective == 1) {
-
-		}
-		else if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().currentObjective == 2) {
-
-		}
-		else if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().currentObjective == 0) {
-
-		}
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-		player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-		player.GetComponent<PlayerController> ().hintText.text = "I've got the manual!";
-		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
-		yield return new WaitForSeconds (0.2f);
+
+		if (player.GetComponent<PlayerController> ().currentObjective == 0) {
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I've got to find my crew members and see if they're alright...)";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			SceneManager.LoadSceneAsync("Comms Center");
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 2) {
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			SceneManager.LoadSceneAsync("Comms Center");
+
+		}
+
+
+
+
 		player.GetComponent<PlayerController> ().hintText.text = "I need to find a Power Drill, Wrench, Hammer, Switchblade, Saw, Blow Torch, and Wire Cutters to repair the Communications Center!";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		player.GetComponent<PlayerController> ().alarmIsStarted = true;
