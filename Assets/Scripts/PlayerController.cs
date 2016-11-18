@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     private bool hasUpL = false;
     private bool hasDownL = false;
     private float[] ladderBounds;
+    private readonly float ON_OFF_VARIANCE = 0.1f;
     private float climbSpeed;
     private bool lCoolReady = true;
     private readonly float COOL_TIME = 0.4f;
@@ -87,6 +88,8 @@ public class PlayerController : MonoBehaviour {
 	public Image AlarmUI;
 	public bool bounce;
 	public bool alarmIsStarted = false;
+
+    //Spawning
 
     void Start()
     {
@@ -462,7 +465,7 @@ public class PlayerController : MonoBehaviour {
                 }
 
                 //Ladder code for getting on ladder
-                else if (hasLadder && !onLadder && lCoolReady)
+                else if (hasLadder && !onLadder && lCoolReady && finishedJump)
                 {
                     onLadder = true;
                     gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -471,7 +474,7 @@ public class PlayerController : MonoBehaviour {
                     lCoolReady = false;
                     Invoke("lCoolDone", COOL_TIME);
                 }
-                else if (onLadder && lCoolReady)
+                else if (onLadder && lCoolReady && lCoolDiff())
                 {
                     onLadder = false;
                     gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -621,6 +624,13 @@ public class PlayerController : MonoBehaviour {
     public void canClimb(bool c)
     {
         hasLadder = c;
+    }
+
+    private bool lCoolDiff()
+    {
+        if (System.Math.Abs(gameObject.transform.position.y - ladderBounds[1]) < ON_OFF_VARIANCE || System.Math.Abs(gameObject.transform.position.y - ladderBounds[0]) < ON_OFF_VARIANCE)
+            return true;
+        else return false;
     }
 
     public void passLadderBounds(float[] a)
