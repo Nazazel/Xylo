@@ -27,7 +27,7 @@ public class CommsCenterAccess : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		pickupText.text = "Press 'E' to Open with Door";
+		pickupText.text = "Press 'E' to Open Door";
 		atDoor = true;
 	}
 
@@ -55,6 +55,7 @@ public class CommsCenterAccess : MonoBehaviour {
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
+			player.GetComponent<PlayerController> ().currentObjective = 2;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");
@@ -72,6 +73,7 @@ public class CommsCenterAccess : MonoBehaviour {
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
+			player.GetComponent<PlayerController> ().currentObjective = 11;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");
