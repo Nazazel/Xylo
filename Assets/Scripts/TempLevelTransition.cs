@@ -16,8 +16,7 @@ public class TempLevelTransition : MonoBehaviour {
 		{
 			loading = true;
             //InvokeRepeating ("FadeToBlack",0.0f, 0.02f);
-            //StartCoroutine ("LoadElevator");
-            SceneManager.LoadSceneAsync("Level One");
+            SceneManager.LoadSceneAsync(4);
 		}
 	}
 
