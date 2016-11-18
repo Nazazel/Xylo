@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bbe515c915c54d043807a65716009bf5
-timeCreated: 1478679469
+timeCreated: 1479431709
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -73,7 +73,7 @@ TextureImporter:
       name: stella_covers_face_1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 199
         y: 0
         width: 210
         height: 390
@@ -86,7 +86,7 @@ TextureImporter:
       name: stella_covers_face_2
       rect:
         serializedVersion: 2
-        x: 420
+        x: 396
         y: 0
         width: 210
         height: 390
@@ -99,7 +99,7 @@ TextureImporter:
       name: stella_covers_face_3
       rect:
         serializedVersion: 2
-        x: 630
+        x: 593
         y: 0
         width: 210
         height: 390
