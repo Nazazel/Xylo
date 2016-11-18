@@ -7,26 +7,34 @@ public class CommsCenterAccess : MonoBehaviour {
 
 	public GameObject player;
 	private Text pickupText;
-	public bool manualStart;
+	public bool atDoor;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag ("Player");
+		atDoor = false;
 		pickupText = GameObject.Find ("ManualPickup").GetComponent<Text> ();
 		pickupText.text = "";
 	}
 
-	void OnTriggerStay2D (Collider2D col)
+	void Update()
 	{
-		pickupText.text = "Press 'E' to Open with Door";
-		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true) {
+		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && atDoor == true) {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
 			StartCoroutine ("commsDoorOpen");
 		}
+	}
+
+	void OnTriggerEnter2D (Collider2D col)
+	{
+		pickupText.text = "Press 'E' to Open with Door";
+		atDoor = true;
 	}
 
 	void OnTriggerExit2D (Collider2D col)
 	{
 		pickupText.text = "";
+		atDoor = false;
 	}
 
 	public IEnumerator commsDoorOpen ()
