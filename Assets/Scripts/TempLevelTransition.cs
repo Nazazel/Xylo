@@ -5,32 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class TempLevelTransition : MonoBehaviour {
 
+    public int sceneDest;
 	bool loading = false;
-	public Image FadeImg;
-	public float fadeSpeed = 1.5f;
+    public GameObject player;
 
-	// Use this for initialization
+	void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (loading == false) 
-		{
-			loading = true;
-            //InvokeRepeating ("FadeToBlack",0.0f, 0.02f);
-            SceneManager.LoadSceneAsync(4);
-		}
-	}
+        
+        if (loading == false)
+        {
+            loading = true;
+            if (sceneDest != 0)
+            {
+                player.SendMessage("setLv1Coords");
+                player.SendMessage("findFirstSpawnDelayed", sceneDest);
+            }
+            SceneManager.LoadSceneAsync(sceneDest);
+            }
 
-	IEnumerator LoadElevator()
-	{
-		yield return new WaitForSeconds (5.0f);
-		//SceneManager.LoadSceneAsync ("Elevator");
-	}
-
-	void FadeToBlack()
-	{
-		FadeImg.color = Color.Lerp (FadeImg.color, Color.black, fadeSpeed * Time.deltaTime);
-		if (FadeImg.color.a == 1.0f) {
-			CancelInvoke ("FadeToBlack");
-		}
-	}
+    }
 }
