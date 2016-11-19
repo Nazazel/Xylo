@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+		Debug.Log("Yo");
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
         isAlive = true;
 		isAwake = false;
@@ -158,6 +159,10 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.H) && !activeHint)
             {
+				if (playerAnimator.speed == 0) {
+					playerAnimator.speed = 1;
+				}
+
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 if (!hasSuit)
                 {
@@ -173,6 +178,10 @@ public class PlayerController : MonoBehaviour {
 
             if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && activeHint == false && !onLadder)
             {
+				if (playerAnimator.speed == 0) {
+					playerAnimator.speed = 1;
+				}
+
                 if (isAlive)
                 {
                     canMove = false;
@@ -210,9 +219,7 @@ public class PlayerController : MonoBehaviour {
             //Movement
             if (!onLadder)
             {
-				if (playerAnimator.speed == 0) {
-					playerAnimator.speed = 1;
-				}
+				playerAnimator.speed = 1;
 
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                 {
@@ -652,7 +659,7 @@ public class PlayerController : MonoBehaviour {
 			canMove = false;
 			hintBox.SetActive (true);
 			if (currentObjective == 0) {
-				hintText.text = "Stella: (...I've got to find my crew members and see if they're alright...)";
+				hintText.text = "Stella: (...I need to find my crew members and check if they're alright...)";
 			}
 			else if (currentObjective == 1) {
 				hintText.text = "Stella: (...I need to get into the communications room to send out an SOS signal...)";
