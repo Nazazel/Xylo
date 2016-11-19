@@ -2,33 +2,33 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class KeyCardObtained : MonoBehaviour {
+public class BrokenGPS : MonoBehaviour {
 
-	private GameObject keyCard;
+	private GameObject GPStracker;
 	public GameObject player;
 	private Text pickupText;
-	private bool startKeyDialogue;
+	private bool startGPSDialogue;
+	private bool GPSinteracted;
 
 	// Use this for initialization
 	void Start () {
-		keyCard = this.gameObject;
+		GPStracker = this.gameObject;
 		player = GameObject.FindWithTag ("Player");
 		pickupText = GameObject.Find ("ManualPickup").GetComponent<Text> ();
 		pickupText.text = "";
-		startKeyDialogue = false;
+		startGPSDialogue = false;
+		GPSinteracted = false;
 	}
 
 	void OnTriggerStay2D (Collider2D col)
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 2 && startKeyDialogue == false) {
-			pickupText.text = "Press 'E' to pick up";
+		pickupText.text = "Press 'E' to use GPS Tracker";
 
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true) {
+		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false) {
 				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
-				startKeyDialogue = true;
-				StartCoroutine ("keyPick");
+				startGPSDialogue = true;
+				StartCoroutine ("GPSPick");
 			}
-		}
 	}
 
 	void OnTriggerExit2D (Collider2D col)
@@ -36,42 +36,36 @@ public class KeyCardObtained : MonoBehaviour {
 		pickupText.text = "";
 	}
 
-	public IEnumerator keyPick ()
+	public IEnumerator GPSPick ()
 	{
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-		if (player.GetComponent<PlayerController> ().numKeys == 0) {
-			player.GetComponent<PlayerController> ().numKeys += 1;
+
+		if (player.GetComponent<PlayerController> ().currentObjective == 4 && GPSinteracted == false) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "Stella: I've got an omnicard! One more to go!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			pickupText.text = "";
+			player.GetComponent<PlayerController> ().commandCenter = true;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
-			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			startKeyDialogue = false;
-			keyCard.SetActive (false);
-			StopCoroutine ("keyPick");
-		}
-		else if (player.GetComponent<PlayerController> ().numKeys == 1) {
-			player.GetComponent<PlayerController> ().numKeys += 1;
-			player.GetComponent<PlayerController> ().keyCards = true;
+			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+			GPSinteracted = true;
+			StopCoroutine ("GPSPick");
+		} 
+		else if (GPSinteracted == true) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: Great! Now that I have both omnicards I can get into the communications room!";
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			pickupText.text = "";
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
-			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			startKeyDialogue = false;
-			keyCard.SetActive (false);
-			StopCoroutine ("keyPick");
+			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine ("GPSPick");
 		}
-			
+
 	}
 }

@@ -45,7 +45,7 @@ public class CommsCenterAccess : MonoBehaviour {
 
 		if (player.GetComponent<PlayerController> ().currentObjective == 0) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I've got to find my crew members and see if they're alright...)";
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to find my crew members and check if they're alright...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -55,15 +55,48 @@ public class CommsCenterAccess : MonoBehaviour {
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
-			player.GetComponent<PlayerController> ().currentObjective = 2;
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: Damn it! It's locked!\n\tRight, now I remember...the door won't open under emergency lockdown unless I have two omnicards...\n\tI need to search the rooms.";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().commsCenterInit = true;
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			SceneManager.LoadSceneAsync("Comms Center");
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 2) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("commsDoorOpen");
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 3) {
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			SceneManager.LoadSceneAsync("Comms Center");
+			StopCoroutine("commsDoorOpen");
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should try to send my location out using the GPS Tracker in the command center...)";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("commsDoorOpen");
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
