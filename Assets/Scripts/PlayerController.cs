@@ -146,6 +146,8 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		if (hintBox == null) {
+			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
+			FadeImg.color = Color.black;
 			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 			hintBox = GameObject.FindWithTag ("HintBox");
 			hintText = hintBox.GetComponentInChildren<Text> ();
@@ -848,7 +850,7 @@ public class PlayerController : MonoBehaviour {
 	{
         //Bug: this gets called again whenever Level One is entered
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
-		if (FadeImg.color.a < 0.05f) {
+		if (FadeImg.color.a < 0.1f) {
 			CancelInvoke ("FadeToClear");
 			FadeImg.color = Color.clear;
 		}
