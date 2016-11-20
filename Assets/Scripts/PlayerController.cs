@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
     private bool hasUpL = false;
     private bool hasDownL = false;
     private float[] ladderBounds;
-    private readonly float ON_OFF_VARIANCE = 0.1f;
+    private readonly float ON_OFF_VARIANCE = 0.16f;
     private float climbSpeed;
     private bool lCoolReady = true;
     private readonly float COOL_TIME = 0.4f;
@@ -89,12 +89,14 @@ public class PlayerController : MonoBehaviour {
 	public bool bounce;
 	public bool alarmIsStarted = false;
 
+
     //Spawning
-    private Vector3 lvCoords;
+    private Vector3[] lvCoords;
+    private int nextScene;
+    public bool firstSpawnInLV1 = true;
 
     void Start()
     {
-		Debug.Log("Yo");
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
         isAlive = true;
 		isAwake = false;
@@ -111,10 +113,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         scalD = -0.011f;
         currD = 0f;
-        lvCoords = GameObject.FindWithTag("FirstSpawnInScene").transform.position;
-        tp(lvCoords);
-        xSpawn = lvCoords.x;
-        ySpawn = lvCoords.y;
+        lvCoords = new Vector3[6];
         groundItem = false;
         gItemID = 0;
         currItem = null;
@@ -146,7 +145,6 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-        
 		if (hintBox == null) {
 			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 			hintBox = GameObject.FindWithTag ("HintBox");
@@ -587,12 +585,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void updateCheck(Vector3 cp)
-    {
-        xSpawn = cp.x;
-        ySpawn = cp.y;
-    }
-
     public void canPickUp(bool a)
     {
         groundItem = a;
@@ -628,6 +620,8 @@ public class PlayerController : MonoBehaviour {
     public void tp(Vector3 a)
     {
         gameObject.transform.parent.position = new Vector3(a.x, a.y, 0);
+        gameObject.transform.position = new Vector3(a.x, a.y, 0);
+        rb.velocity = new Vector2(0f,0f);
     }
 
 
@@ -852,11 +846,37 @@ public class PlayerController : MonoBehaviour {
 
 	public void FadeToClear()
 	{
+        //Bug: this gets called again whenever Level One is entered
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
 		if (FadeImg.color.a < 0.05f) {
 			CancelInvoke ("FadeToClear");
 			FadeImg.color = Color.clear;
 		}
 	}
-		
+
+    public void setLv1Coords()
+    {
+        lvCoords[0] = gameObject.transform.position;
+    }
+
+    public void setLv1Coords(Vector3 a)
+    {
+        lvCoords[0] = a;
+    }
+
+    public void updateSpawn(Vector3 cp)
+    {
+        xSpawn = cp.x;
+        ySpawn = cp.y;
+    }
+
+    public void tpL1()
+    {
+        Debug.Log(lvCoords[0]);
+        tp(lvCoords[0]);
+        Debug.Log(gameObject.transform.position);
+
+    }
+
+
 }

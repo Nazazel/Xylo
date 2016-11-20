@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour {
     {
         if (o.gameObject.CompareTag("Player"))
         {
-            o.gameObject.SendMessage("updateCheck", gameObject.transform.position);
+            o.gameObject.SendMessage("updateSpawn", gameObject.transform.position);
         }
     }
 
