@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 
     //
 	private string inventoryString;
-    private string[] obtainedObj;
+    public string[] obtainedObj;
 	public float fadeSpeed = 1.5f;
 
     //Objectives
@@ -497,6 +497,9 @@ public class PlayerController : MonoBehaviour {
             }
 
             updateObjective();
+			if (currentObjective > 6) {
+				inventoryCheck ();
+			}
         }
         else
         {
@@ -677,14 +680,6 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (currentObjective == 7) {
 				inventoryString = "Stella: (...I need to find the following item(s) in the Engineering Wing...) \n";
-				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
-					if (inv.GetComponent<Inventory> ().items [i].name == "Power Drill") {
-						obtainedObj [0] = "";
-					} 
-					else if (inv.GetComponent<Inventory> ().items [i].name == "Wrench") {
-						obtainedObj [1] = "";
-					}
-				}
 				for (int i = 0; i < 2; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";
@@ -694,17 +689,6 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (currentObjective == 8) {
 				inventoryString = "Stella: (...I need to find the following item(s) in the Medical Ward...) \n";
-				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
-					if (inv.GetComponent<Inventory> ().items [i].name == "Switchblade") {
-						obtainedObj [2] = "";
-					} 
-					else if (inv.GetComponent<Inventory> ().items [i].name == "Hammer") {
-						obtainedObj [3] = "";
-					} 
-					else if (inv.GetComponent<Inventory> ().items [i].name == "Saw") {
-						obtainedObj [4] = "";
-					}
-				}
 				for (int i = 2; i < 5; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";
@@ -714,17 +698,6 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (currentObjective == 9) {
 				inventoryString = "Stella: (...I need to find the following item(s) in the Engine Room...) \n";
-				for (int i = 0; i < inv.GetComponent<Inventory> ().items.Length; i++) {
-					if (inv.GetComponent<Inventory> ().items [i].name == "Blow Torch") {
-						obtainedObj [5] = "";
-					} 
-					else if (inv.GetComponent<Inventory> ().items [i].name == "Screwdriver") {
-						obtainedObj [6] = "";
-					} 
-					else if (inv.GetComponent<Inventory> ().items [i].name == "Wire Cutters") {
-						obtainedObj [7] = "";
-					}
-				}
 				for (int i = 5; i < 8; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Item : MonoBehaviour {
 
+	public GameObject player;
     private bool claimed;
     public int id;
     //private GameObject textO;
@@ -14,6 +15,7 @@ public class Item : MonoBehaviour {
 
 	void Start () {
         claimed = false;
+		player = GameObject.FindWithTag ("Player");
         //textO = GameObject.Find("Pick Up Text");
 	}
 	
@@ -57,6 +59,30 @@ public class Item : MonoBehaviour {
     {
         claimed = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		if (gameObject.name == "Power Drill") {
+			player.GetComponent<PlayerController>().obtainedObj[0] = "";
+		}
+		else if (gameObject.name == "Wrench") {
+			player.GetComponent<PlayerController>().obtainedObj[1] = "";
+		}
+		else if (gameObject.name == "Saw") {
+			player.GetComponent<PlayerController>().obtainedObj[4] = "";
+		}
+		else if (gameObject.name == "Hammer") {
+			player.GetComponent<PlayerController>().obtainedObj[3] = "";
+		}
+		else if (gameObject.name == "Switchblade") {
+			player.GetComponent<PlayerController>().obtainedObj[2] = "";
+		}
+		else if (gameObject.name == "Blow Torch") {
+			player.GetComponent<PlayerController>().obtainedObj[5] = "";
+		}
+		else if (gameObject.name == "Screw Driver") {
+			player.GetComponent<PlayerController>().obtainedObj[6] = "";
+		}
+		else if (gameObject.name == "Wire Cutters") {
+			player.GetComponent<PlayerController>().obtainedObj[7] = "";
+		}
         //textO.SendMessage("toggleVis", false);
     }
 }
