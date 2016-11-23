@@ -37,21 +37,11 @@ public class Credits : MonoBehaviour
 
      void Update()
      {
-        theText.text = textLines[currentLine];
-
-        while (currentLine < 10)
-        {
-            print("Is this working");
-            updateLine();
-        }
 
         if(!started)
         {
             started = true;
             StartCoroutine("waitThreeSeconds");
-            updateLine();
-            currentLine += 1;
-            theText.text = textLines[currentLine];
         }
     }
 
@@ -63,5 +53,9 @@ public class Credits : MonoBehaviour
     IEnumerator waitThreeSeconds()
     {
         yield return new WaitForSeconds(3.0f);
+        theText.text = "LOKIIIIII";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "yo yo yo yo";
+
     }
 }
