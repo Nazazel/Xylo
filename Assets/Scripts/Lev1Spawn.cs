@@ -15,12 +15,14 @@ public class Lev1Spawn : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         obj = pl.GetComponent<PlayerController>().currentObjective;
         pl = GameObject.FindWithTag("Player");
-        if (spawnId == 1 && (obj == 4 || obj == 10))
+        if (spawnId == 1 && (obj == 4 ))
             active = true;
-        else if (spawnId == 2 && obj == 5)
+        else if (spawnId == 2 && (obj == 5 ))
             active = true;
-        else if (spawnId == 3 && obj == 8)
+        else if (spawnId == 3 && (obj >= 8 && obj <= 10))
             active = true;
+        if(active)
+            pl.SendMessage("tp", gameObject.transform.position);
     }
 
     // Update is called once per frame
