@@ -53,9 +53,30 @@ public class Credits : MonoBehaviour
     IEnumerator waitThreeSeconds()
     {
         yield return new WaitForSeconds(3.0f);
-        theText.text = "LOKIIIIII";
+        theText.text = "Project Leads:";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "yo yo yo yo";
-
+        theText.text = "Nazely Hartoonian";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Ulises Perez";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Programmers:";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Ulises Perez";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Christopher Chu";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Yixuan (Angela) Li";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Artist:";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Victoria Barinova";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Audio & Design:";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Nazely Hartoonian";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Joshua Rutledge";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = " ";
     }
 }
