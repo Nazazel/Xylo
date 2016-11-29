@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class commsDoor : MonoBehaviour {
+public class commandDoor : MonoBehaviour {
 
 	public bool requireButtonPress;
 	private bool waitForPress;
@@ -19,18 +19,18 @@ public class commsDoor : MonoBehaviour {
 		pickupText.text = "";
 		player = GameObject.FindWithTag("Player");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false){
-				StartCoroutine ("commDoor");
+				StartCoroutine ("commandText");
 
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
-				StartCoroutine ("commDoor");
+				StartCoroutine ("commandText");
 
 			}
 		}
@@ -68,14 +68,14 @@ public class commsDoor : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator commDoor()
+	public IEnumerator commandText()
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
+		if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			player.GetComponent<PlayerController> ().activeHint = true;
 			player.GetComponent<PlayerController> ().canMove = false;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should send out an SOS signal before I do anything else...)";
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should try to send my location out using the GPS Tracker in this room...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -83,22 +83,9 @@ public class commsDoor : MonoBehaviour {
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
-		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			SceneManager.LoadSceneAsync("Level One Clean");
-			StopCoroutine("commDoor");
-		}
-		else if (player.GetComponent<PlayerController> ().currentObjective == 11) {
-			player.GetComponent<PlayerController> ().activeHint = true;
-			player.GetComponent<PlayerController> ().canMove = false;
-			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should repair the communications terminal and send out an SOS signal...)";
-			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
-			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
-			player.GetComponent<PlayerController> ().activeHint = false;
-			player.GetComponent<PlayerController> ().canMove = true;
-			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("commandText");
 		}
 	}
 }

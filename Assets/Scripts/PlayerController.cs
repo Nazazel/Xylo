@@ -805,6 +805,9 @@ public class PlayerController : MonoBehaviour {
 	public void alarmOn()
 	{
 		AlarmUI = GameObject.Find ("Alarm").GetComponent<Image>();
+		if (AlarmUI == null) {
+			return;
+		}
 		if (!bounce && AlarmUI.color.a < 0.5f) {
 			AlarmUI.color = Color.Lerp (AlarmUI.color, Color.red, fadeSpeed * Time.deltaTime);
 		} 
