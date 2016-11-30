@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Credits : MonoBehaviour
@@ -80,32 +81,20 @@ public class Credits : MonoBehaviour
     IEnumerator waitThreeSeconds()
     {
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Project Leads:";
+        theText.text = "Project Leads:\n\nNazely Hartoonian\n\nUlises Perez";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Nazely Hartoonian";
+        theText.text = "Programmers:\n\nUlises Perez\n\nChristopher Chu\n\nYixuan (Angela) Li";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Ulises Perez";
+        theText.text = "Artist:\n\nVictoria Barinova";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Programmers:";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Ulises Perez";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Christopher Chu";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Yixuan (Angela) Li";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Artist:";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Victoria Barinova";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Audio & Design:";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Nazely Hartoonian";
-        yield return new WaitForSeconds(3.0f);
-        theText.text = "Joshua Rutledge";
+        theText.text = "Audio & Design:\n\nNazely Hartoonian\n\nJoshua Rutledge";
         yield return new WaitForSeconds(3.0f);
         theText.text = " ";
         FadeImg = GameObject.Find("Fade").GetComponent<Image>();
         InvokeRepeating("FadeToBlack", 0.0f, 0.1f);
+        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Menu");
     }
 }
