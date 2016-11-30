@@ -68,6 +68,15 @@ public class commandDoor : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerExit2D(Collider2D other)
+	{
+		pickupText.text = "";
+		if (other.name == "Stella")
+		{
+			waitForPress = false;
+		}
+	}
+
 	public IEnumerator commandText()
 	{
 		if (player.GetComponent<PlayerController> ().currentObjective == 4) {
