@@ -44,17 +44,17 @@ public class ElevatorScene : MonoBehaviour {
 		else if (player.GetComponent<PlayerController> ().currentObjective == 8) {
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
 			yield return new WaitUntil (() => !IsInvoking ());
-			//SceneManager.LoadSceneAsync("Medical Ward");
+			SceneManager.LoadSceneAsync("Medical Ward");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 9) {
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
 			yield return new WaitUntil (() => !IsInvoking ());
-			//SceneManager.LoadSceneAsync("Engine Room");
+			SceneManager.LoadSceneAsync("Engine Room");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
 			yield return new WaitUntil (() => !IsInvoking ());
-			//SceneManager.LoadSceneAsync("Level One");
+			SceneManager.LoadSceneAsync("Level One Clean");
 		}
 	}
 
