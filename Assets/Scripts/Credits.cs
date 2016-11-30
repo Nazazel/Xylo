@@ -18,6 +18,9 @@ public class Credits : MonoBehaviour
 
     public bool started;
 
+    public float fadeSpeed = 1.5f;
+    public Image FadeImg;
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +36,10 @@ public class Credits : MonoBehaviour
         {
             endAtLine = textLines.Length - 1;
         }
+
+        FadeImg = GameObject.Find("Fade").GetComponent<Image>();
+        InvokeRepeating("FadeToClear", 0.0f, 0.1f);
+
     }
 
      void Update()
@@ -42,6 +49,26 @@ public class Credits : MonoBehaviour
         {
             started = true;
             StartCoroutine("waitThreeSeconds");
+        }
+    }
+
+    public void FadeToClear()
+    {
+        //Bug: this gets called again whenever Level One is entered
+        FadeImg.color = Color.Lerp(FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
+        if (FadeImg.color.a < 0.1f)
+        {
+            CancelInvoke("FadeToClear");
+            FadeImg.color = Color.clear;
+        }
+    }
+
+    void FadeToBlack()
+    {
+        FadeImg.color = Color.Lerp(FadeImg.color, Color.black, fadeSpeed * Time.deltaTime);
+        if (FadeImg.color.a == 1.0f)
+        {
+            CancelInvoke("FadeToBlack");
         }
     }
 
@@ -78,5 +105,7 @@ public class Credits : MonoBehaviour
         theText.text = "Joshua Rutledge";
         yield return new WaitForSeconds(3.0f);
         theText.text = " ";
+        FadeImg = GameObject.Find("Fade").GetComponent<Image>();
+        InvokeRepeating("FadeToBlack", 0.0f, 0.1f);
     }
 }
