@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     public Animator playerAnimator;
     public SpriteRenderer playerRenderer;
+	public Image controlsImage; 
 
     //Movement
     public bool finishedJump;
@@ -47,6 +48,8 @@ public class PlayerController : MonoBehaviour {
     private float ySpawn;
     public bool isAwake;
     public bool awakeSequenceStarted;
+	public bool loading;
+	public bool gameEnd;
 
     //Items and inventory
     private bool groundItem;
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
+		loading = false;
         isAlive = true;
 		isAwake = false;
 		deadCrew = false;
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour {
 		hintBox = GameObject.FindWithTag ("HintBox");
 		hintText = hintBox.GetComponentInChildren<Text> ();
 		hintBox.SetActive (false);
-		activeHint = false;
+		activeHint = true;
 		obtainedObj = new string[8];
 		obtainedObj [0] = "Power Drill";
 		obtainedObj [1] = "Wrench";
@@ -138,6 +142,8 @@ public class PlayerController : MonoBehaviour {
         climbSpeed = 0.06f;
 
 		FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
+		controlsImage = GameObject.Find ("ControlsImage").GetComponent<Image>();
+		controlsImage.color = Color.clear;
 		InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 
         tTime = 0;
@@ -146,17 +152,39 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		if (hintBox == null) {
+			loading = false;
 			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 			FadeImg.color = Color.black;
 			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 			hintBox = GameObject.FindWithTag ("HintBox");
 			hintText = hintBox.GetComponentInChildren<Text> ();
 			hintBox.SetActive (false);
-			activeHint = false;
 		}
 
         if (isAwake)
         {
+			if (Input.GetKey (KeyCode.Tab) && !activeHint && !loading) {
+				canMove = false;
+				activeHint = true;
+				FadeImg.color = new Color ();
+				controlsImage.color = Color.white;
+				rb.velocity = new Vector2(0, rb.velocity.y);
+				if (!hasSuit)
+				{
+					playerAnimator.Play("StellaStand");
+				}
+				else
+				{
+					playerAnimator.Play("SpaceStand");
+				}
+			} 
+			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading) {
+				canMove = true;
+				activeHint = false;
+				FadeImg.color = Color.clear;
+				controlsImage.color = Color.clear;
+			}
+
             if (Input.GetKeyDown(KeyCode.H) && !activeHint)
             {
 				if (playerAnimator.speed == 0) {
@@ -633,6 +661,7 @@ public class PlayerController : MonoBehaviour {
     public void canClimb(bool c)
     {
         hasLadder = c;
+
     }
 
     private bool lCoolDiff()
@@ -826,9 +855,11 @@ public class PlayerController : MonoBehaviour {
 	{
         //Bug: this gets called again whenever Level One is entered
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
-		if (FadeImg.color.a < 0.1f) {
+		if (FadeImg.color.a < 0.15f) {
 			CancelInvoke ("FadeToClear");
 			FadeImg.color = Color.clear;
+			Debug.Log (FadeImg.color.a);
+			activeHint = false;
 		}
 	}
 

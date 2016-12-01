@@ -11,10 +11,11 @@ public class Timer2 : MonoBehaviour
     float time;
     public bool started;
     public bool isDone;
+	public GameObject player;
     // Use this for initialization
     void Start()
     {
-
+		player = GameObject.FindWithTag ("Player");
         fillImg = this.GetComponent<Image>();
         time = timeAmt;
         started = false;
@@ -42,6 +43,7 @@ public class Timer2 : MonoBehaviour
                     fillImg.color = new Color(0, 0, 0, 0);
                     repairText.color = new Color(0, 0, 0, 0);
                     isDone = true;
+					player.GetComponent<PlayerController> ().gameEnd = true;
                 }
             }
 

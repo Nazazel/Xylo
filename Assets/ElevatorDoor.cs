@@ -15,19 +15,19 @@ public class ElevatorDoor : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+		if (player.GetComponent<PlayerController> ().currentObjective == 5 && player.GetComponent<PlayerController>().loading == false) {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 8) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 8 && player.GetComponent<PlayerController>().loading == false) {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 9) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 9 && player.GetComponent<PlayerController>().loading == false) {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 10) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 10 && player.GetComponent<PlayerController>().loading == false) {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}

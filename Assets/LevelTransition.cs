@@ -5,16 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour {
 
-	bool loading = false;
+	public GameObject player;
 	public Image FadeImg;
 	public float fadeSpeed = 1.5f;
+
+	void Start()
+	{
+		player = GameObject.FindWithTag ("Player");
+	}
 
 	// Use this for initialization
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (loading == false) 
+		if (player.GetComponent<PlayerController>().loading == false) 
 		{
-			loading = true;
+			player.GetComponent<PlayerController>().loading = true;
+			player.GetComponent<PlayerController> ().activeHint = true;
 			InvokeRepeating ("FadeToBlack",0.0f, 0.02f);
 			StartCoroutine ("LoadElevator");
 		}
@@ -30,6 +36,7 @@ public class LevelTransition : MonoBehaviour {
 	{
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.black, fadeSpeed * Time.deltaTime);
 		if (FadeImg.color.a == 1.0f) {
+			Debug.Log (FadeImg.color.a);
 			CancelInvoke ("FadeToBlack");
 		}
 	}
