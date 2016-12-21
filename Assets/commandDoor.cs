@@ -34,6 +34,12 @@ public class commandDoor : MonoBehaviour {
 
 			}
 		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
+				StartCoroutine ("commandText");
+
+			}
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -53,6 +59,20 @@ public class commandDoor : MonoBehaviour {
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+			pickupText.text = "Press 'E' to use";
+
+			if (other.name == "Stella") {
+				if (requireButtonPress) {
+					waitForPress = true;
+					return;
+				}
+
+				if (destroyWhenActivated) {
+					Destroy (gameObject);
+				}
+			}
+		}
+		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			pickupText.text = "Press 'E' to use";
 
 			if (other.name == "Stella") {
