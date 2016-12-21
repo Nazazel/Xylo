@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour {
 
         if (isAwake)
         {
-			if (Input.GetKey (KeyCode.Tab) && !activeHint && !loading) {
+			if (Input.GetKeyDown (KeyCode.Tab) && !activeHint && !loading) {
 				canMove = false;
 				activeHint = true;
 				FadeImg.color = new Color ();
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour {
 					playerAnimator.Play("SpaceStand");
 				}
 			} 
-			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading) {
+			else if (Input.GetKeyDown(KeyCode.Tab) && activeHint && !loading) {
 				canMove = true;
 				activeHint = false;
 				FadeImg.color = Color.clear;
