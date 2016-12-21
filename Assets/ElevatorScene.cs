@@ -8,11 +8,20 @@ public class ElevatorScene : MonoBehaviour {
 	public Image FadeImg;
 	public float fadeSpeed = 1.5f;
 	public GameObject player;
+	public bool transitionStarted = false;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag ("Player");
-		StartCoroutine ("transitionToLevel");
+		transitionStarted = false;
+	}
+
+	void Update()
+	{
+		if (!transitionStarted) {
+			StartCoroutine ("transitionToLevel");
+			transitionStarted = true;
+		}
 	}
 
 	void FadeToBlack()
