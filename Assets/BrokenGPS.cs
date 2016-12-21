@@ -44,7 +44,7 @@ public class BrokenGPS : MonoBehaviour {
 
 		if (player.GetComponent<PlayerController> ().currentObjective == 4 && GPSinteracted == false) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: I've got an omnicard! One more to go!";
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: No...this can't be happening! The damn thing is broken...what am I going to do? I can't fix the ship...I don't even know how ships work.\n\tI mean...the only option I have is to try to repair the communication terminal.But...what tools do I even need? Wasn't there some sort of repair manual that every ship is suppose to have?\n\tThink, Stella, think!\n\tYeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is suppose to be located in the engineering wing of every ship owned by NASA.\n\tI think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().commandCenter = true;
