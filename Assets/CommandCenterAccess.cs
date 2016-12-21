@@ -90,7 +90,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			SceneManager.LoadSceneAsync("Comms Center");
+			SceneManager.LoadSceneAsync("Command Center");
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
