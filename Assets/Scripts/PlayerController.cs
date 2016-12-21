@@ -819,7 +819,7 @@ public class PlayerController : MonoBehaviour {
 	public IEnumerator WakePlayer()
 	{
         playerAnimator.Play ("StellaWakingUp");
-		yield return new WaitForSeconds (4.5f);
+		yield return new WaitForSeconds (4.75f);
 		darkness.color = new Color(0,0,0,0);
 		glow.color = new Color(1,1,1,1);
 		hintBox.SetActive (true);
