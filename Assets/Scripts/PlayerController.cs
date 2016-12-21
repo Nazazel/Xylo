@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour {
 
     //Fading
 	public Image FadeImg;
+	public SpriteRenderer glow;
+	public SpriteRenderer darkness;
 	public Image AlarmUI;
 	public bool bounce;
 	public bool alarmIsStarted = false;
@@ -122,6 +124,9 @@ public class PlayerController : MonoBehaviour {
         gItemID = 0;
         currItem = null;
         inv = GameObject.Find("Inventory Slots");
+		glow = GameObject.Find ("Glowstick-Glow3").GetComponent<SpriteRenderer> ();
+		glow.color = new Color(0,0,0,0);
+		darkness = GameObject.Find("BlackBG").GetComponent<SpriteRenderer> ();
 		playerAnimator.Play ("StellaStand");
 		currentObjective = 0;
 		hintBox = GameObject.FindWithTag ("HintBox");
@@ -814,7 +819,9 @@ public class PlayerController : MonoBehaviour {
 	public IEnumerator WakePlayer()
 	{
         playerAnimator.Play ("StellaWakingUp");
-		yield return new WaitForSeconds (3.5f);
+		yield return new WaitForSeconds (4.5f);
+		darkness.color = new Color(0,0,0,0);
+		glow.color = new Color(1,1,1,1);
 		hintBox.SetActive (true);
 		setHintText ("Stella: Ugh... What's going on?");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
