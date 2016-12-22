@@ -27,7 +27,7 @@ public class ElevatorDoor : MonoBehaviour {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 10 && player.GetComponent<PlayerController>().loading == false) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 10 && player.GetComponent<PlayerController>().loading == false && SceneManager.GetActiveScene().name == "Engine Room") {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
