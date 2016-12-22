@@ -164,6 +164,8 @@ public class PlayerController : MonoBehaviour {
 			hintBox = GameObject.FindWithTag ("HintBox");
 			hintText = hintBox.GetComponentInChildren<Text> ();
 			hintBox.SetActive (false);
+			controlsImage = GameObject.Find ("ControlsImage").GetComponent<Image>();
+			controlsImage.color = Color.clear;
 		}
 
         if (isAwake)
