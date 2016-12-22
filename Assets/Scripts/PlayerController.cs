@@ -779,7 +779,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if (hasSuit && currentObjective == 6) {
 			CancelInvoke ("alarmOn");
-			if(AlarmUI == null)
+			if(AlarmUI != null)
 			{
 				AlarmUI.color = new Color (0, 0, 0, 0);
 			}
