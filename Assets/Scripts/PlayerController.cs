@@ -778,6 +778,11 @@ public class PlayerController : MonoBehaviour {
 			InvokeRepeating("alarmOn", 0.0f, 0.05f);
 		}
 		else if (hasSuit && currentObjective == 6) {
+			CancelInvoke ("alarmOn");
+			if(AlarmUI == null)
+			{
+				AlarmUI.color = new Color (0, 0, 0, 0);
+			}
 			currentObjective = 7;
 		}
 		else if (engineeringItems && currentObjective == 7) {
@@ -844,6 +849,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		AlarmUI = GameObject.Find ("Alarm").GetComponent<Image>();
 		if (AlarmUI == null) {
+			CancelInvoke("alarmOn");
 			return;
 		}
 		if (!bounce && AlarmUI.color.a < 0.5f) {
