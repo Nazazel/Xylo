@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour {
     public bool awakeSequenceStarted;
 	public bool loading;
 	public bool gameEnd;
+	public bool endSequenceStarted;
 
     //Items and inventory
     private bool groundItem;
@@ -102,6 +103,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+		gameEnd = false;
+		endSequenceStarted = false;
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
 		loading = false;
         isAlive = true;
@@ -156,6 +159,10 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
+		if (SceneManager.GetActiveScene ().name == "Credits") {
+			Destroy (GameObject.FindWithTag ("Full Player"));
+		}
+
 		if (hintBox == null) {
 			loading = false;
 			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
@@ -168,12 +175,20 @@ public class PlayerController : MonoBehaviour {
 			controlsImage.color = Color.clear;
 		}
 
-        if (isAwake)
+		if (gameEnd && !endSequenceStarted) {
+			endSequenceStarted = true;
+			canMove = false;
+			activeHint = true;
+			GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+			StartCoroutine ("endGame");
+		}
+
+		if (isAwake && !gameEnd)
         {
-			if (Input.GetKeyDown (KeyCode.Tab) && !activeHint && !loading) {
+			if (Input.GetKeyUp (KeyCode.Tab) && !activeHint && !loading) {
 				canMove = false;
 				activeHint = true;
-				FadeImg.color = new Color ();
+				FadeImg.color = new Color (1,1,1,0.5f);
 				controlsImage.color = Color.white;
 				rb.velocity = new Vector2(0, rb.velocity.y);
 				if (!hasSuit)
@@ -185,7 +200,7 @@ public class PlayerController : MonoBehaviour {
 					playerAnimator.Play("SpaceStand");
 				}
 			} 
-			else if (Input.GetKeyDown(KeyCode.Tab) && activeHint && !loading) {
+			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading) {
 				canMove = true;
 				activeHint = false;
 				FadeImg.color = Color.clear;
@@ -866,6 +881,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void FadeToBlack()
+	{
+		FadeImg.color = Color.Lerp (FadeImg.color, Color.black, fadeSpeed * Time.deltaTime);
+		if (FadeImg.color.a == 1.0f) {
+			CancelInvoke ("FadeToBlack");
+		}
+	}
+
 	public void FadeToClear()
 	{
         //Bug: this gets called again whenever Level One is entered
@@ -902,5 +925,137 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+	public IEnumerator endGame()
+	{
+		setHintText ("Stella: There! It should be fully operational now! Okay, I just sent out a signal.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Come on, come on...someone please pick it up...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Oh my God! Someone actually did! Oh thank God! Hello?! ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("This is Stella Kern reporting from the USS Ancora...Can anyone hear me? Hello?! Please someone...please answer...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Unknown Voice: usnf...hsgt nhane?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: H-huh? What...I...don't understand? Why the hell isn't the built-in interpreter working?!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("P-please, I'm just trying to get off this ship...I need help, please!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Unknown Voice: Jeohns, vaben dm doweuem and fear suits your kind well...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: Wait...the interpreter is working...wh-what did you just say? Who is this?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: I am Mustafal Zabra, Ruler of the ProtoXylons. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("I want to thank you for reaching out to my people. I've been eagerly awaiting your signal...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: Musta..fal? Please, I need your help! I-");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: Did you like it? Xylo, I mean.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: W-what?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: My planet. Did you like it, human?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: I don't understand...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: It's everything you humans need, yes? For your new planet?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: Y-yes...how-");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: But how unfortunate...you never made it to Xylo");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...never had the chance to selfishly exploit its resources");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...never had the chance to take advantage of those who reside there.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: Wait, what? We'd never do that! We're compassionate by nature, we'd-");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: Compassionate? You dare call yourself compassionate?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Where was that compassion when you humans waged war against my people, enslaved our women, murdered our children");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...all to look for new land to colonize and populate with your kind. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("You dare call your people compassionate when it was them who gutted our men and burned our villages?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("We welcomed your kind to our planets and cities...offered hospitality, food, drink and places to rest. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Then one night, I was awakened by the screams of my people and gazed in utter horror as I saw my towns in flames. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Your...compassionate people...destroyed so many lives. It took us months to drive them out of our planetary system.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: T-that can't be true...we'd never do anything like that!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: ...since then, we've isolated ourselves from others. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("We've learned from our mistakes and I am now ready to execute my plan...and it's all thanks to you, Stella Kern.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Stella: H-huh? W-what are you talking about?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Mustafal Zabra: Xylo's sole purpose was to lure in naive humans like you. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("I created Xylo to be the perfect paradise for your people");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("...and I only needed one human who was ignorant enough to take the bait. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("Now that we know exactly where you are, my people will arrive shortly to pay you a visit. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("We will use your ship's information to track down other humans and begin our universe-wide genocide of your species. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("None of this could have been done without you, my dear and thus, I sincerely thank you with every fiber in my body. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("I promise...your death won't be as painful as the others.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		InvokeRepeating ("FadeToBlack, 0.0f, 0.1f");
+		yield return new WaitForSeconds (5.0f);
+		SceneManager.LoadSceneAsync ("Credits");
+	}
 
 }

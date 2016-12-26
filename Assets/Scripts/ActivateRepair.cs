@@ -41,9 +41,14 @@ public class ActivateRepair : MonoBehaviour
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 11) {
-			if (waitForPress && Input.GetKey (KeyCode.R) && !isDown) {
+			if (waitForPress && Input.GetKey (KeyCode.R)) {
 				repairBar.GetComponent<Timer2> ().started = true;
 				isDown = true;
+				player.GetComponent<PlayerController> ().canMove = false;
+				player.GetComponent<PlayerController> ().activeHint = true;
+				player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+				player.GetComponent<PlayerController> ().glow.sortingOrder = 48;
+
 
 				if (destroyWhenActivated) {
 					Destroy (gameObject);
@@ -53,6 +58,10 @@ public class ActivateRepair : MonoBehaviour
 			} else {
 				repairBar.GetComponent<Timer2> ().started = false;
 				isDown = false;
+				player.GetComponent<PlayerController> ().canMove = false;
+				player.GetComponent<PlayerController> ().activeHint = true;
+				player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+				player.GetComponent<PlayerController> ().glow.sortingOrder = 60;
 			}
 		}
     }
