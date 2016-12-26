@@ -13,6 +13,7 @@ public class ActivateRepair : MonoBehaviour
     public GameObject player;
     public GameObject repairBar;
     public bool isDown;
+	public bool finish;
 
 
     // Use this for initialization
@@ -29,24 +30,22 @@ public class ActivateRepair : MonoBehaviour
     void Update()
     {
 		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
-			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false){
+			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
 				StartCoroutine ("commsConsole");
 
 			}
-		}
-		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
-			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false){
+		} else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
 				StartCoroutine ("commsConsole");
 
 			}
-		}
-		else if (player.GetComponent<PlayerController> ().currentObjective == 11) {
+		} else if (player.GetComponent<PlayerController> ().currentObjective == 11 && repairBar.GetComponent<Timer2> ().isDone == false) {
 			if (waitForPress && Input.GetKey (KeyCode.R)) {
 				repairBar.GetComponent<Timer2> ().started = true;
 				isDown = true;
 				player.GetComponent<PlayerController> ().canMove = false;
 				player.GetComponent<PlayerController> ().activeHint = true;
-				player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+				player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 				player.GetComponent<PlayerController> ().glow.sortingOrder = 48;
 
 
@@ -58,11 +57,16 @@ public class ActivateRepair : MonoBehaviour
 			} else {
 				repairBar.GetComponent<Timer2> ().started = false;
 				isDown = false;
-				player.GetComponent<PlayerController> ().canMove = false;
-				player.GetComponent<PlayerController> ().activeHint = true;
-				player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+				player.GetComponent<PlayerController> ().canMove = true;
+				player.GetComponent<PlayerController> ().activeHint = false;
+				player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
 				player.GetComponent<PlayerController> ().glow.sortingOrder = 60;
 			}
+		} 
+		else if (repairBar.GetComponent<Timer2> ().isDone == true && finish == false) {
+			pickupText.text = "";
+			finish = true;
+			Debug.Log("Done!");
 		}
     }
 
@@ -96,7 +100,7 @@ public class ActivateRepair : MonoBehaviour
 				}
 			}
 		}
-		if (player.GetComponent<PlayerController> ().currentObjective == 11) {
+		else if (player.GetComponent<PlayerController> ().currentObjective == 11) {
 			pickupText.text = "Hold 'R' to repair";
 
 			if (other.name == "Stella") {
@@ -111,6 +115,10 @@ public class ActivateRepair : MonoBehaviour
 				}
 			}
 		
+		}
+		else if (repairBar.GetComponent<Timer2> ().isDone == true) {
+			pickupText.text = "";
+			Debug.Log("Done!");
 		}
 
 

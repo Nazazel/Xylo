@@ -927,6 +927,7 @@ public class PlayerController : MonoBehaviour {
 
 	public IEnumerator endGame()
 	{
+		hintBox.SetActive (true);
 		setHintText ("Stella: There! It should be fully operational now! Okay, I just sent out a signal.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
@@ -1053,8 +1054,9 @@ public class PlayerController : MonoBehaviour {
 		setHintText ("I promise...your death won't be as painful as the others.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
+		hintBox.SetActive (false);
 		InvokeRepeating ("FadeToBlack", 0.0f, 0.1f);
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (8.0f);
 		SceneManager.LoadSceneAsync ("Credits");
 	}
 
