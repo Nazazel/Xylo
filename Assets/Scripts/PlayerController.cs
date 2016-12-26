@@ -1053,7 +1053,7 @@ public class PlayerController : MonoBehaviour {
 		setHintText ("I promise...your death won't be as painful as the others.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
-		InvokeRepeating ("FadeToBlack, 0.0f, 0.1f");
+		InvokeRepeating ("FadeToBlack", 0.0f, 0.1f);
 		yield return new WaitForSeconds (5.0f);
 		SceneManager.LoadSceneAsync ("Credits");
 	}
