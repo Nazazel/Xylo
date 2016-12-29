@@ -24,7 +24,7 @@ public class BrokenGPS : MonoBehaviour {
 	{
 		pickupText.text = "Press 'E' to use GPS Tracker";
 
-		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false) {
+		if (Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false) {
 				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
 				startGPSDialogue = true;
 				StartCoroutine ("GPSPick");
@@ -55,7 +55,7 @@ public class BrokenGPS : MonoBehaviour {
 			GPSinteracted = true;
 			StopCoroutine ("GPSPick");
 		} 
-		else if (GPSinteracted == true) {
+		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
