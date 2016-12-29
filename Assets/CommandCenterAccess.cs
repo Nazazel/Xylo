@@ -52,7 +52,7 @@ public class CommandCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
@@ -63,7 +63,7 @@ public class CommandCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 2) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
@@ -74,7 +74,7 @@ public class CommandCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 3) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
@@ -85,13 +85,13 @@ public class CommandCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Command Center");
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
@@ -102,8 +102,18 @@ public class CommandCenterAccess : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-			StopCoroutine("commsDoorOpen");
+			StopCoroutine("comDoorOpen");
 		}
-
+		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
+			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
+			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should head back to the communications room...)";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
+			player.GetComponent<PlayerController> ().activeHint = false;
+			player.GetComponent<PlayerController> ().canMove = true;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			StopCoroutine("comDoorOpen");
+		}
 	}
 }
