@@ -24,18 +24,36 @@ public class commandDoor : MonoBehaviour {
 	void Update () {
 		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false){
+				if (player.GetComponent<PlayerController> ().hasSuit == false) {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+				} 
+				else {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+				}
 				StartCoroutine ("commandText");
 
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
+				if (player.GetComponent<PlayerController> ().hasSuit == false) {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+				} 
+				else {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+				}
 				StartCoroutine ("commandText");
 
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
+				if (player.GetComponent<PlayerController> ().hasSuit == false) {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+				} 
+				else {
+					player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+				}
 				StartCoroutine ("commandText");
 
 			}

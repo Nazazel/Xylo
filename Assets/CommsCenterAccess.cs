@@ -20,7 +20,12 @@ public class CommsCenterAccess : MonoBehaviour {
 	void Update()
 	{
 		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && atDoor == true) {
-			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+			if (player.GetComponent<PlayerController> ().hasSuit == false) {
+				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+			} 
+			else {
+				player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+			}
 			StartCoroutine ("commsDoorOpen");
 		}
 	}

@@ -81,7 +81,12 @@ public class TextManager : MonoBehaviour
     {
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
-        player.GetComponent<PlayerController>().playerAnimator.Play("StellaStand");
+		if (player.GetComponent<PlayerController> ().hasSuit == false) {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+		} 
+		else {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+		}
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         textBox.SetActive(true);
         isActive = true;
