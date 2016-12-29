@@ -43,6 +43,7 @@ public class ActivateRepair : MonoBehaviour
 			if (waitForPress && Input.GetKey (KeyCode.R)) {
 				repairBar.GetComponent<Timer2> ().started = true;
 				isDown = true;
+				player.GetComponent<Animator> ().Play ("SpaceRepair");
 				player.GetComponent<PlayerController> ().canMove = false;
 				player.GetComponent<PlayerController> ().activeHint = true;
 				player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;

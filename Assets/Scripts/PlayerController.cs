@@ -155,15 +155,16 @@ public class PlayerController : MonoBehaviour {
 		InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
 
         tTime = 0;
+
 	}
 
 	void FixedUpdate ()
 	{
 		if (SceneManager.GetActiveScene ().name == "Credits") {
-			Destroy (GameObject.FindWithTag ("Full Player"));
+			DestroyImmediate (GameObject.FindWithTag ("Full Player"));
 		}
 
-		if (hintBox == null) {
+		if (hintBox == null && !gameEnd) {
 			loading = false;
 			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 			FadeImg.color = Color.black;
@@ -928,6 +929,7 @@ public class PlayerController : MonoBehaviour {
 	public IEnumerator endGame()
 	{
 		hintBox.SetActive (true);
+		playerAnimator.Play ("SpaceType");
 		setHintText ("Stella: There! It should be fully operational now! Okay, I just sent out a signal.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
