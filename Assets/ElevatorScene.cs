@@ -29,30 +29,35 @@ public class ElevatorScene : MonoBehaviour {
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.black, fadeSpeed * Time.deltaTime);
 		if (FadeImg.color.a == 1.0f) {
 			CancelInvoke ("FadeToBlack");
+			player.GetComponent<PlayerController> ().introDone = true;
 		}
 	}
 
 	public IEnumerator transitionToLevel()
 	{
-		yield return new WaitForSeconds (6.0f);
+		yield return new WaitForSeconds (8.0f);
 		if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
-			yield return new WaitForSeconds (6.0f);
+			yield return new WaitForSeconds (7.0f);
 			SceneManager.LoadSceneAsync("Engineering Wing");
 		} 
 		else if (player.GetComponent<PlayerController> ().currentObjective == 8) {
+			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
-			yield return new WaitForSeconds (6.0f);
+			yield return new WaitForSeconds (7.0f);
 			SceneManager.LoadSceneAsync("Medical Ward");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 9) {
+			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
-			yield return new WaitForSeconds (6.0f);
+			yield return new WaitForSeconds (7.0f);
 			SceneManager.LoadSceneAsync("Engine Room");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
+			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
-			yield return new WaitForSeconds (6.0f);
+			yield return new WaitForSeconds (7.0f);
 			SceneManager.LoadSceneAsync("Level One Clean");
 		}
 	}

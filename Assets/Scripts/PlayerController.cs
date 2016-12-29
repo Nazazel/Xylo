@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour {
 
     //Fading
 	public Image FadeImg;
+	public bool introDone;
 	public SpriteRenderer glow;
 	public SpriteRenderer darkness;
 	public Image AlarmUI;
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+		introDone = false;
 		gameEnd = false;
 		endSequenceStarted = false;
 		GameObject.DontDestroyOnLoad (GameObject.FindWithTag("Full Player"));
@@ -186,7 +188,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (isAwake && !gameEnd)
         {
-			if (Input.GetKeyUp (KeyCode.Tab) && !activeHint && !loading) {
+			if (Input.GetKeyUp (KeyCode.Tab) && !activeHint && !loading && introDone) {
 				canMove = false;
 				activeHint = true;
 				FadeImg.color = new Color (1,1,1,0.5f);
@@ -201,7 +203,7 @@ public class PlayerController : MonoBehaviour {
 					playerAnimator.Play("SpaceStand");
 				}
 			} 
-			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading) {
+			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading && introDone) {
 				canMove = true;
 				activeHint = false;
 				FadeImg.color = Color.clear;
@@ -894,8 +896,9 @@ public class PlayerController : MonoBehaviour {
 	{
         //Bug: this gets called again whenever Level One is entered
 		FadeImg.color = Color.Lerp (FadeImg.color, Color.clear, fadeSpeed * Time.deltaTime);
-		if (FadeImg.color.a < 0.15f) {
+		if (FadeImg.color.a < 0.2f) {
 			CancelInvoke ("FadeToClear");
+			introDone = true;
 			FadeImg.color = Color.clear;
 			Debug.Log (FadeImg.color.a);
 			activeHint = false;

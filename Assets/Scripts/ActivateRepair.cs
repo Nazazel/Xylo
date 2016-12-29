@@ -8,6 +8,7 @@ public class ActivateRepair : MonoBehaviour
     private bool waitForPress;
 
     public bool destroyWhenActivated;
+	public Animator terminalAnimator;
 
     public Text pickupText;
     public GameObject player;
@@ -19,6 +20,7 @@ public class ActivateRepair : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		terminalAnimator = gameObject.GetComponent<Animator> ();
         pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
         pickupText.text = "";
         player = GameObject.FindWithTag("Player");
@@ -66,7 +68,7 @@ public class ActivateRepair : MonoBehaviour
 		} 
 		else if (repairBar.GetComponent<Timer2> ().isDone == true && finish == false) {
 			pickupText.text = "";
-			finish = true;
+			terminalAnimator.Play ("Fixed");
 			Debug.Log("Done!");
 		}
     }
@@ -119,6 +121,7 @@ public class ActivateRepair : MonoBehaviour
 		}
 		else if (repairBar.GetComponent<Timer2> ().isDone == true) {
 			pickupText.text = "";
+
 			Debug.Log("Done!");
 		}
 

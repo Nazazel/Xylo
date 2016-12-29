@@ -21,6 +21,7 @@ public class LevelTransition : MonoBehaviour {
 		{
 			player.GetComponent<PlayerController>().loading = true;
 			player.GetComponent<PlayerController> ().activeHint = true;
+			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack",0.0f, 0.02f);
 			StartCoroutine ("LoadElevator");
 		}
@@ -28,7 +29,7 @@ public class LevelTransition : MonoBehaviour {
 
 	IEnumerator LoadElevator()
 	{
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (7.0f);
 		SceneManager.LoadSceneAsync ("Small Elevator Scene");
 	}
 
@@ -38,6 +39,7 @@ public class LevelTransition : MonoBehaviour {
 		if (FadeImg.color.a == 1.0f) {
 			Debug.Log (FadeImg.color.a);
 			CancelInvoke ("FadeToBlack");
+			player.GetComponent<PlayerController> ().introDone = true;
 		}
 	}
 }
