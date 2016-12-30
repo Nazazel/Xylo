@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour {
     private bool hasUpL = false;
     private bool hasDownL = false;
     private float[] ladderBounds;
-    private readonly float ON_OFF_VARIANCE = 0.16f;
+    private readonly float ON_OFF_VARIANCE_TOP = 0.16f;
+    private readonly float ON_OFF_VARIANCE_BOT = 0.6f;
     private float climbSpeed;
     private bool lCoolReady = true;
     private readonly float COOL_TIME = 0.4f;
+    private readonly float MAX_SNAP_DISTANCE = 0.36f; //So that the player snaps to the center of the ladder, but a jump that is too large seems unnatural
 
     //Appearance, death, respawning, other miscellaneous player variables
     public bool hasSuit;
@@ -528,10 +530,11 @@ public class PlayerController : MonoBehaviour {
                 }
 
                 //Ladder code for getting on ladder
-                else if (hasLadder && !onLadder && lCoolReady && finishedJump)
+                else if (hasLadder && !onLadder && lCoolReady && System.Math.Abs(gameObject.transform.position.x-ladderBounds[2])<MAX_SNAP_DISTANCE)
                 {
                     onLadder = true;
                     gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    gameObject.transform.position = new Vector2(ladderBounds[2],gameObject.transform.position.y);
                     rb.velocity = new Vector2(0, 0);
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                     lCoolReady = false;
@@ -608,9 +611,16 @@ public class PlayerController : MonoBehaviour {
     {
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        if(onLadder)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            onLadder = false;
+            hasLadder = false;
+        }
         isAlive = false;
         canMove = false;
-		if (!hasSuit) {
+        if (!hasSuit) {
 			if (suffocated) {
 				playerAnimator.Play ("StellaSuffocation");
 			} 
@@ -691,7 +701,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool lCoolDiff()
     {
-        if (System.Math.Abs(gameObject.transform.position.y - ladderBounds[1]) < ON_OFF_VARIANCE || System.Math.Abs(gameObject.transform.position.y - ladderBounds[0]) < ON_OFF_VARIANCE)
+        if (System.Math.Abs(gameObject.transform.position.y - ladderBounds[1]) < ON_OFF_VARIANCE_TOP || System.Math.Abs(gameObject.transform.position.y - ladderBounds[0]) < ON_OFF_VARIANCE_BOT || gameObject.transform.position.y < ladderBounds[0])
             return true;
         else return false;
     }

@@ -5,7 +5,7 @@ public class Ladder : MonoBehaviour {
 
     private bool pClimb = false;
     private int ladderType;
-    private float[] lBounds;
+    private float[] lBounds; //0 is lower bound, 1 is upper, 2 is the x position of the ladder
     private GameObject player;
 
 	void Start () {
@@ -14,7 +14,8 @@ public class Ladder : MonoBehaviour {
         else if (gameObject.CompareTag("LadderTop")) ladderType = 1;
         else ladderType = -1;
         gameObject.name = ladderType+"";
-        lBounds = new float[2];
+        lBounds = new float[3];
+        lBounds[2] = gameObject.transform.position.x;
         Invoke("getLBounds",0.5f);
 
     }
