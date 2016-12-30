@@ -16,14 +16,14 @@ public class ItemPickupText : MonoBehaviour {
 
 	void Update()
 	{
-		if (waitForPress && Input.GetKeyDown (KeyCode.E)) {
+		if (waitForPress && Input.GetKey (KeyCode.E)) {
 			pickupText.text = "";
 			DestroyImmediate (gameObject);
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		pickupText.text = "Press 'E' to pick up " + ToString();
+		pickupText.text = "Press 'E' to pick up " + gameObject.name;
 
 		if (other.name == "Stella") {
 			if (requireButtonPress) {
