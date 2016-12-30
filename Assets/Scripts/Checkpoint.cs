@@ -5,7 +5,7 @@ public class Checkpoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 	
 	void Update () {
@@ -17,6 +17,7 @@ public class Checkpoint : MonoBehaviour {
         if (o.gameObject.CompareTag("Player"))
         {
             o.gameObject.SendMessage("updateSpawn", gameObject.transform.position);
+			Destroy (gameObject);
         }
     }
 
