@@ -21,7 +21,7 @@ public class ManualPickup : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D col)
 	{
 		if (manualStart == false) {
-			pickupText.text = "Press 'E' to pick up";
+			pickupText.text = "Press 'E' to Pick Up Manual";
 		} 
 		else {
 			pickupText.text = "";
@@ -52,9 +52,11 @@ public class ManualPickup : MonoBehaviour {
 		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().hintText.text = "I need to find a Power Drill, Wrench, Hammer, Switchblade, Saw, Blow Torch, and Wire Cutters to repair the Communications Center!";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().alarmIsStarted = true;
 		player.GetComponent<PlayerController> ().hintText.text = "Oh no! Oxygen levels are dropping, I need to find a spacesuit!";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().hintBox.SetActive (false);
 		GameObject.Find ("Timer").GetComponent<Timer> ().started = true;
 		player.GetComponent<PlayerController> ().activeHint = false;

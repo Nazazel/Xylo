@@ -23,7 +23,7 @@ public class ItemPickupText : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		pickupText.text = "Press 'E' to pick up " + gameObject.name;
+		pickupText.text = "Press 'E' to Pick Up " + gameObject.name;
 
 		if (other.name == "Stella") {
 			if (requireButtonPress) {

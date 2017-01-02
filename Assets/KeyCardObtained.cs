@@ -21,7 +21,7 @@ public class KeyCardObtained : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D col)
 	{
 		if (player.GetComponent<PlayerController> ().currentObjective == 2 && startKeyDialogue == false) {
-			pickupText.text = "Press 'E' to pick up";
+			pickupText.text = "Press 'E' to Pick Up Keycard";
 
 			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true) {
 				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
