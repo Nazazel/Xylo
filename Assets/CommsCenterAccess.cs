@@ -32,7 +32,7 @@ public class CommsCenterAccess : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		pickupText.text = "Press 'E' to Open Door";
+		pickupText.text = "Press 'E' to Enter";
 		atDoor = true;
 	}
 

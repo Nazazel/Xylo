@@ -51,7 +51,7 @@ public class commsDoor : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
-			pickupText.text = "Press 'E' to use";
+			pickupText.text = "Press 'E' to Exit";
 
 			if (other.name == "Stella") {
 				if (requireButtonPress) {
@@ -65,7 +65,7 @@ public class commsDoor : MonoBehaviour {
 			}
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
-			pickupText.text = "Press 'E' to use";
+			pickupText.text = "Press 'E' to Exit";
 
 			if (other.name == "Stella") {
 				if (requireButtonPress) {
