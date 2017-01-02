@@ -19,11 +19,11 @@ public class ElevatorDoor : MonoBehaviour {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 8 && player.GetComponent<PlayerController>().loading == false) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 8 && player.GetComponent<PlayerController>().loading == false && SceneManager.GetActiveScene().name == "Engineering Wing") {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
-		else if(player.GetComponent<PlayerController> ().currentObjective == 9 && player.GetComponent<PlayerController>().loading == false) {
+		else if(player.GetComponent<PlayerController> ().currentObjective == 9 && player.GetComponent<PlayerController>().loading == false && SceneManager.GetActiveScene().name == "Medical Ward") {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}
