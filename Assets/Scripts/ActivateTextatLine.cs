@@ -57,7 +57,7 @@ public class ActivateTextatLine : MonoBehaviour
 
         else
         {
-            pickupText.text = "Press 'E' to pick up";
+            pickupText.text = "Press 'E' to Read";
         }
 	
 

@@ -54,7 +54,7 @@ public class ManualPickup : MonoBehaviour {
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		player.GetComponent<PlayerController> ().alarmIsStarted = true;
 		player.GetComponent<PlayerController> ().hintText.text = "Oh no! Oxygen levels are dropping, I need to find a spacesuit!";
-		yield return new WaitForSeconds (7.0f);
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		player.GetComponent<PlayerController> ().hintBox.SetActive (false);
 		GameObject.Find ("Timer").GetComponent<Timer> ().started = true;
 		player.GetComponent<PlayerController> ().activeHint = false;

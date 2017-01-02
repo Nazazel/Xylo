@@ -743,7 +743,8 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = "Stella: (...The ship's oxygen system is failing! I need to find a spacesuit before oxygen levels drop to zero...)";
 			}
 			else if (currentObjective == 7) {
-				inventoryString = "Stella: (...I need to find the following item(s) in the Engineering Wing...) \n";
+				hintText.text = "Stella: (...I need to find the following item(s) in the Engineering Wing...) \n";
+				yield return new WaitForSeconds (3.0f);
 				for (int i = 0; i < 2; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";
@@ -752,7 +753,8 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = inventoryString;
 			}
 			else if (currentObjective == 8) {
-				inventoryString = "Stella: (...I need to find the following item(s) in the Medical Ward...) \n";
+				hintText.text = "Stella: (...I need to find the following item(s) in the Medical Ward...) \n";
+				yield return new WaitForSeconds (3.0f);
 				for (int i = 2; i < 5; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";
@@ -761,7 +763,8 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = inventoryString;
 			}
 			else if (currentObjective == 9) {
-				inventoryString = "Stella: (...I need to find the following item(s) in the Engine Room...) \n";
+				hintText.text = "Stella: (...I need to find the following item(s) in the Engine Room...) \n";
+				yield return new WaitForSeconds (3.0f);
 				for (int i = 5; i < 8; i++) {
 					if (obtainedObj [i] != "") {
 						inventoryString += "\t(" + obtainedObj[i] + ")\n";
