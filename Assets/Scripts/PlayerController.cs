@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour {
 				controlsImage.color = Color.clear;
 			}
 
-            if (Input.GetKeyDown(KeyCode.H) && !activeHint)
+			if (Input.GetKeyDown(KeyCode.H) && !activeHint && !onLadder)
             {
 				if (playerAnimator.speed == 0) {
 					playerAnimator.speed = 1;
