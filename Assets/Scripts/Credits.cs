@@ -89,6 +89,10 @@ public class Credits : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         theText.text = "Audio & Design:\n\nNazely Hartoonian\n\nJoshua Rutledge";
         yield return new WaitForSeconds(3.0f);
+        theText.text = "Unity Asset Packs Used:\n\n2D Survival Pack 115 Pixel Items by Mokawyler\n\n2D Sci - fi Art Pack by Ryukin Studio";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "All audio downloaded from Freesound.org";
+        yield return new WaitForSeconds(3.0f);
         theText.text = " ";
         FadeImg = GameObject.Find("Fade").GetComponent<Image>();
         InvokeRepeating("FadeToBlack", 0.0f, 0.1f);
