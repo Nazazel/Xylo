@@ -305,6 +305,7 @@ public class PlayerController : MonoBehaviour {
                             rb.velocity = new Vector2(0, rb.velocity.y);
                         }
                         playerRenderer.flipX = true;
+						glow.flipX = true;
                         moving = true;
                         if (sprint)
                         {
@@ -370,6 +371,7 @@ public class PlayerController : MonoBehaviour {
                             rb.velocity = new Vector2(0, rb.velocity.y);
                         }
                         playerRenderer.flipX = false;
+						glow.flipX = false;
                         moving = true;
                         if (sprint)
                         {
