@@ -64,10 +64,11 @@ public class BrokenGPS : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+			startGPSDialogue = false;
 			GPSinteracted = true;
 			StopCoroutine ("GPSPick");
 		} 
-		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+		else {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
