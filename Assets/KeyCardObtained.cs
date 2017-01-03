@@ -44,7 +44,7 @@ public class KeyCardObtained : MonoBehaviour {
 		if (player.GetComponent<PlayerController> ().numKeys == 0) {
 			player.GetComponent<PlayerController> ().numKeys += 1;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: I've got an omnicard! One more to go!";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: I've got an omnicard! One more to go!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			pickupText.text = "";
@@ -60,7 +60,7 @@ public class KeyCardObtained : MonoBehaviour {
 			player.GetComponent<PlayerController> ().numKeys += 1;
 			player.GetComponent<PlayerController> ().keyCards = true;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: Great! Now that I have both omnicards I can get into the communications room!";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Great! Now that I have both omnicards I can get into the communications room!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			pickupText.text = "";

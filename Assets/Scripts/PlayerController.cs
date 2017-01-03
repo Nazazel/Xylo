@@ -724,29 +724,29 @@ public class PlayerController : MonoBehaviour {
 			canMove = false;
 			hintBox.SetActive (true);
 			if (currentObjective == 0) {
-				hintText.text = "Stella: (...I need to find my crew members and check if they're alright...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to find my crew members and check if they're alright...)";
 			}
 			else if (currentObjective == 1) {
-				hintText.text = "Stella: (...I need to get into the communications room to send out an SOS signal...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to get into the communications room to send out an SOS signal...)";
 			}
 			else if (currentObjective == 2) {
-				hintText.text = "Stella: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
 			}
 			else if (currentObjective == 3) {
-				hintText.text = "Stella: (...I should go into the communications room and send out an SOS signal before I do anything else...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I should go into the communications room and send out an SOS signal before I do anything else...)";
 			}
 			else if (currentObjective == 4) {
-				hintText.text = "Stella: (...I should try to send my location out using the GPS Tracker in the command center...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I should try to send my location out using the GPS Tracker in the command center...)";
 			}
 			else if (currentObjective == 5) {
-				hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			}
 			else if (currentObjective == 6) {
-				hintText.text = "Stella: (...The ship's oxygen system is failing! I need to find a spacesuit before oxygen levels drop to zero...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...The ship's oxygen system is failing! I need to find a spacesuit before oxygen levels drop to zero...)";
 			}
 			else if (currentObjective == 7) {
 				inventoryString = "";
-				hintText.text = "Stella: (...I need to find the following item(s) in the Engineering Wing...) \n";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to find the following item(s) in the Engineering Wing...) \n";
 				yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 				yield return new WaitForSeconds (0.2f);
 				for (int i = 0; i < 2; i++) {
@@ -759,7 +759,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (currentObjective == 8) {
 				inventoryString = "";
-				hintText.text = "Stella: (...I need to find the following item(s) in the Medical Ward...) \n";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to find the following item(s) in the Medical Ward...) \n";
 				yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 				yield return new WaitForSeconds (0.2f);
 				for (int i = 2; i < 5; i++) {
@@ -771,7 +771,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (currentObjective == 9) {
 				inventoryString = "";
-				hintText.text = "Stella: (...I need to find the following item(s) in the Engine Room...) \n";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I need to find the following item(s) in the Engine Room...) \n";
 				yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 				yield return new WaitForSeconds (0.2f);
 				for (int i = 5; i < 8; i++) {
@@ -782,10 +782,10 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = inventoryString;
 			}
 			else if (currentObjective == 10) {
-				hintText.text = "Stella: (...Now that I have all the repair tools, I can head back to the communications room back on the first floor...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...Now that I have all the repair tools, I can head back to the communications room back on the first floor...)";
 			}
 			else if (currentObjective == 11) {
-				hintText.text = "Stella: (...I can finally repair the communications terminal and send out an SOS signal...)";
+				hintText.text = "<color=fuchsia>Stella</color>: (...I can finally repair the communications terminal and send out an SOS signal...)";
 			}
 
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
@@ -870,10 +870,19 @@ public class PlayerController : MonoBehaviour {
 		darkness.color = new Color(0,0,0,0);
 		glow.color = new Color(1,1,1,1);
 		hintBox.SetActive (true);
-		setHintText ("Stella: Ugh... What's going on?");
+		setHintText ("<color=fuchsia>Stella</color>: Ugh...what happened? Did...we crash? ");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
-		setHintText("Stella: The ship! My crew members! I need to find them!");
+		setHintText ("<color=fuchsia>Stella</color>: We were on our way to that planetary system, Xylo. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: Yeah, yeah that's right...but what the hell happened?");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: I think I'm alright, no bruises or broken bones. ");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: I need to see if the others are okay before I do anything else.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		hintBox.SetActive (false);
 		isAwake = true;

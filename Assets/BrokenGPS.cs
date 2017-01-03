@@ -44,19 +44,19 @@ public class BrokenGPS : MonoBehaviour {
 
 		if (player.GetComponent<PlayerController> ().currentObjective == 4 && GPSinteracted == false) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: No...this can't be happening! The damn thing is broken...what am I going to do? I can't fix the ship...";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: No...this can't be happening! The damn thing is broken...what am I going to do? I can't fix the ship...";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "I don't even know how ships work.\nI mean...the only option I have is to try to repair the communication terminal.But...what tools do I even need?";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: I don't even know how ships work.\nI mean...the only option I have is to try to repair the communication terminal.But...what tools do I even need?";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "Wasn't there some sort of repair manual that every ship is suppose to have?\nThink, Stella, think!";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wasn't there some sort of repair manual that every ship is suppose to have?\nThink, Stella, think!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is suppose to be located in the engineering wing of every ship owned by NASA.";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is suppose to be located in the engineering wing of every ship owned by NASA.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "I think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: I think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().commandCenter = true;
@@ -70,7 +70,7 @@ public class BrokenGPS : MonoBehaviour {
 		} 
 		else {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);

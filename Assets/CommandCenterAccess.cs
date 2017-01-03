@@ -50,7 +50,7 @@ public class CommandCenterAccess : MonoBehaviour {
 
 		if (player.GetComponent<PlayerController> ().currentObjective == 0) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to find my crew members and check if they're alright...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I need to find my crew members and check if they're alright...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -61,7 +61,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to get into the communications room to send out an SOS signal...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I need to get into the communications room to send out an SOS signal...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -72,7 +72,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 2) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I need to search the rooms for two omnicards in order to get into the communications room...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -83,7 +83,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 3) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should go into the communications room and send out an SOS signal before I do anything else...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I should go into the communications room and send out an SOS signal before I do anything else...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -100,7 +100,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I need the repair manual located in the engineering wing in order to find the tools I need...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -111,7 +111,7 @@ public class CommandCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should head back to the communications room...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I should head back to the communications room...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);

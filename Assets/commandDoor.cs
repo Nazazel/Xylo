@@ -122,7 +122,7 @@ public class commandDoor : MonoBehaviour {
 			player.GetComponent<PlayerController> ().canMove = false;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should try to send my location out using the GPS Tracker in this room...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I should try to send my location out using the GPS Tracker in this room...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);

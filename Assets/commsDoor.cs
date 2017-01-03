@@ -96,7 +96,7 @@ public class commsDoor : MonoBehaviour {
 			player.GetComponent<PlayerController> ().canMove = false;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should send out an SOS signal before I do anything else...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I should send out an SOS signal before I do anything else...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
@@ -113,7 +113,7 @@ public class commsDoor : MonoBehaviour {
 			player.GetComponent<PlayerController> ().canMove = false;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "Stella: (...I should repair the communications terminal and send out an SOS signal...)";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: (...I should repair the communications terminal and send out an SOS signal...)";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (false);
