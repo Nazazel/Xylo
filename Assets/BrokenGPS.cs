@@ -77,6 +77,7 @@ public class BrokenGPS : MonoBehaviour {
 			player.GetComponent<PlayerController> ().activeHint = false;
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+			startGPSDialogue = false;
 			StopCoroutine ("GPSPick");
 		}
 
