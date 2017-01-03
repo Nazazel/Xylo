@@ -76,6 +76,7 @@ public class ActivateTextatLine : MonoBehaviour
 
             if (destroyWhenActivated)
             {
+				pickupText.text = "";
                 Destroy(gameObject);
             }
         }
