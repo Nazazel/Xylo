@@ -162,6 +162,29 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void Update()
+	{
+		if (isAwake && !gameEnd) {
+			if (Input.GetKeyUp (KeyCode.Tab) && !activeHint && !loading && introDone) {
+				canMove = false;
+				activeHint = true;
+				FadeImg.color = new Color (1, 1, 1, 0.5f);
+				controlsImage.color = Color.white;
+				rb.velocity = new Vector2 (0, rb.velocity.y);
+				if (!hasSuit) {
+					playerAnimator.Play ("StellaStand");
+				} else {
+					playerAnimator.Play ("SpaceStand");
+				}
+			} else if (Input.GetKeyUp (KeyCode.Tab) && activeHint && !loading && introDone) {
+				canMove = true;
+				activeHint = false;
+				FadeImg.color = Color.clear;
+				controlsImage.color = Color.clear;
+			}
+		}
+	}
+
 	void FixedUpdate ()
 	{
 		if (SceneManager.GetActiveScene ().name == "Credits") {
@@ -190,27 +213,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (isAwake && !gameEnd)
         {
-			if (Input.GetKeyUp (KeyCode.Tab) && !activeHint && !loading && introDone) {
-				canMove = false;
-				activeHint = true;
-				FadeImg.color = new Color (1,1,1,0.5f);
-				controlsImage.color = Color.white;
-				rb.velocity = new Vector2(0, rb.velocity.y);
-				if (!hasSuit)
-				{
-					playerAnimator.Play("StellaStand");
-				}
-				else
-				{
-					playerAnimator.Play("SpaceStand");
-				}
-			} 
-			else if (Input.GetKeyUp(KeyCode.Tab) && activeHint && !loading && introDone) {
-				canMove = true;
-				activeHint = false;
-				FadeImg.color = Color.clear;
-				controlsImage.color = Color.clear;
-			}
 
 			if (Input.GetKeyDown(KeyCode.H) && !activeHint && !onLadder)
             {
@@ -818,11 +820,7 @@ public class PlayerController : MonoBehaviour {
 			InvokeRepeating("alarmOn", 0.0f, 0.05f);
 		}
 		else if (hasSuit && currentObjective == 6) {
-			CancelInvoke ("alarmOn");
-			if(AlarmUI != null)
-			{
-				AlarmUI.color = new Color (0, 0, 0, 0);
-			}
+			StartCoroutine("AlarmOffSequence");
 			currentObjective = 7;
 		}
 		else if (engineeringItems && currentObjective == 7) {
@@ -1106,6 +1104,30 @@ public class PlayerController : MonoBehaviour {
 		InvokeRepeating ("FadeToBlack", 0.0f, 0.1f);
 		yield return new WaitForSeconds (8.0f);
 		SceneManager.LoadSceneAsync ("Credits");
+	}
+
+	public IEnumerator AlarmOffSequence()
+	{
+		yield return new WaitForSeconds (3.0f);
+		CancelInvoke ("alarmOn");
+		if(AlarmUI != null)
+		{
+			AlarmUI.color = new Color (0, 0, 0, 0);
+		}
+		canMove = false;
+		playerAnimator.Play("SpaceStand");
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		hintBox.SetActive (true);
+		setHintText ("<color=yellow>Loudspeaker</color>: SYSTEM MALFUNCTION. CRITICAL POWER FAILU-...");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: That doesn't sound good. I should get moving.");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		hintBox.SetActive (false);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		canMove = true;
+
 	}
 
 }
