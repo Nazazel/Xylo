@@ -271,6 +271,7 @@ public class PlayerController : MonoBehaviour {
             //Ladder management code
             if (onLadder)
             {
+				glow.sortingOrder = 48;
                 if (gameObject.transform.position.y > ladderBounds[0])
                     hasDownL = true;
                 else hasDownL = false;
@@ -282,6 +283,7 @@ public class PlayerController : MonoBehaviour {
             //Movement
             if (!onLadder)
             {
+				glow.sortingOrder = 60;
 				playerAnimator.speed = 1;
 
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
