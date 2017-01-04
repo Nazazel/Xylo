@@ -963,10 +963,15 @@ public class PlayerController : MonoBehaviour {
 	public IEnumerator endGame()
 	{
 		hintBox.SetActive (true);
-		playerAnimator.Play ("SpaceType");
+		playerAnimator.Play ("StellaLook");
 		setHintText ("<color=fuchsia>Stella</color>: There! It should be fully operational now!");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (0.5f);
+		hintBox.SetActive (false);
+		playerAnimator.Play ("SpaceType");
+		yield return new WaitForSeconds (3.0f);
+		hintBox.SetActive (true);
+		playerAnimator.Play ("StellaLook");
 		setHintText ("<color=fuchsia>Stella</color>: Okay, I just sent out a signal.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
@@ -1093,6 +1098,10 @@ public class PlayerController : MonoBehaviour {
 		setHintText ("<color=red>Mustafal Zabra</color>: I promise...your death won't be as painful as the others.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
+		playerAnimator.Play ("StellaKneel");
+		yield return new WaitForSeconds (0.5f);
+		playerAnimator.Play ("StellaCry");
+		yield return new WaitForSeconds (0.5f);
 		hintBox.SetActive (false);
 		InvokeRepeating ("FadeToBlack", 0.0f, 0.1f);
 		yield return new WaitForSeconds (8.0f);
