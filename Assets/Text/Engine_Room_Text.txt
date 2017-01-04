@@ -1,4 +1,4 @@
-Stella: ...it's empty.
+<color=fuchsia>Stella</color>: ...it's empty.
 
 (seems to be a torn page. The bottom reads "Encyclopedia of All Known Species")
 ...the Katibisk are a recently discovered group known to have originated from the eastern side of the universe, though specifics are unknown.

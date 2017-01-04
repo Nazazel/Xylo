@@ -836,6 +836,7 @@ public class PlayerController : MonoBehaviour {
 			currentObjective = 9;
 		}
 		else if (engineItems && currentObjective == 9) {
+			StartCoroutine ("allItems");
 			currentObjective = 10;
 		}
 		else if (commsCenterFinal && currentObjective == 10) {
@@ -1123,7 +1124,6 @@ public class PlayerController : MonoBehaviour {
 		activeHint = true;
 		canMove = false;
 		playerAnimator.Play("SpaceStand");
-		playerAnimator.
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		hintBox.SetActive (true);
 		setHintText ("<color=yellow>Loudspeaker</color>: SYSTEM MALFUNCTION. CRITICAL POWER FAILU-...");
@@ -1135,7 +1135,27 @@ public class PlayerController : MonoBehaviour {
 		hintBox.SetActive (false);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		canMove = true;
+		activeHint = false;
 
+	}
+
+	public IEnumerator allItems()
+	{
+		activeHint = true;
+		canMove = false;
+		playerAnimator.Play("SpaceStand");
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		hintBox.SetActive (true);
+		setHintText ("<color=fuchsia>Stella</color>: That's it. That's all the tools I need. I actually have them all!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: Now I can finally go back to the Communications room on the first floor and fix that broken terminal.\n I can actually signal for help!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		hintBox.SetActive (false);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		canMove = true;
+		activeHint = false;
 	}
 
 }
