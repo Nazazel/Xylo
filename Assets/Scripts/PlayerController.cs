@@ -964,7 +964,10 @@ public class PlayerController : MonoBehaviour {
 	{
 		hintBox.SetActive (true);
 		playerAnimator.Play ("SpaceType");
-		setHintText ("<color=fuchsia>Stella</color>: There! It should be fully operational now! Okay, I just sent out a signal.");
+		setHintText ("<color=fuchsia>Stella</color>: There! It should be fully operational now!");
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.2f);
+		setHintText ("<color=fuchsia>Stella</color>: Okay, I just sent out a signal.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		setHintText ("<color=fuchsia>Stella</color>: ...");
@@ -976,7 +979,7 @@ public class PlayerController : MonoBehaviour {
 		setHintText ("<color=fuchsia>Stella</color>: ...");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
-		setHintText ("<color=fuchsia>Stella</color>: Oh my God! Someone actually did! Oh thank God! Hello?! ");
+		setHintText ("<color=fuchsia>Stella</color>: Oh my God! Someone actually did! Hello? Hello?!");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		setHintText ("<color=fuchsia>Stella</color>: This is Stella Kern reporting from the USS Ancora...Can anyone hear me? Hello?! Please someone...please answer...");

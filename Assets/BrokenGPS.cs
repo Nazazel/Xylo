@@ -50,10 +50,10 @@ public class BrokenGPS : MonoBehaviour {
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: I don't even know how ships work.\nI mean...the only option I have is to try to repair the communication terminal.But...what tools do I even need?";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wasn't there some sort of repair manual that every ship is suppose to have?\nThink, Stella, think!";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wasn't there some sort of repair manual that every ship is supposed to have?\nThink, Stella, think!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
-			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is suppose to be located in the engineering wing of every ship owned by NASA.";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is supposed to be located in the engineering wing of every ship owned by NASA.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: I think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.";

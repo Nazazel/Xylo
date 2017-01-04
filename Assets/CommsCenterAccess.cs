@@ -61,7 +61,10 @@ public class CommsCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 1) {
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
-			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Damn it! It's locked!\n\tRight, now I remember...the door won't open under emergency lockdown unless I have two omnicards...\n\tI need to search the rooms.";
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Damn it! It's locked!";
+			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Right, now I remember...the door won't open under emergency lockdown unless I have two omnicards...\n\tI need to search the rooms.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
 			player.GetComponent<PlayerController> ().commsCenterInit = true;
