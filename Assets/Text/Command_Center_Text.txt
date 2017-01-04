@@ -1,17 +1,17 @@
-Note 1: (seems to be a note left by the Captain) The crew has been concerned about the general stablility of the Ancora. 
-	Stella came up to me this morning informing me that we've been having issues with our Oxygen levels in the engineering wing.
-	I'm scheduled to have a meeting with the maintenance council in a week.
-	Hopefully we can convince them to decommission this ship.
-	The spacecraft has had numerous issues from electrical failures to flactuating oxygen levels. 
-	I can't put my crew at risk any longer; it's time for the Ancora to retire.
-	-Capt. Donovan (12/02)
+(seems to be a note left by the Captain) The crew has been concerned about the general stability of the Ancora. 
+Stella came up to me this morning informing me that we've been having issues with our oxygen levels in the engineering wing.
+I'm scheduled to have a meeting with the maintenance council in a week.
+Hopefully, we can convince them to decommission this ship.
+The spacecraft has had numerous issues from electrical failures to fluctuating oxygen levels. 
+I can't put my crew at risk any longer; it's time for the Ancora to retire.
+-Capt. Donovan (12/02)
 
 Stella: Not that way...
 
 Stella: Not that way...
 
 Stella: No...this can't be happening! The damn thing is broken...what am I going to do? I can't fix the ship...I don't even know how ships work.
-	I mean...the only option I have is to try to repair the communication terminal.But...what tools do I even need? Wasn't there some sort of repair manual that every ship is suppose to have?
-	Think, Stella, think!
-	Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is suppose to be located in the engineering wing of every ship owned by NASA.
-	I think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.
+I mean...the only option I have is to try to repair the communication terminal. But...what tools do I even need? Wasn't there some sort of repair manual that every ship is supposed to have?
+Think, Stella, think!
+Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is supposed to be located in the engineering wing of every ship owned by NASA.
+I think I've even seen it in our engineering wing now that I think about it! Gotta go there and find that manual.

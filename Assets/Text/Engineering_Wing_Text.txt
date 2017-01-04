@@ -1,29 +1,23 @@
 Stella: Yes! This is it! This is the manual!
-	It's a little bloody but everything inside is legible...
-	Okay, so according to the book, I need eight tools to repair to communication terminal.
-	I need to find a power drill, wrench, switchblade, hammer, saw, wire cutters, a screwdriver and a blow torch.
-	...That's a lot of stuff...Guess I'd better start searching.
+Must've been displaced in the crash. It's a little...bloody but everything inside is legible...
+Okay, so according to the book, I need eight tools to repair the communication terminal.
+I need to find a power drill, wrench, switchblade, hammer, saw, wire cutter, a screwdriver and a blowtorch.
+...That's a lot of stuff. Guess I'd better start searching.
+Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! 
+Need to find a spacesuit before the 02 levels completely drop!
 
-Stella: Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! 
-	Need to find a spacesuit before the 02 levels completely drop!
+(seems to be torn from some sort of encyclopedia regarding NASA spaceships)...the USS Yuansu, now decommissioned, was built in 2089 by architect Nancy Lin.
+Lin was a well-known designer and science fiction enthusiast who dreamt of becoming an astronaut at an early age.
+Though she did not exactly obtain her dream job, she became NASA's first lead female architect to create a self-sustaining spacecraft, earning her place in NASA's Hall of Scholars.
+The USS Yuansu was one of the first spacecrafts that lasted 3 weeks without needing energy cell replacements. 
+It hosted up to 45 crew members at a time and had a life span of 37 years. It was decommissioned in 2126 due to system malfunctions and obsolete software.
 
-Stella: Holy Hell...If I hadn't found a suit in time...I, would've been dead.
-	...I need to get to finding those tools. The faster I do, the faster I can signal for help.
+(...this is my handwriting. How'd this note get here?) Apparently, Captain Donovan has found a planetary system that's safe for humans. He says the system's name is called Xylo, named after the ProtoXylon species.
+I can't say I've really heard about them before he mentioned them to me. The captain says that they're one of the oldest species to have ever existed but they live in solitude and wish not to be bothered by others.
+I guess that's probably why not too many people know about them.
+Anyways, I need to prepare the briefing for our mission to that promising location. We might be the team that finds our next planet Earth. 
+-Stella (12/04)
 
-Stella: Okay, Stella. Take it easy, you go this. Just don't lose your balance...
-
-Note 1: (seems to be torn from some sort of encyclopedia regarding NASA spaceships)...the USS Yuansu, now decommissioned, was built in 2089 by architect Nancy Lin.
-	Lin was a well-known designer and science fiction enthusiast who dreamt of becoming an astronaut at an early age.
-	Though she did not exactly obtain her dream job, she became NASA's first lead female architect to create a self-sustaining spacecraft, earning her place in NASA's Hall of Scholars.
-	The USS Yuansu was one of the first spacecrafts that lasted 3 weeks without needing energy cell replacements. 
-	It hosted up to 45 crew members at a time and had a life span of 37 years. It was decommissioned in 2126 due to system malfunctions and obsolete software.
-
-Note 2: (...this is my handwriting. How'd this note get here?) Apparently, Captain Donovan has found a planetary system that's safe for humans. He says the system's name is called Xylo, named after the ProtoXylon species.
-	I can't say I really heard about them before he mentioned them to me. The captain says that they're one of the oldest species to have ever existed but they live in solitude and wish not to be bothered by others.
-	I guess that's probably why not too many people know about them.
-	Anyways, I need to prepare the briefing for our mission to that promising location. We might be the team to find our next planet Earth. 
-	-Stella (12/04)
-
-Note 3: (seems to be torn from some sort of encyclopedia regarding NASA spaceships)...the Fortuna, one of NASA's newer spacecrafts, was built by a group of ambitious cadets during their time at the academy.
-	Barbara Lorraine, Nathan Sinclair, Riley Buchanan and Renne Harris, shadowed by three engineers, created NASA's first ever fully functioning cadet-made spacecraft. 
-	Upon completion, NASA's very own Chairman Augustine personally congratulated the cadets on their marvelous achievement. All four cadets had permanent job opporunities awaiting them after graduation.
+(seems to be torn from some sort of encyclopedia regarding NASA spaceships)...the Fortuna, one of NASA's newer spacecrafts, was built by a group of ambitious cadets during their time at the academy.
+Barbara Lorraine, Nathan Sinclair, Riley Buchanan and Renne Harris, shadowed by three engineers, created NASA's first ever fully functioning cadet-made spacecraft. 
+Upon completion, NASA's very own Chairman Augustine personally congratulated the cadets on their marvelous achievement. All four cadets had permanent job opportunities awaiting them upon graduation.
