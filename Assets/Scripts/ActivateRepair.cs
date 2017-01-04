@@ -144,10 +144,13 @@ public class ActivateRepair : MonoBehaviour
 			player.GetComponent<PlayerController> ().activeHint = true;
 			player.GetComponent<PlayerController> ().canMove = false;
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+			player.GetComponent<Animator> ().Play ("StellaFaceCover");
+			yield return new WaitForSeconds (3.0f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: No, no, no! The communication terminal is busted...";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<Animator> ().Play ("StellaStand");
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Maybe...maybe I can use the GPS tracker in the command center to at least send out my location.\n\tI need to go into the command center and find that GPS tracker. I pray it didn't get damaged in the crash.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);

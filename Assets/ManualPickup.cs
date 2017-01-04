@@ -57,6 +57,7 @@ public class ManualPickup : MonoBehaviour {
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().alarmIsStarted = true;
+		player.GetComponent<Animator> ().Play ("StellaDiscomfort");
 		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! \nNeed to find a spacesuit before the 02 levels completely drop!";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);

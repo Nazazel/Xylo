@@ -193,6 +193,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (hintBox == null && !gameEnd) {
 			loading = false;
+			activeHint = false;
+			if (hasSuit) {
+				playerAnimator.Play ("SpaceStand");
+			} else {
+				playerAnimator.Play ("StellaStand");
+			}
 			FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 			FadeImg.color = Color.black;
 			InvokeRepeating ("FadeToClear", 0.0f, 0.1f);
@@ -296,7 +302,7 @@ public class PlayerController : MonoBehaviour {
                     airMult = 0.5f;
                 }
 
-                if (canMove)
+				if (canMove && !activeHint)
                 {
                     //Move right
                     if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -1114,8 +1120,10 @@ public class PlayerController : MonoBehaviour {
 		{
 			AlarmUI.color = new Color (0, 0, 0, 0);
 		}
+		activeHint = true;
 		canMove = false;
 		playerAnimator.Play("SpaceStand");
+		playerAnimator.
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		hintBox.SetActive (true);
 		setHintText ("<color=yellow>Loudspeaker</color>: SYSTEM MALFUNCTION. CRITICAL POWER FAILU-...");

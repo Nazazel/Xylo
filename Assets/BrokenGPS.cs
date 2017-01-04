@@ -43,6 +43,8 @@ public class BrokenGPS : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 
 		if (player.GetComponent<PlayerController> ().currentObjective == 4 && GPSinteracted == false) {
+			player.GetComponent<Animator> ().Play ("StellaFaceCover");
+			yield return new WaitForSeconds (3.0f);
 			player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: No...this can't be happening! The damn thing is broken...what am I going to do? I can't fix the ship...";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
@@ -53,6 +55,7 @@ public class BrokenGPS : MonoBehaviour {
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wasn't there some sort of repair manual that every ship is supposed to have?\nThink, Stella, think!";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
+			player.GetComponent<Animator> ().Play ("StellaStand");
 			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yeah, yeah...I remember hearing that in a meeting when I was first commissioned. The manual is supposed to be located in the engineering wing of every ship owned by NASA.";
 			yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 			yield return new WaitForSeconds (0.2f);
