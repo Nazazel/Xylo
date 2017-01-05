@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-		Debug.Log (rb);
 		if (SceneManager.GetActiveScene ().name == "Credits") {
 			DestroyImmediate (GameObject.FindWithTag ("Full Player"));
 		}
@@ -701,9 +700,9 @@ public class PlayerController : MonoBehaviour {
     public void tp(Vector3 a)
     {
         gameObject.transform.parent.position = new Vector3(a.x, a.y, 0);
-        //gameObject.transform.position = new Vector3(a.x, a.y, 0);
-		//Debug.Log (rb);
-		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
+		gameObject.transform.position = new Vector3(a.x, a.y, 0);
+		Debug.Log (rb);
+		rb.velocity = new Vector2(0f,0f);
     }
 
 
