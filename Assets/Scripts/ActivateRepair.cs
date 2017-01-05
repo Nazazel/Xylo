@@ -69,7 +69,6 @@ public class ActivateRepair : MonoBehaviour
 		else if (repairBar.GetComponent<Timer2> ().isDone == true && finish == false) {
 			pickupText.text = "";
 			terminalAnimator.Play ("Fixed");
-			Debug.Log("Done!");
 		}
     }
 

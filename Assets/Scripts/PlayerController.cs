@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour {
         gItemID = 0;
         currItem = null;
         inv = GameObject.Find("Inventory Slots");
-		glow = GameObject.Find ("Glowstick-Glow3").GetComponent<SpriteRenderer> ();
+		glow = GameObject.Find ("Glowstick-Glow_Only").GetComponent<SpriteRenderer> ();
 		glow.color = new Color(0,0,0,0);
 		darkness = GameObject.Find("BlackBG").GetComponent<SpriteRenderer> ();
 		playerAnimator.Play ("StellaStand");
@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour {
             //Ladder management code
             if (onLadder)
             {
-				
+				glow.sortingOrder = 48;
                 if (gameObject.transform.position.y > ladderBounds[0])
                     hasDownL = true;
                 else hasDownL = false;
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour {
             //Movement
             if (!onLadder)
             {
-				
+				glow.sortingOrder = 60;
 				playerAnimator.speed = 1;
 
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
