@@ -182,6 +182,25 @@ public class PlayerController : MonoBehaviour {
 				FadeImg.color = Color.clear;
 				controlsImage.color = Color.clear;
 			}
+
+			if (Input.GetKeyDown(KeyCode.H) && !activeHint && !onLadder)
+			{
+				if (playerAnimator.speed == 0) {
+					playerAnimator.speed = 1;
+				}
+
+				rb.velocity = new Vector2(0, rb.velocity.y);
+				if (!hasSuit)
+				{
+					playerAnimator.Play("StellaStand");
+				}
+				else
+				{
+					playerAnimator.Play("SpaceStand");
+				}
+				StartCoroutine("displayHint");
+				activeHint = true;
+			}
 		}
 	}
 
@@ -219,25 +238,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (isAwake && !gameEnd)
         {
-
-			if (Input.GetKeyDown(KeyCode.H) && !activeHint && !onLadder)
-            {
-				if (playerAnimator.speed == 0) {
-					playerAnimator.speed = 1;
-				}
-
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                if (!hasSuit)
-                {
-                    playerAnimator.Play("StellaStand");
-                }
-                else
-                {
-                    playerAnimator.Play("SpaceStand");
-                }
-                StartCoroutine("displayHint");
-                activeHint = true;
-            }
 
             if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && activeHint == false && !onLadder)
             {
