@@ -22,7 +22,7 @@ public class ElevatorScene : MonoBehaviour {
 
 	void Update()
 	{
-		if (!transitionStarted) {
+		if (!transitionStarted && FadeImg.color.a == 0.0f) {
 			StartCoroutine ("transitionToLevel");
 			transitionStarted = true;
 		}
@@ -39,7 +39,7 @@ public class ElevatorScene : MonoBehaviour {
 
 	public IEnumerator transitionToLevel()
 	{
-		yield return new WaitForSeconds (8.0f);
+		yield return new WaitForSeconds (4.0f);
 		if (player.GetComponent<PlayerController> ().currentObjective == 5) {
 			player.GetComponent<PlayerController> ().introDone = false;
 			InvokeRepeating ("FadeToBlack", 1.0f, 0.1f);
