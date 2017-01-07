@@ -24,7 +24,7 @@ public class BrokenGPS : MonoBehaviour {
 
 	void Update()
 	{
-		if (player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false && Input.GetKey (KeyCode.E)) {
+		if (player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false && Input.GetKey (KeyCode.E) && waitForPress) {
 			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
 			startGPSDialogue = true;
 			StartCoroutine ("GPSPick");
