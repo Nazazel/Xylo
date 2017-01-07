@@ -4,9 +4,12 @@ using System.Collections;
 
 public class ManualPickup : MonoBehaviour {
 
+	public bool picked;
 	private GameObject manual;
 	public GameObject player;
 	private Text pickupText;
+	public bool requireButtonPress;
+	private bool waitForPress;
 	public bool manualStart;
 
 	// Use this for initialization
@@ -18,21 +21,28 @@ public class ManualPickup : MonoBehaviour {
 		pickupText.text = "";
 	}
 
-	void OnTriggerStay2D (Collider2D col)
+	void Update()
 	{
-		if (manualStart == false) {
+		if (player.GetComponent<PlayerController> ().currentObjective == 5 && waitForPress && Input.GetKey (KeyCode.E) && !picked) {
+			picked = true;
+			player.GetComponent<PlayerController> ().manual = true;
+			StartCoroutine ("alarmStartup");
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (!picked && player.GetComponent<PlayerController> ().currentObjective == 5) {
 			pickupText.text = "Press 'E' to Pick Up Manual";
-		} 
-		else {
+		} else {
 			pickupText.text = "";
 		}
 
-		if (Input.GetKeyDown (KeyCode.E) && manualStart == false && player.GetComponent<PlayerController> ().activeHint == false) {
-			player.GetComponent<PlayerController> ().manual = true;
-			if (manualStart == false) {
-				StartCoroutine("alarmStartup");
-				manualStart = true;
+		if (other.name == "Stella") {
+			if (requireButtonPress) {
+				waitForPress = true;
+				return;
 			}
+
 		}
 	}
 
@@ -69,5 +79,6 @@ public class ManualPickup : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		manual.SetActive (false);
 		StopCoroutine ("alarmStartup");
+		DestroyImmediate (gameObject);
 	}
 }

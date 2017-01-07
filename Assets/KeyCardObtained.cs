@@ -4,13 +4,17 @@ using System.Collections;
 
 public class KeyCardObtained : MonoBehaviour {
 
+	public bool picked;
 	private GameObject keyCard;
 	public GameObject player;
-	private Text pickupText;
+	public bool requireButtonPress;
+	private bool waitForPress;
+	public Text pickupText;
 	private bool startKeyDialogue;
 
 	// Use this for initialization
 	void Start () {
+		picked = false;
 		keyCard = this.gameObject;
 		player = GameObject.FindWithTag ("Player");
 		pickupText = GameObject.Find ("ManualPickup").GetComponent<Text> ();
@@ -18,16 +22,27 @@ public class KeyCardObtained : MonoBehaviour {
 		startKeyDialogue = false;
 	}
 
-	void OnTriggerStay2D (Collider2D col)
+	void Update()
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 2 && startKeyDialogue == false) {
-			pickupText.text = "Press 'E' to Pick Up Keycard";
+		if (player.GetComponent<PlayerController> ().currentObjective == 2 && waitForPress && Input.GetKey (KeyCode.E) && !picked) {
+			picked = true;
+			StartCoroutine ("keyPick");
+		}
+	}
 
-			if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true) {
-				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
-				startKeyDialogue = true;
-				StartCoroutine ("keyPick");
+	void OnTriggerEnter2D(Collider2D other) {
+		if (!picked && player.GetComponent<PlayerController> ().currentObjective == 2) {
+			pickupText.text = "Press 'E' to Pick Up Keycard";
+		} else {
+			pickupText.text = "";
+		}
+
+		if (other.name == "Stella") {
+			if (requireButtonPress) {
+				waitForPress = true;
+				return;
 			}
+
 		}
 	}
 
@@ -40,6 +55,7 @@ public class KeyCardObtained : MonoBehaviour {
 	{
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
+		player.GetComponent<PlayerController>().playerAnimator.Play("StellaStand");
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		if (player.GetComponent<PlayerController> ().numKeys == 0) {
 			player.GetComponent<PlayerController> ().numKeys += 1;
@@ -55,6 +71,7 @@ public class KeyCardObtained : MonoBehaviour {
 			startKeyDialogue = false;
 			keyCard.SetActive (false);
 			StopCoroutine ("keyPick");
+			DestroyImmediate (gameObject);
 		}
 		else if (player.GetComponent<PlayerController> ().numKeys == 1) {
 			player.GetComponent<PlayerController> ().numKeys += 1;
@@ -71,6 +88,7 @@ public class KeyCardObtained : MonoBehaviour {
 			startKeyDialogue = false;
 			keyCard.SetActive (false);
 			StopCoroutine ("keyPick");
+			DestroyImmediate (gameObject);
 		}
 			
 	}
