@@ -7,6 +7,8 @@ public class BrokenGPS : MonoBehaviour {
 	private GameObject GPStracker;
 	public GameObject player;
 	private Text pickupText;
+	public bool requireButtonPress;
+	private bool waitForPress;
 	private bool startGPSDialogue;
 	private bool GPSinteracted;
 
@@ -20,20 +22,36 @@ public class BrokenGPS : MonoBehaviour {
 		GPSinteracted = false;
 	}
 
-	void OnTriggerStay2D (Collider2D col)
+	void Update()
 	{
+		if (player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false && Input.GetKey (KeyCode.E)) {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+			startGPSDialogue = true;
+			StartCoroutine ("GPSPick");
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+
 		pickupText.text = "Press 'E' to use GPS Tracker";
 
-		if (Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false && player.GetComponent<PlayerController> ().finishedJump == true && startGPSDialogue == false) {
-				player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
-				startGPSDialogue = true;
-				StartCoroutine ("GPSPick");
+
+		if (other.name == "Stella") {
+			if (requireButtonPress) {
+				waitForPress = true;
+				return;
 			}
+
+		}
 	}
 
 	void OnTriggerExit2D (Collider2D col)
 	{
 		pickupText.text = "";
+		if (col.name == "Stella")
+		{
+			waitForPress = false;
+		}
 	}
 
 	public IEnumerator GPSPick ()

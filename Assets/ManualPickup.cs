@@ -49,6 +49,10 @@ public class ManualPickup : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D col)
 	{
 		pickupText.text = "";
+		if (col.name == "Stella")
+		{
+			waitForPress = false;
+		}
 	}
 
 	public IEnumerator alarmStartup ()
@@ -63,6 +67,7 @@ public class ManualPickup : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yes! This is it! This is the manual!\nMust've been displaced in the crash. It's a little...bloody but everything inside is legible...";
+		pickupText.text = "";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Okay, so according to the book, I need eight tools to repair the communication terminal.\nI need to find a power drill, wrench, switchblade, hammer, saw, wire cutter, a screwdriver and a blowtorch.";
@@ -88,6 +93,5 @@ public class ManualPickup : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		manual.SetActive (false);
 		StopCoroutine ("alarmStartup");
-		DestroyImmediate (gameObject);
 	}
 }

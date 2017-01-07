@@ -49,6 +49,10 @@ public class KeyCardObtained : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D col)
 	{
 		pickupText.text = "";
+		if (col.name == "Stella")
+		{
+			waitForPress = false;
+		}
 	}
 
 	public IEnumerator keyPick ()
@@ -71,7 +75,6 @@ public class KeyCardObtained : MonoBehaviour {
 			startKeyDialogue = false;
 			keyCard.SetActive (false);
 			StopCoroutine ("keyPick");
-			DestroyImmediate (gameObject);
 		}
 		else if (player.GetComponent<PlayerController> ().numKeys == 1) {
 			player.GetComponent<PlayerController> ().numKeys += 1;
@@ -88,7 +91,6 @@ public class KeyCardObtained : MonoBehaviour {
 			startKeyDialogue = false;
 			keyCard.SetActive (false);
 			StopCoroutine ("keyPick");
-			DestroyImmediate (gameObject);
 		}
 			
 	}
