@@ -55,7 +55,11 @@ public class ManualPickup : MonoBehaviour {
 	{
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
-		player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+		if (player.GetComponent<PlayerController> ().hasSuit) {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceStand");
+		} else {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
+		}
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yes! This is it! This is the manual!\nMust've been displaced in the crash. It's a little...bloody but everything inside is legible...";
@@ -68,8 +72,13 @@ public class ManualPickup : MonoBehaviour {
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().alarmIsStarted = true;
-		player.GetComponent<Animator> ().Play ("StellaDiscomfort");
-		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! \nNeed to find a spacesuit before the 02 levels completely drop!";
+		if (player.GetComponent<PlayerController> ().hasSuit) {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("SpaceDiscomfort");
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! \nIt's a good thing I found a suit beforehand.";
+		} else {
+			player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaDiscomfort");
+			player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Wait, what!? What the hell is going on? Oh God, it's the oxygen levels...they're failing! \nNeed to find a spacesuit before the 02 levels completely drop!";
+		}
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		player.GetComponent<PlayerController> ().hintBox.SetActive (false);
