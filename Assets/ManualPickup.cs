@@ -45,6 +45,7 @@ public class ManualPickup : MonoBehaviour {
 	{
 		player.GetComponent<PlayerController> ().activeHint = true;
 		player.GetComponent<PlayerController> ().canMove = false;
+		player.GetComponent<PlayerController> ().playerAnimator.Play ("StellaStand");
 		player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		player.GetComponent<PlayerController> ().hintBox.SetActive (true);
 		player.GetComponent<PlayerController> ().hintText.text = "<color=fuchsia>Stella</color>: Yes! This is it! This is the manual!\nMust've been displaced in the crash. It's a little...bloody but everything inside is legible...";
