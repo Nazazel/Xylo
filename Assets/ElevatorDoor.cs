@@ -15,7 +15,7 @@ public class ElevatorDoor : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 5 && player.GetComponent<PlayerController>().loading == false) {
+		if (player.GetComponent<PlayerController> ().currentObjective == 5 && player.GetComponent<PlayerController>().loading == false && (SceneManager.GetActiveScene().name == "Level One Clean" || SceneManager.GetActiveScene().name == "Level One")) {
 			door.GetComponent<SpriteRenderer> ().enabled = false;
 			door.GetComponent<BoxCollider2D> ().enabled = false;
 		}

@@ -23,15 +23,14 @@ public class ManualPickup : MonoBehaviour {
 
 	void Update()
 	{
-		if (player.GetComponent<PlayerController> ().currentObjective == 5 && waitForPress && Input.GetKey (KeyCode.E) && !picked) {
-			picked = true;
+		if (player.GetComponent<PlayerController> ().currentObjective == 5 && waitForPress && Input.GetKey (KeyCode.E) && !player.GetComponent<PlayerController> ().manual && !player.GetComponent<PlayerController> ().activeHint) {
 			player.GetComponent<PlayerController> ().manual = true;
 			StartCoroutine ("alarmStartup");
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (!picked && player.GetComponent<PlayerController> ().currentObjective == 5) {
+		if (!player.GetComponent<PlayerController> ().manual && player.GetComponent<PlayerController> ().currentObjective == 5) {
 			pickupText.text = "Press 'E' to Pick Up Manual";
 		} else {
 			pickupText.text = "";
