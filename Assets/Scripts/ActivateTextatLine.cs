@@ -17,6 +17,7 @@ public class ActivateTextatLine : MonoBehaviour
 
     public Text pickupText;
     public GameObject player;
+	public AudioSource notesound;
 
     public bool isWall;
 	public bool started;
@@ -24,6 +25,7 @@ public class ActivateTextatLine : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+		notesound = gameObject.GetComponent<AudioSource> ();
         textManager = FindObjectOfType<TextManager>();
 		started = false;
         pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
@@ -37,6 +39,7 @@ public class ActivateTextatLine : MonoBehaviour
     {
 	    if(waitForPress && Input.GetKeyDown(KeyCode.E))
         {
+			notesound.Play ();
             textManager.ReloadScript(theText);
             textManager.currentLine = startLine;
             textManager.endAtLine = endLine;

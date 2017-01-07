@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class CommsCenterAccess : MonoBehaviour {
 
+	public AudioSource swipe;
+	public AudioSource door;
 	public GameObject player;
 	private Text pickupText;
 	public bool atDoor;
 
 	// Use this for initialization
 	void Start () {
+		door = gameObject.GetComponent<AudioSource> ();
+		swipe = GameObject.Find ("SwipeSound").GetComponent<AudioSource> ();
 		player = GameObject.FindWithTag ("Player");
 		atDoor = false;
 		pickupText = GameObject.Find ("ManualPickup").GetComponent<Text> ();
@@ -90,6 +94,12 @@ public class CommsCenterAccess : MonoBehaviour {
 			StopCoroutine("commsDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 3) {
+			swipe.Play ();
+			yield return new WaitUntil (() => !swipe.isPlaying);
+			swipe.Play ();
+			yield return new WaitUntil (() => !swipe.isPlaying);
+			door.Play ();
+			yield return new WaitUntil (() => !door.isPlaying);
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");
@@ -119,6 +129,8 @@ public class CommsCenterAccess : MonoBehaviour {
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 10) {
 			player.GetComponent<PlayerController> ().currentObjective = 11;
+			door.Play ();
+			yield return new WaitUntil (() => !door.isPlaying);
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Comms Center");

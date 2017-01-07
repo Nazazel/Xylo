@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class commandDoor : MonoBehaviour {
 
+	public AudioSource door;
 	public bool requireButtonPress;
 	private bool waitForPress;
 
@@ -15,6 +16,7 @@ public class commandDoor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		door = gameObject.GetComponent<AudioSource> ();
 		pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
 		pickupText.text = "";
 		player = GameObject.FindWithTag("Player");
@@ -131,6 +133,8 @@ public class commandDoor : MonoBehaviour {
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 5) {
+			door.Play ();
+			yield return new WaitUntil (() => !door.isPlaying);
 			SceneManager.LoadSceneAsync("Level One Clean");
 			StopCoroutine("commandText");
 		}

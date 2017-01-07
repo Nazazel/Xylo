@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class CommandCenterAccess : MonoBehaviour {
 
+	public AudioSource door;
 	public GameObject player;
 	private Text pickupText;
 	public bool atDoor;
 
 	// Use this for initialization
 	void Start () {
+		door = gameObject.GetComponent<AudioSource> ();
 		player = GameObject.FindWithTag ("Player");
 		atDoor = false;
 		pickupText = GameObject.Find ("ManualPickup").GetComponent<Text> ();
@@ -93,6 +95,8 @@ public class CommandCenterAccess : MonoBehaviour {
 			StopCoroutine("comDoorOpen");
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+			door.Play ();
+			yield return new WaitUntil (() => !door.isPlaying);
 			player.GetComponent<PlayerController> ().canMove = true;
 			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			SceneManager.LoadSceneAsync("Command Center");

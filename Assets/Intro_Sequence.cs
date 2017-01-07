@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Intro_Sequence : MonoBehaviour {
 	public Text IntroText;
+	public Text EnterText;
 	public Image FadeImg;
 	public Image controlsImage;
 	public float fadeSpeed = 3.0f;
@@ -13,7 +14,9 @@ public class Intro_Sequence : MonoBehaviour {
 	void Start () {
 		controlsImage.color = new Color (0, 0, 0, 0);
 		IntroText = this.gameObject.GetComponent<Text> ();
+		EnterText = GameObject.Find ("Press E to cont").GetComponent<Text> ();
 		IntroText.text = "The year is 2134. Man has discovered hyperspace travel. \nDue to extreme overpopulation of our own solar system, NASA has deployed several teams to search for other deep space regions to claim as our own. \nUpon investigation of nearby planetary systems, Stella Kern and her team of space explorers discover the human habitable planetary system, Xylo, not too far from their location. Thus, they embark on their journey. \nHowever, during their travel to Xylo, something goes horribly wrong. \nTheir spacecraft, the Ancora, crash lands on an unfamiliar planet. \nStella wakes up alone and confused. \nThere is no time to panic, she must find her crewmates and figure out a way to survive. ";
+		EnterText.text = "";
 		InvokeRepeating ("FadeToClear", 0f, 0.1f);
 		StartCoroutine("tran_interact");
 	}
@@ -24,6 +27,8 @@ public class Intro_Sequence : MonoBehaviour {
 	}
 
 	public  IEnumerator tran_interact(){
+		yield return new WaitForSeconds (25.0f);
+		EnterText.text = "Press Enter To Continue...";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.2f);
 		IntroText.text = "";

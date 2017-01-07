@@ -7,6 +7,7 @@ public class commsDoor : MonoBehaviour {
 
 	public bool requireButtonPress;
 	private bool waitForPress;
+	public AudioSource door;
 
 	public bool destroyWhenActivated;
 
@@ -15,6 +16,7 @@ public class commsDoor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		door = gameObject.GetComponent<AudioSource> ();
 		pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
 		pickupText.text = "";
 		player = GameObject.FindWithTag("Player");
@@ -105,6 +107,8 @@ public class commsDoor : MonoBehaviour {
 			player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 		else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
+			door.Play ();
+			yield return new WaitUntil (() => !door.isPlaying);
 			SceneManager.LoadSceneAsync("Level One Clean");
 			StopCoroutine("commDoor");
 		}

@@ -9,6 +9,7 @@ public class ActivateRepair : MonoBehaviour
 
     public bool destroyWhenActivated;
 	public Animator terminalAnimator;
+	public AudioSource repairSounds;
 
     public Text pickupText;
     public GameObject player;
@@ -21,6 +22,7 @@ public class ActivateRepair : MonoBehaviour
     void Start()
     {
 		terminalAnimator = gameObject.GetComponent<Animator> ();
+		repairSounds = gameObject.GetComponent<AudioSource> ();
         pickupText = GameObject.Find("ManualPickup").GetComponent<Text>();
         pickupText.text = "";
         player = GameObject.FindWithTag("Player");
@@ -46,6 +48,9 @@ public class ActivateRepair : MonoBehaviour
 				repairBar.GetComponent<Timer2> ().started = true;
 				isDown = true;
 				player.GetComponent<Animator> ().Play ("SpaceRepair");
+				if (repairSounds.isPlaying == false) {
+					repairSounds.Play ();
+				}
 				player.GetComponent<PlayerController> ().canMove = false;
 				player.GetComponent<PlayerController> ().activeHint = true;
 				player.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
@@ -59,6 +64,7 @@ public class ActivateRepair : MonoBehaviour
           
 			} else {
 				repairBar.GetComponent<Timer2> ().started = false;
+				repairSounds.Stop ();
 				isDown = false;
 				player.GetComponent<PlayerController> ().canMove = true;
 				player.GetComponent<PlayerController> ().activeHint = false;
@@ -68,6 +74,7 @@ public class ActivateRepair : MonoBehaviour
 		} 
 		else if (repairBar.GetComponent<Timer2> ().isDone == true && finish == false) {
 			pickupText.text = "";
+			repairSounds.Stop ();
 			terminalAnimator.Play ("Fixed");
 		}
     }

@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
     public Animator playerAnimator;
     public SpriteRenderer playerRenderer;
 	public Image controlsImage; 
+	public AudioSource typing;
+	public AudioSource alarm;
+	public AudioSource staticSound;
 
     //Movement
     public bool finishedJump;
@@ -153,6 +156,7 @@ public class PlayerController : MonoBehaviour {
 
         climbSpeed = 0.06f;
 
+		typing = gameObject.GetComponent<AudioSource> ();
 		FadeImg = GameObject.Find ("Fade").GetComponent<Image>();
 		controlsImage = GameObject.Find ("ControlsImage").GetComponent<Image>();
 		controlsImage.color = Color.clear;
@@ -201,6 +205,12 @@ public class PlayerController : MonoBehaviour {
 				StartCoroutine("displayHint");
 				activeHint = true;
 			}
+		}
+
+		if (SceneManager.GetActiveScene ().name == "Engineering Wing" && alarm == null) {
+			Debug.Log ("Woo");
+			alarm = GameObject.Find ("AlarmSound").GetComponent<AudioSource> ();
+			staticSound = GameObject.Find ("staticsound").GetComponent<AudioSource> ();
 		}
 	}
 
@@ -827,6 +837,7 @@ public class PlayerController : MonoBehaviour {
 		else if (manual && currentObjective == 5 && alarmIsStarted) {
 			currentObjective = 6;
 			InvokeRepeating("alarmOn", 0.0f, 0.05f);
+			alarm.Play ();
 		}
 		else if (hasSuit && currentObjective == 6) {
 			StartCoroutine("AlarmOffSequence");
@@ -977,8 +988,10 @@ public class PlayerController : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		hintBox.SetActive (false);
 		playerAnimator.Play ("SpaceType");
+		typing.Play ();
 		yield return new WaitForSeconds (3.0f);
 		hintBox.SetActive (true);
+		typing.Stop ();
 		playerAnimator.Play ("StellaLook");
 		setHintText ("<color=fuchsia>Stella</color>: Okay, I just sent out a signal.");
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
@@ -1118,8 +1131,34 @@ public class PlayerController : MonoBehaviour {
 
 	public IEnumerator AlarmOffSequence()
 	{
-		yield return new WaitForSeconds (6.0f);
+		yield return new WaitForSeconds (3.0f);
+		alarm.Pause ();
+		alarm.volume = 0.80f;
+		staticSound.Play ();
+		yield return new WaitForSeconds (0.5f);
+		staticSound.Stop ();
+		alarm.Play ();
+		yield return new WaitForSeconds (1.0f);
+		alarm.Pause ();
+		alarm.volume = 0.10f;
+		staticSound.Play ();
+		yield return new WaitForSeconds (0.5f);
+		staticSound.Stop ();
+		alarm.Play ();
+		yield return new WaitForSeconds (2.0f);
+		alarm.Pause ();
+		alarm.volume = 0.50f;
+		staticSound.Play ();
+		yield return new WaitForSeconds (1.0f);
+		staticSound.Stop ();
+		alarm.Play ();
+		yield return new WaitForSeconds (0.5f);
+		alarm.Stop ();
+		staticSound.Play ();
+		yield return new WaitForSeconds (0.5f);
+		staticSound.Stop ();
 		CancelInvoke ("alarmOn");
+
 		if(AlarmUI != null)
 		{
 			AlarmUI.color = new Color (0, 0, 0, 0);
