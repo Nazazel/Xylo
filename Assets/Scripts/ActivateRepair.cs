@@ -35,11 +35,13 @@ public class ActivateRepair : MonoBehaviour
     {
 		if (player.GetComponent<PlayerController> ().currentObjective == 3) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
+				player.GetComponent<PlayerController> ().activeHint = true;
 				StartCoroutine ("commsConsole");
 
 			}
 		} else if (player.GetComponent<PlayerController> ().currentObjective == 4) {
 			if (waitForPress && Input.GetKey (KeyCode.E) && player.GetComponent<PlayerController> ().activeHint == false) {
+				player.GetComponent<PlayerController> ().activeHint = true;
 				StartCoroutine ("commsConsole");
 
 			}
